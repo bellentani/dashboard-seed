@@ -6,11 +6,11 @@ Usaremos nesse projeto:
 * mongoDB (servidor local)
 * Express.js
 * Diversos módulos
-** express-handlebars
-** passport
-** assert
-** mongoose
-** etc.
+  * express-handlebars
+  * passport
+  * assert
+  * mongoose
+  * etc.
 
 Para frontend usaremos o Bootstrap, um bocado de CSS personalizado (usando Sass) e Javascript/JQuery, mas não será abordado a explição deles. O importante aqui é aplicativo em si.
 
@@ -23,20 +23,22 @@ Portanto, ao final do desenvolvimento da versão 1.0 teremos que ter uma área a
 O escopo de ferramentas que farão parte desse app são:
 * Configuração inicial de servidor
 * Cadastro de usuário (/signup)
-** E-mail
-** Senha
-** Avatar
+  * E-mail
+  * Senha
+  * Avatar
 * Acesso do usuário (/login)
-** Login e Sign out
+  * Login e Sign out
 * Recuperação de senha (/forgot)
 * Validação de formulários
 * Cadastro e login através de ferramentas de terceiros (Google, Twitter, etc) usando Passport
 * Área personalizada (/profile)
-** Avatar
-** Informações básicas
-** Edição de informações (/profile/edit)
+  * Avatar
+  * Informações básicas
+  * Edição de informações (/profile/edit)
 * Área administrativa (/profile/::user::admin)
-** Níveis de usuário (user, admin, owner)
-** Relatório de atividade gerais dos usuários (logs)
+  * Níveis de usuário (user, admin, owner)
+  * Relatório de atividade gerais dos usuários (logs)
 
 Aos poucos vamos tentar transformar isso em tutorial, explicando cada etapa. Por isso teremos comentários de montão nos códigos produzidos.
+
+P.S.: Esse escopo pode ser alterado a qualquer momento.
