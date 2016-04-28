@@ -1,0 +1,29 @@
+{
+  "name": "dashboard-node",
+  "version": "0.0.1",
+  "description": "Estudos e criação de snippet de código para base de login, signup, recuperação de senha e administração de contas de usuários.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bellentani/dashboard-node.git"
+  },
+  "keywords": [
+    "login",
+    "signup",
+    "dashboard",
+    "user",
+    "control"
+  ],
+  "author": "Poe Bellentani",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bellentani/dashboard-node/issues"
+  },
+  "homepage": "https://github.com/bellentani/dashboard-node#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
