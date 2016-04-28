@@ -1,5 +1,5 @@
 #Dashboard Node.js
-Esse aplicativo tem como objetivo criar um boot para projetos que exijam login. É um "big snippet" de código para quem quiser começar um Node app que exija uma área exclusiva para usuário. É como um "trabalho de conclusão de curso" para mim, pois estou aplicando neles meus estudos em Node.js. 
+Esse aplicativo tem como objetivo criar um boot para projetos que precisem de gerenciamento de usuários e área exclusiva. É quase que um "big snippet" de código para quem quiser começar um site ou serviço. É como um "trabalho de conclusão de curso" para mim, pois estou aplicando neles meus estudos em Node. Ele está sendo utilizado em outro projeto privado que estou fazendo, mas as coisas globais estou atualizando aqui e dividindo com quem tiver interesse.
 
 Usaremos nesse projeto:
 * Node.js
