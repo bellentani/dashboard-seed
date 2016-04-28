@@ -1,3 +1,42 @@
-#Texto explicativo
+#Dashboard Node.js
+Esse aplicativo tem como objetivo criar um boot para projetos que exijam login. É um "big snippet" de código para quem quiser começar um Node app que exija uma área exclusiva para usuário. É como um "trabalho de conclusão de curso" para mim, pois estou aplicando neles meus estudos em Node.js. 
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Usaremos nesse projeto:
+* Node.js
+* mongoDB (servidor local)
+* Express.js
+* Diversos módulos
+** express-handlebars
+** passport
+** assert
+** mongoose
+** etc.
+
+Para frontend usaremos o Bootstrap, um bocado de CSS personalizado (usando Sass) e Javascript/JQuery, mas não será abordado a explição deles. O importante aqui é aplicativo em si.
+
+Poderia ter feito ele usando Angular ou React, mas acredito que ele será mais universal se ficar um nível abaixo desses frameworks, permitindo estudos isolados de Node, mongoDB, Express e vários módulos correlatos.
+
+Portanto, ao final do desenvolvimento da versão 1.0 teremos que ter uma área administrativa simples. Vocês podem solicitar forks ou mexer a vontade. Aceito colaboração. ;)
+
+##Escopo Geral para a versão 1.0
+
+O escopo de ferramentas que farão parte desse app são:
+* Configuração inicial de servidor
+* Cadastro de usuário (/signup)
+** E-mail
+** Senha
+** Avatar
+* Acesso do usuário (/login)
+** Login e Sign out
+* Recuperação de senha (/forgot)
+* Validação de formulários
+* Cadastro e login através de ferramentas de terceiros (Google, Twitter, etc) usando Passport
+* Área personalizada (/profile)
+** Avatar
+** Informações básicas
+** Edição de informações (/profile/edit)
+* Área administrativa (/profile/::user::admin)
+** Níveis de usuário (user, admin, owner)
+** Relatório de atividade gerais dos usuários (logs)
+
+Aos poucos vamos tentar transformar isso em tutorial, explicando cada etapa. Por isso teremos comentários de montão nos códigos produzidos.
