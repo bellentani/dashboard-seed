@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/bellentani/dashboard-node#readme",
   "dependencies": {
-    "express": "^4.13.4"
+    "express": "^4.13.4",
+    "express-handlebars": "^3.0.0"
   }
 }
