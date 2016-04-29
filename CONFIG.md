@@ -1,7 +1,9 @@
 #Informações sobre o app
 
+Como este aplicativo está usando mongoDB, é preciso conhecer um pouco sobre o banco. Estamos rodando localmente, mas existe a possibilidade de você utilizar um serviço em Cloud. Vou listar dois serviços gratuitos que possam vir a interessar.
+
 É preciso criar a pasta ``/data/db`` para rodar o banco.
-Rodar usando o comando mongod --dbpath data/db
+Rodar usando o comando mongod ``--dbpath data/db``
 
 Usar para inserir o primeiro registro:
 
