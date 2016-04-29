@@ -21,7 +21,7 @@ Portanto, ao final do desenvolvimento da versão 1.0 teremos que ter uma área a
 ##Escopo Geral para a versão 1.0
 
 O escopo de ferramentas que farão parte desse app são:
-* Configuração inicial de servidor
+* ~~Configuração inicial de servidor~~
 * Cadastro de usuário (/signup)
   * E-mail
   * Senha
