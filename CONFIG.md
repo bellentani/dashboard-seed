@@ -1,6 +1,6 @@
 #Informações sobre o app
 
-É preciso criar a pasta /data/db para rodar o banco.
+É preciso criar a pasta ``/data/db`` para rodar o banco.
 Rodar usando o comando mongod --dbpath data/db
 
 Usar para inserir o primeiro registro:
@@ -11,7 +11,7 @@ db.user.insert({
   'name': 'John Doe'
 });
 ```
-É preciso criar um arquivo config/db.js:
+É preciso criar um arquivo ``config/db.js``:
 
 ```javascript
 module.exports = {
