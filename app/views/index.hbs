@@ -1,7 +1,15 @@
 <h1>{{title}}</h1>
+{{#if user}}
 <p>
-  {{#if user}}
-  <strong>User existe</strong>
-  {{/if}}
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  {{{user.email}}}
 </p>
+{{else}}
+<div class="jumbotron">
+  <h1>Dashboard Node.js</h1>
+  <p>Esse aplicativo tem como objetivo criar um boot para projetos que precisem de gerenciamento de usuários e área exclusiva. É quase que um "big snippet" de código para quem quiser começar um site ou serviço. É como um "trabalho de conclusão de curso" para mim, pois estou aplicando neles meus estudos em Node. Ele está sendo utilizado em outro projeto privado que estou fazendo, mas as coisas globais estou atualizando aqui e dividindo com quem tiver interesse.</p>
+  <p>
+    <button class="btn btn-lg btn-success" data-user="login" data-toggle="modal" data-target="#modalUser">Faça seu login</button> ou
+    <button class="btn btn-lg btn-primary" data-user="signup" data-toggle="modal" data-target="#modalUser">Cadastre-se</button>
+  </p>
+</div>
+{{/if}}
