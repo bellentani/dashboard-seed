@@ -16,6 +16,8 @@ var db = require('./config/db.js');
 //Configurando o banco
 mongoose.connect(db.url); // connect to our database
 
+require('./config/passport')(passport);
+
 //Middleware
 app.set('port', process.env.PORT || 5000);
 app.use(morgan('dev'));
@@ -75,7 +77,7 @@ app.set('views', __dirname + '/app/views/');
 app.use(express.static(__dirname + '/public/'));
 
 //===============ROUTES===============
-require('./app/routes/routes')(app);
+require('./app/routes/routes')(app, passport);
 
 
 app.listen(app.get('port'), function() {

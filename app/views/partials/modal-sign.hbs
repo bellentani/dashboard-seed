@@ -5,7 +5,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="modalUserTitle"></h4>
       </div>
-      <div class="modal-body">
+      <div class="modal-body">        
         <form id="modalUserLogin" class="modal-user" action="/" method="post">
           <div class="form-group">
             <label for="password">E-mail</label>
@@ -24,7 +24,12 @@
             <button type="button" class="btn btn-link">Ou cadastre-se</button>
           </div>
         </form>
-        <form id="modalUserSignup" class="modal-user" action="/" method="post">
+        <form id="modalUserSignup" class="modal-user" action="/signup" method="post">
+          <div class="form-group">
+            <label for="name">Nome</label>
+            <input type="text" class="form-control" id="name" placeholder="Insira seu nome">
+            <p class="help-block">Help text here.</p>
+          </div>
           <div class="form-group">
             <label for="email">E-mail</label>
             <input type="text" class="form-control" id="email" placeholder="Insira seu e-mail">
@@ -32,16 +37,16 @@
           </div>
           <div class="form-group">
             <label for="password">Senha</label>
-            <input type="text" class="form-control" id="password" placeholder="Digite sua senha">
+            <input type="password" class="form-control" id="password" placeholder="Digite sua senha">
             <p class="help-block">Help text here.</p>
           </div>
-          <div class="form-group">
+          <!--div class="form-group">
             <label for="confirm">Confirme sua senha</label>
             <input type="text" class="form-control" id="confirm" placeholder="Digite a mesma senha">
             <p class="help-block">Help text here.</p>
-          </div>
+          </div-->
           <div class="form-group">
-            <button type="button" class="btn btn-lg btn-primary">
+            <button type="submit" class="btn btn-lg btn-primary">
               Fazer cadastro
             </button>
           </div>
