@@ -1,3 +1,10 @@
+/*
+Artigos que estamos usando como referência para configuração inicial:
+http://www.peachpit.com/articles/article.aspx?p=2252193&seqNum=4
+https://scalegrid.io/blog/getting-started-with-mongodb-and-mongoose/
+https://scotch.io/tutorials/easy-node-authentication-setup-and-local
+http://mongoosejs.com/docs/models.html
+*/
 
 
 module.exports = function(app) {
