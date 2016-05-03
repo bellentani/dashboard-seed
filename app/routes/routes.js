@@ -1,3 +1,5 @@
+var bodyParser = require('body-parser')
+
 /*
 Artigos que estamos usando como referência para configuração inicial:
 http://www.peachpit.com/articles/article.aspx?p=2252193&seqNum=4
@@ -37,7 +39,7 @@ module.exports = function(app) {
 
     newUser.save(function(err, newUser) {
       if (err) { return handleError(err); }
-      res.json(201, newUser);
+      res.render('profile', newUser);
     });
   })
 
@@ -55,5 +57,17 @@ module.exports = function(app) {
       title: 'Esqueci minha senha',
       user: req.user
     });
+  });
+
+
+  //Error 404
+  app.use(function(req, res, next) {
+    res.status(404).render('404.hbs'); // load the index.handlebars file
+  });
+
+  //Error com server
+  app.use(function(err, req, res, next) {
+    console.error(err.stack);
+    res.status(500).render('500.hbs', err);
   });
 }
