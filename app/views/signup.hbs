@@ -1,4 +1,9 @@
 
+{{#if message}}
+<div>
+  <div class="alert alert-danger">{{message}}</div>
+</div>
+{{/if}}
 <form action="/signup" method="post">
   <input type="hidden" name="permission" value="teste">
   <div class="form-group">

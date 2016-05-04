@@ -9,9 +9,7 @@ http://mongoosejs.com/docs/models.html
 */
 
 
-module.exports = function(app) {
-
-  var User = require('../../config/user');
+module.exports = function(app, passport) {
 
   //Main page
   app.get('/', function(req, res){
@@ -25,7 +23,8 @@ module.exports = function(app) {
   app.get('/signup', function(req, res){
     res.render('signup', {
       title: 'Cadastre-se',
-      user: req.user
+      user: req.user,
+      message: req.flash('signupMessage')
     });
   });
 
@@ -44,10 +43,9 @@ module.exports = function(app) {
   })
 
   //Perfil do usuário
-  app.get('/profile', function(req, res){
+  app.get('/profile', isLoggedIn, function(req, res) {
     res.render('profile', {
-      title: 'Perfil do Usuário',
-      user: req.user
+        user : req.user
     });
   });
 
@@ -57,6 +55,12 @@ module.exports = function(app) {
       title: 'Esqueci minha senha',
       user: req.user
     });
+  });
+
+  //Logout
+  app.get('/logout', function(req, res) {
+    req.logout();
+    res.redirect('/');
   });
 
 
@@ -70,4 +74,11 @@ module.exports = function(app) {
     console.error(err.stack);
     res.status(500).render('500.hbs', err);
   });
+}
+
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated())
+        return next();
+
+    res.redirect('/');
 }

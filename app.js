@@ -78,7 +78,7 @@ app.set('views', __dirname + '/app/views/');
 app.use(express.static(__dirname + '/public/'));
 
 //===============ROUTES===============
-require('./app/routes/routes')(app);
+require('./app/routes/routes')(app, passport);
 
 
 app.listen(app.get('port'), function() {
