@@ -1,4 +1,4 @@
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
 
 /*
 Artigos que estamos usando como referência para configuração inicial:
@@ -28,19 +28,11 @@ module.exports = function(app, passport) {
     });
   });
 
-  app.post('/signup', function(req, res, next) {
-
-    var newUser = new User({
-      email: req.body.email,
-      name: req.body.name,
-      permission: req.body.permission
-    });
-
-    newUser.save(function(err, newUser) {
-      if (err) { return handleError(err); }
-      res.render('profile', newUser);
-    });
-  })
+  app.post('/signup', passport.authenticate('local-signup', {
+    successRedirect : '/profile', // redirect to the secure profile section
+    failureRedirect : '/signup', // redirect back to the signup page if there is an error
+    failureFlash : true // allow flash messages
+  }));
 
   //Perfil do usuário
   app.get('/profile', isLoggedIn, function(req, res) {
