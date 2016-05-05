@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/bellentani/dashboard-node#readme",
   "dependencies": {
+    "assert": "^1.3.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.0",
     "connect-flash": "^0.1.1",

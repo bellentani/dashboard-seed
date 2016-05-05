@@ -6,9 +6,6 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var flash    = require('connect-flash');
 
-var http = require("http");
-var url = require("url");
-
 var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
@@ -18,6 +15,8 @@ var db = require('./config/db.js');
 
 //Configurando o banco
 mongoose.connect(db.url); // connect to our database
+
+require('./config/passport')(passport);
 
 //Middleware
 app.set('port', process.env.PORT || 5000);
