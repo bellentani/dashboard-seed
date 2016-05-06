@@ -9,11 +9,11 @@ var userSchema = new Schema({
     email: String,
     password: String
   },
-  google: {
-      id: String,
-      token: String,
-      email: String,
-      name: String
+  facebook         : {
+      id           : String,
+      token        : String,
+      email        : String,
+      name         : String
   }
 }, {
   collection: 'user',

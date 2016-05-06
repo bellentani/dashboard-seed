@@ -34,6 +34,20 @@ module.exports = function(app, passport) {
     failureFlash : true // allow flash messages
   }));
 
+  // =====================================
+  // FACEBOOK ROUTES =====================
+  // =====================================
+  // route for facebook authentication and login
+  app.get('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
+
+  // handle the callback after facebook has authenticated the user
+  app.get('/auth/facebook/callback',
+    passport.authenticate('facebook', { failureRedirect: '/' }),
+    function(req, res) {
+      // Successful authentication, redirect home.
+      res.redirect('/profile');
+    });
+
   app.post('/login', passport.authenticate('local-login', {
     successRedirect : '/profile', // redirect to the secure profile section
     failureRedirect : '/', // redirect back to the signup page if there is an error
