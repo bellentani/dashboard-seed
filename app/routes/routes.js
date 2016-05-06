@@ -10,7 +10,7 @@ http://mongoosejs.com/docs/models.html
 
 
 module.exports = function(app, passport) {
-  var User = require('../models/user');
+  //var User = require('../models/user');
 
   //Main page
   app.get('/', function(req, res){
@@ -29,25 +29,17 @@ module.exports = function(app, passport) {
     });
   });
 
-  app.post('/signup',
-    passport.authenticate('local-signup', {
-      successRedirect : '/profile', // redirect to the secure profile section
-      failureRedirect : '/signup', // redirect back to the signup page if there is an error
-      failureFlash : true // allow flash messages
-    }), function(req, res, next) {
+  app.post('/signup', passport.authenticate('local-signup', {
+    successRedirect : '/profile', // redirect to the secure profile section
+    failureRedirect : '/signup', // redirect back to the signup page if there is an error
+    failureFlash : true // allow flash messages
+  }));
 
-      var newUser = new User({
-        email: req.body.email,
-        name: req.body.name,
-        permission: req.body.permission
-      });
-
-      newUser.save(function(err, newUser) {
-        if (err) { return handleError(err); }
-        res.render('profile', newUser);
-      });
-    }
-  );
+  app.post('/login', passport.authenticate('local-login', {
+    successRedirect : '/profile', // redirect to the secure profile section
+    failureRedirect : '/', // redirect back to the signup page if there is an error
+    failureFlash : true // allow flash messages
+  }));
 
   //Perfil do usuário
   app.get('/profile', isLoggedIn, function(req, res) {
