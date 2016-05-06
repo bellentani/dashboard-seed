@@ -8,7 +8,6 @@ https://scotch.io/tutorials/easy-node-authentication-setup-and-local
 http://mongoosejs.com/docs/models.html
 */
 
-
 module.exports = function(app, passport) {
   //var User = require('../models/user');
 
