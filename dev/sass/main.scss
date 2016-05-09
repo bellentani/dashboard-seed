@@ -1,2 +1,9 @@
 @import 'compass';
 @import 'project/header';
+
+.modal.in .modal-dialog {
+  z-index: 10005
+}
+.modal-user {
+  display: none;
+}

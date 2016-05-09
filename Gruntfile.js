@@ -109,7 +109,7 @@ module.exports = function(grunt) {
         files: [{
 					expand: true,
 					cwd: '<%= globalConfig.localMockup  %>',
-					src: ['**/.css', '**/*.{png,jpg,gif,svg}', '**/*.js', '**/*.{eot,svg,ttf,woff,woff2}', '!**/*.{scss,html}'],
+					src: ['**/*.css', '**/*.{png,jpg,gif,svg}', '**/*.js', '**/*.{eot,svg,ttf,woff,woff2}', '!**/*.{scss,html}'],
 					dest: '<%= globalConfig.sourceSafe  %>'
 				}]
 			},
@@ -214,6 +214,10 @@ module.exports = function(grunt) {
 	grunt.registerTask('deploy', [
 		'compass:dev',
 		'includes',
+		'copy:devroot',
+		'copy:devimg',
+		'copy:devjs',
+		'copy:devfonts',
 		'copy:deploy'
 	]);
 	grunt.registerTask('static', [
