@@ -1,8 +1,14 @@
-
 {{#if message}}
 <div>
   <div class="alert alert-danger">{{message}}</div>
 </div>
+{{/if}}
+{{#if errors}}
+  <ul>
+  {{#each errors}}
+    <li>{{this.msg}} {{this.param}}</li>
+  {{/each}}
+  </ul>
 {{/if}}
 <form action="/signup" method="post">
   <input type="hidden" name="permission" value="user">
@@ -19,9 +25,26 @@
   <div class="form-group">
     <label for="password">Senha</label>
     <input type="password" class="form-control" id="password" name="password" placeholder="Digite seu nome">
+    {{#if errors.password}}
+      <div class="help-block">
+        Deu erro.
+        <ul>
+        {{#each errors}}
+          {{#ifCond this.password.param '==' 'password'}}
+          u
+            <li>{{errors.password.msg}} oi</li>
+          {{/ifCond}}
+        {{/each}}
+        </ul>
+      </div>
+    {{/if}}
+  </div>
+  <div class="form-group">
+    <label for="passwordConfirm">Confirme a Senha</label>
+    <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" placeholder="Digite seu nome">
     <p class="help-block">Texto de ajuda, no futuro será a msg se erro.</p>
   </div>
   <button type="submit" class="btn btn-primary btn-lg">
-    Mandar o avião
+    Fazer cadastro
   </button>
 </form>

@@ -15,7 +15,8 @@ module.exports = function(app, passport) {
   app.get('/', function(req, res){
     res.render('index', {
       title: 'Dashboard Seed',
-      user: req.user
+      user: req.user,
+      message: req.flash('loginMessage'),
     });
   });
 
@@ -28,11 +29,29 @@ module.exports = function(app, passport) {
     });
   });
 
-  app.post('/signup', passport.authenticate('local-signup', {
-    successRedirect : '/profile', // redirect to the secure profile section
-    failureRedirect : '/signup', // redirect back to the signup page if there is an error
-    failureFlash : true // allow flash messages
-  }));
+  app.post('/signup', function(req, res) {
+
+      req.check('email', 'E-mail inválido').isEmail();
+      req.check('password', 'A senha precisa ter mais que 4 caracteres').isLength({min: 4});
+      req.check('password', 'As senhas não são iguais').equals(req.body.passwordConfirm);
+
+      var errors = req.validationErrors(true); //colocar (true) para transformar em objeto
+
+      if (errors) {
+        req.session.errors = errors;
+        req.session.success = false;
+        res.render('signup', {user:null, errors:errors});
+        console.log(errors);
+        req.flash('error', errors);
+      } else {
+        passport.authenticate('local-signup', {
+          successRedirect : '/profile', // redirect to the secure profile section
+          failureRedirect : '/signup', // redirect back to the signup page if there is an error
+          failureFlash : true // allow flash messages
+        })(req, res);
+      }
+    }
+  );
 
   // =====================================
   // FACEBOOK ROUTES =====================

@@ -27,11 +27,9 @@ module.exports = function(passport) {
       passReqToCallback : true // allows us to pass back the entire request to the callback
   },
   function(req, email, password, done) {
-
-      // asynchronous
-      // User.findOne wont fire unless data is sent back
-      process.nextTick(function() {
-
+    // asynchronous
+    // User.findOne wont fire unless data is sent back
+    process.nextTick(function() {
       User.findOne({ 'local.email' :  email }, function(err, user) {
         // if there are any errors, return the error
         if (err)
@@ -48,7 +46,7 @@ module.exports = function(passport) {
 
           // set the user's local credentials
           newUser.local.email = email;
-          newUser.permission = req.body.permission;
+          newUser.permission = 'user';
           newUser.name = req.body.name;
           newUser.local.password = newUser.generateHash(password);
 
@@ -127,8 +125,7 @@ module.exports = function(passport) {
                     newUser.facebook.token = token; // we will save the token that facebook provides to the user
                     newUser.facebook.name  = profile.name.givenName + ' ' + profile.name.familyName; // look at the passport user profile to see how names are returned
                     newUser.facebook.email = profile.emails[0].value; // facebook can return multiple emails so we'll take the first
-                    newUser.permission = "user";
-                    newUser.name  = profile.name.givenName + ' ' + profile.name.familyName; // look at the passport user profile to see how names are returned
+                    //newUser.permission = "user";
 
                     // save our user to the database
                     newUser.save(function(err) {

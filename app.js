@@ -1,6 +1,5 @@
 //Geral para o app
 var express = require('express');
-var app = express();
 var exphbs  = require('express-handlebars');
 var mongoose = require('mongoose');
 var passport = require('passport');
@@ -9,31 +8,14 @@ var flash    = require('connect-flash');
 var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
+var expressValidator =  require('express-validator');
 var session      = require('express-session');
 
-var db = require('./config/db.js');
+var app = express();
 
-//Configurando o banco
-mongoose.connect(db.url); // connect to our database
-
-require('./config/passport')(passport);
-
-//Middleware
-app.set('port', process.env.PORT || 5000);
-app.use(morgan('dev'));
-app.use(cookieParser());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-app.use(session({
-  secret: 'eapoerulez',
-  saveUninitialized: true,
-  resave: true,
-  cookie: { maxAge: 600000 },
-  path:"/*"
-}));
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(flash());
+//seta o local das views
+app.set('view engine', '.hbs');
+app.set('views', __dirname + '/app/views/');
 
 //configura o handlebars
 // -- personaliza o hbs
@@ -69,16 +51,34 @@ app.engine('.hbs', exphbs({
     }
 }));
 
-//seta o local das views
-app.set('view engine', '.hbs');
-app.set('views', __dirname + '/app/views/');
+//Configurando o banco
+var db = require('./config/db.js');
+mongoose.connect(db.url); // conexão para o banco de dados
 
-//determina o conteúdo estático
-app.use(express.static(__dirname + '/public/'));
+require('./config/passport')(passport);
+
+//Middleware
+app.set('port', process.env.PORT || 5000);
+app.use(morgan('dev'));
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(expressValidator());
+app.use(express.static(__dirname + '/public/')); //determina o conteúdo estático
+app.use(session({
+  secret: 'eapoerulez',
+  saveUninitialized: true,
+  resave: true,
+  cookie: { maxAge: 600000 },
+  path:"/*"
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
 
 //===============ROUTES===============
 require('./app/routes/routes')(app, passport);
-
 
 app.listen(app.get('port'), function() {
   console.log('Node está brincando na porta ' + app.get('port'));
