@@ -1,0 +1,62 @@
+/* iCheck plugin flat skin, black
+----------------------------------- */
+$icheck-img:  '../img/icheck.png';
+$icheck-img2x: '../img/icheck@2x.png';
+$size-check:   15px;
+
+.icheckbox,
+.iradio {
+    display: inline-block;
+    *display: inline;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    width: 14px;
+    height: 14px;
+    background: url($icheck-img) no-repeat;
+    border: none;
+    cursor: pointer;
+}
+
+.icheckbox {
+    background-position: 0 0;
+
+    &.checked {
+        background-position: ($size-check*-1) 0; //-22
+
+        &.disabled {
+            background-position: ($size-check*-3) 0; //-66
+        }
+    }
+    &.disabled {
+        background-position: ($size-check*-2) 0; //-44
+        cursor: default;
+    }
+}
+
+.iradio {
+    background-position: ($size-check*-4) 0; //-88
+
+    &.checked {
+        background-position: ($size-check*-5) 0; //-110
+
+        &.disabled {
+            background-position: ($size-check*-6) 0; //-154
+        }
+    }
+    &.disabled {
+        background-position: ($size-check*-7) 0;//-132
+        cursor: default;
+    }
+
+}
+
+/* HiDPI support */
+@media (-o-min-device-pixel-ratio: 5/4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi), (min-resolution: 1.25dppx) {
+    .icheckbox,
+    .iradio {
+        background-image: url($icheck-img2x);
+        -webkit-background-size: 176px 22px;
+        background-size: 176px 22px;
+    }
+}
