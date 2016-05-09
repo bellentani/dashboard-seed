@@ -23,13 +23,13 @@ Portanto, ao final do desenvolvimento da versão 1.0 teremos que ter uma área a
 O escopo de ferramentas que farão parte desse app são:
 * ~~Configuração inicial de servidor~~
 * Cadastro de usuário (/signup)
-  * E-mail
-  * Senha
+  * ~~E-mail~~
+  * ~~Senha~~
   * Avatar
-* Acesso do usuário (/login)
-  * Login e Sign out
+* ~~Acesso do usuário (/login)~~
+  * ~~Login e Sign out~~
 * Recuperação de senha (/forgot)
-* Validação de formulários
+* Validação de formulários (via frontend)
 * Cadastro e login através de ferramentas de terceiros (Google, Twitter, etc) usando Passport
 * Área personalizada (/profile)
   * Avatar
@@ -38,6 +38,9 @@ O escopo de ferramentas que farão parte desse app são:
 * Área administrativa (/profile/::user::admin)
   * Níveis de usuário (user, admin, owner)
   * Relatório de atividade gerais dos usuários (logs)
+* Adição de ferramentas de frontend
+  * ~~Grunt~~
+  * Bower
 
 Aos poucos vamos tentar transformar isso em tutorial, explicando cada etapa. Por isso teremos comentários de montão nos códigos produzidos.
 
