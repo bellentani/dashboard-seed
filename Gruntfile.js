@@ -1,7 +1,7 @@
 module.exports = function(grunt) {
 	var globalConfig = {
 		projectName: 'boot-model',
-		localDev: 'dev/',
+		localDev: 'src/',
 		localMockup: 'mockups/',
 		localSamples: 'samples/',
 		sourceSafe: 'public/',

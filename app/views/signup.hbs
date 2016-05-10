@@ -30,7 +30,7 @@
         Deu erro.
         <ul>
         {{#each errors}}
-          {{#ifCond this.password.param '==' 'password'}}
+          {{#ifCond this.param '==' 'password'}}
           u
             <li>{{errors.password.msg}} oi</li>
           {{/ifCond}}
