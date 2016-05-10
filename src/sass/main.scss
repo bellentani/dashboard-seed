@@ -1,9 +1,7 @@
 @import 'compass';
-@import 'project/header';
+@import 'project/variables';
+@import 'bootstrap/variables';
+@import 'bootstrap/mixins';
 
-.modal.in .modal-dialog {
-  z-index: 10005
-}
-.modal-user {
-  display: none;
-}
+@import 'project/global';
+@import 'project/header';

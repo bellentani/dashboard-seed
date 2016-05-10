@@ -1,0 +1,21 @@
+.navbar-header {
+  float: none;
+  display: inline-block;
+  vertical-align: middle;
+}
+.navbar-brand {
+  float: none;
+  display: inline-block;
+  vertical-align: middle;
+  height: auto;
+  line-height: 1;
+}
+.main-header{
+  background-color: $base-green;
+  border: 0;
+  @include border-radius(0);
+}
+.main-menu {
+  display: inline-block;
+  vertical-align: middle;
+}
