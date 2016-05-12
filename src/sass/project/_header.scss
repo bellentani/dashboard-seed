@@ -14,6 +14,20 @@
   background-color: $base-green;
   border: 0;
   @include border-radius(0);
+
+  font-size: 1.4em;
+  
+  a {
+    &,
+    &:focus,
+    &:hover {
+      color: $base-white;
+      text-decoration: none;
+    }
+  }
+}
+.menu-about {
+
 }
 .main-menu {
   display: inline-block;
