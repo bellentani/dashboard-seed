@@ -11,12 +11,13 @@
   line-height: 1;
 }
 .main-header{
+  height: 115px;
   background-color: $base-green;
   border: 0;
   @include border-radius(0);
 
   font-size: 1.4em;
-  
+
   a {
     &,
     &:focus,
@@ -26,10 +27,20 @@
     }
   }
 }
+.menu-about,
+.main-menu {
+  display: table;
+  height: 115px;
+
+  li {
+    display: table-cell;
+    vertical-align: middle;
+  }
+}
 .menu-about {
 
 }
 .main-menu {
-  display: inline-block;
+  float: right;
   vertical-align: middle;
 }
