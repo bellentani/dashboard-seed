@@ -28,6 +28,25 @@
       text-decoration: none;
     }
   }
+  .btn-primary {
+    @include button-variant($btn-primary-color, $atomic-orange, #E85007);
+    border: 0;
+  }
+  .user-avatar {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 33px;
+    height: 33px;
+    vertical-align: middle;
+    line-height: 33px;
+    padding: 0;
+  }
+}
+.user-avatar {
+  @include border-radius(100px);
+  background-color: $base-dark;
+  padding: 1em;
+  overflow: hidden;
 }
 .menu-about,
 .main-menu {

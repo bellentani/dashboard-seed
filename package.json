@@ -43,6 +43,7 @@
     "serve-favicon": "^2.3.0"
   },
   "devDependencies": {
+    "bower": "^1.7.9",
     "grunt": "~0.4.1",
     "grunt-contrib-compass": "^1.0.1",
     "grunt-contrib-concat": "^1.0.0",

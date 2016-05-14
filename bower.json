@@ -1,0 +1,29 @@
+{
+  "name": "dashboard-node",
+  "description": "Estudos e criação de snippet de código para base de login, signup, recuperação de senha e administração de contas de usuários.",
+  "main": "app.js",
+  "authors": [
+    "Poe Bellentani"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "login",
+    "signup",
+    "dashboard",
+    "user",
+    "control"
+  ],
+  "homepage": "https://github.com/bellentani/dashboard-node",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/components/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "AniJS": "anijs#^0.9.3"
+  }
+}
