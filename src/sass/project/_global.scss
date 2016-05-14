@@ -4,6 +4,33 @@
 .modal-user {
   display: none;
 }
+.smt {
+  @include opacity(0.8);
+  @include transition(all 450ms linear);
+
+  &:hover,
+  &:focus {
+    @include opacity(1);
+    @include transition(all 450ms linear);
+  }
+}
+.smt-inv {
+  @include opacity(1);
+  @include transition(opacity 450ms linear);
+
+  &:hover,
+  &:focus {
+    @include opacity(0.8);
+    @include transition(opacity 450ms linear);
+  }
+}
+body {
+  font-family: $font-default;
+}
 main {
-  padding-top: 2em;
+  padding-top: 2em;  
+}
+
+footer {
+  padding: 3em 0;
 }

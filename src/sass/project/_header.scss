@@ -11,12 +11,14 @@
   line-height: 1;
 }
 .main-header{
+  position: relative;
   height: 115px;
   background-color: $base-green;
   border: 0;
   @include border-radius(0);
+  @include box-shadow(15px 2px 25px rgba($base-dark, 0.2));
 
-  font-size: 1.4em;
+  font-size: 1.2em;
 
   a {
     &,
@@ -38,9 +40,15 @@
   }
 }
 .menu-about {
-
+  a {
+    @extend .smt-inv;
+  }
 }
 .main-menu {
   float: right;
   vertical-align: middle;
+
+  .btn {
+    font-size: 0.9em;
+  }
 }

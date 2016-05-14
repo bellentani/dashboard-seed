@@ -12,10 +12,31 @@ include "head-css-scripts-global.html"
     <p class="browserupgrade">Você está usando um navegador <strong>antigo</strong>. Por favor, <a href="http://browsehappy.com/">atualize seu navegador</a> para uma melhor experiência.</p>
 <![endif]-->
 include "header.html"
-<main role="main" class="container">
-  <div class="jumbotron">
-    <h1>Dashboard seed!</h1>
-    <p>Esse é um boot para aplicativos Node.js que já faz a conexção utilizando Passport, mongoDB e Express.</p>
+<main role="main" class="home">
+  <div class="container">
+    <div class="jumbotron jumbotron__home">
+      <h1>Dashboard seed!</h1>
+      <p>Esse é um boot para aplicativos Node.js que já faz a conexção utilizando Passport, mongoDB e Express.</p>
+      <hr>
+      <p><button class="btn btn-success btn-lg">Entre</button> ou <button class="btn btn-primary btn-lg">Cadastre-se</button></p>
+    </div>
+    <section class="row about">
+      <div class="col-xs-8 text-center">
+        <span class="glyphicon glyphicon-grain" aria-hidden="true"></span>
+        <h2>O que é o Dashboard Seed?</h2>
+        <p>É uma estrutura de início de projeto para sites que precisam de área de usuário, com login e senha, com diversas autenticações: login em base de dados <strong>mongoDB</strong> local, Facebook, Google e Twitter.</p>
+      </div>
+      <div class="col-xs-8 text-center">
+        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+        <h2>Quais tecnologias ela usa?</h2>
+        <p>A base do projeto é Node.js, utilizando o Handlebars, Passport.js e Express.js. O frontend base é feito usando Grunt, Sass, Compass e Bower.</p>
+      </div>
+      <div class="col-xs-8 text-center">
+        <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+        <h2>Tenho que pagar algo pra usar?</h2>
+        <p>Nope! O projeto é gratuito e aberto no GitHub para coloboração e download. Se você tem interesse em ajudar, dá um fork ou manda uma mensagem pra gente por lá.</p>
+      </div>
+    </section>
   </div>
 
 </main>

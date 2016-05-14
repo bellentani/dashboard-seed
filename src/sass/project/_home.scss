@@ -1,0 +1,50 @@
+main {
+  &.home {
+    padding-top: 5em;
+    background: url(../img/dandelion-1311663_1920.jpg) 0 0 no-repeat $dandelion-green;
+    background-size: 100% auto;
+  }
+}
+
+.jumbotron {
+  &__home {
+    padding-top: 8em;
+    padding-bottom: 3em;
+    color: rgba($base-white, 0.8);
+    background-color: rgba($base-dark, 0.2);
+    h1,
+    p {
+      text-shadow: 1px 1px 1px rgba($base-dark, 0.5);
+    }
+    hr {
+      @include opacity(0.4);
+    }
+    .btn {
+      @extend .smt;
+    }
+  }
+}
+.about {
+  padding-top: 2em;
+  padding-bottom: 2em;
+  margin: 0;
+  @include border-radius(0.5em);
+
+  .glyphicon {
+    font-size: 4em;
+    color: $base-white;
+    background: #15CD5A;
+    @include border-radius(1000px);
+    @include opacity(0.8);
+    padding: 0.5em;
+    text-align: center;
+    line-height: 1;
+    margin: 0 auto;
+  }
+  .col-xs-8 {
+    padding: 2em;
+    min-height: 270px;
+    text-align: center;
+    background-color: rgba(226, 228, 103, 0.70);
+  }
+}
