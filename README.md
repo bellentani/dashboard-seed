@@ -40,7 +40,7 @@ O escopo de ferramentas que farão parte desse app são:
   * Relatório de atividade gerais dos usuários (logs)
 * Adição de ferramentas de frontend
   * ~~Grunt~~
-  * Bower
+  * ~~Bower~~
 
 Aos poucos vamos tentar transformar isso em tutorial, explicando cada etapa. Por isso teremos comentários de montão nos códigos produzidos.
 
