@@ -1,0 +1,65 @@
+.profile {
+  padding-bottom: 2em;
+  background: url(../img/footer_lodyas.png) $base-dark;
+  color: $base-white;
+
+  .avatar {
+    @include border-radius(1000px);
+    overflow: hidden;
+    margin-bottom: 1em;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  .user-name {
+    font-size: 1.4em;
+    color: $base-white;
+    padding-right: 3.5em;
+  }
+  &--data {
+    color: darken($base-white, 50%);
+
+    > li {
+      position: relative;
+    }
+
+    .btn {
+      //margin-top: 1em;
+    }
+    .btn-secondary {
+      //color: $base-green;
+    }
+  }
+  .edit {
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: center;
+
+    b {
+      font-weight: normal;
+      width: 0;
+      display: inline-block;
+      overflow: hidden;
+      vertical-align: middle;
+      @include transition(all 250ms linear);
+    }
+    &:hover,
+    &:focus {
+      b {
+        width: 23px;
+        @include transition(all 250ms linear);
+      }
+    }
+  }
+  .resume {
+    background-color: rgba($base-dark, 0.2);
+    color: $base-white;
+    padding: 1em;
+    margin-top: 1em;
+    font-size: 1em;
+  }
+
+}

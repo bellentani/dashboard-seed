@@ -102,7 +102,7 @@
   bottom: auto;
   right: 0;
   display: none;
-  width: 120%;
+  width: 140%;
   margin-top: 1em;
   background-color: $base_white;
   color: $base-dark;
@@ -134,7 +134,7 @@
   }
   > li {
     &:first-child {
-      font-size: 1.1em;
+      font-size: 0.8em;
       font-weight: 600;
     }
     &:last-child {
