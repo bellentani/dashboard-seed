@@ -23,10 +23,8 @@
     "test",
     "tests"
   ],
-  "dependencies": {
-    "AniJS": "anijs#^0.9.3"
-  },
   "devDependencies": {
-    "isMobile": "^0.4.0"
+    "isMobile": "^0.4.0",
+    "AniJS": "anijs#^0.9.3"
   }
 }
