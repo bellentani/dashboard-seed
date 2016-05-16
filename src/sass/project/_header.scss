@@ -46,7 +46,7 @@
       width: 20px;
       height: 20px;
       line-height: 20px;
-      font-size: 0.8em;
+      //font-size: 0.8em;
     }
   }
   .icon-menu {
@@ -132,7 +132,10 @@
     }
     @extend .smt;
   }
+
   > li {
+    font-size: 0.9em;
+
     &:first-child {
       font-size: 0.8em;
       font-weight: 600;
