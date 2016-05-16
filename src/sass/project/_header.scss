@@ -17,7 +17,6 @@
   border: 0;
   @include border-radius(0);
   @include box-shadow(15px 2px 25px rgba($base-dark, 0.2));
-
   font-size: 1.2em;
 
   a {
@@ -49,6 +48,17 @@
       line-height: 20px;
       font-size: 0.8em;
     }
+  }
+  .icon-menu {
+    display: none;
+    float: left;
+    font-size: 2.1em;
+    color: #fff;
+    margin-top: 27px;
+    margin-left: 30px;
+    cursor: pointer;
+    @include opacity(0);
+    @include transition-property(opacity);
   }
 }
 .user-info {
@@ -132,5 +142,41 @@
         border-bottom: none;
       }
     }
+  }
+}
+
+//Menu fixo
+main {
+  &.menu-fixed-body {
+    margin-top: 115px;
+  }
+}
+.menu-fixed {
+  position: fixed;
+  z-index: 1000;
+  top: -80px;
+  width: 100%;
+  height: 80px;
+  @include opacity(1);
+  @include transition-property(opacity);
+
+  .navbar-brand {
+    padding: 0;
+    > img {
+      height: 60px;
+      margin-top: 10px;
+    }
+  }
+  .col-xs-8 {
+    &:first-child {
+      width: 22%;
+    }
+    &:last-child {
+      width: 44.6%;
+    }
+  }
+  .menu-about,
+  .main-menu {
+    height: 80px;
   }
 }

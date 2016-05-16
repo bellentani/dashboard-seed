@@ -1,4 +1,18 @@
 $(function() {
+	//vars gerais
+    var respWdt = 768;
+    var documentWid = $(document).width();
+    var documentHei = $(document).height();
+    var wdwWid = $(window).width();
+    var wdwHei = $(window).height();
+
+    //Menu Global
+    headMainWid = $('.main-header .container').outerWidth();
+    headMainHei = $('.main-header').outerHeight();
+    headMenuGlobal = $('.header-menu-global').outerHeight();
+    headSumHei = headMainHei;
+    headerHei = $('.header').outerHeight();
+
 	//Exibe o conteúdo específico de cada modal basedo no clique do botão
 	$('[data-user]').on('click', function(e) {
 		var dataTarget = $(this).data('user');
@@ -39,4 +53,27 @@ $(function() {
       }
     }
 	});
+
+	//
+	if (isMobile.phone || isMobile.tablet) {
+
+	} else {
+		$(document).on('scroll', function () {
+      menuTopFunc();
+    });
+	}
+
+	//Smooth scroll
+	$('a[href*="#"]:not([href="#"])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
+  });
 });
