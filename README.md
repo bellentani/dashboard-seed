@@ -42,6 +42,24 @@ O escopo de ferramentas que farão parte desse app são:
   * ~~Grunt~~
   * ~~Bower~~
 
+###Lista de frontend feito separado
+Telas feitas em separado na pasta ``src``:
+* Main
+  * ~~Modal de login e signup~~
+  * ~~Barra fixa~~
+  * ~~About~~
+  * Validação dos forms
+    * login
+    * signup
+* Tela de profile
+  * Landing Page (profile)
+  * Edição de Profile
+  * Tela de Signout
+* Erro 404
+* Erro 500
+
+---
+
 Aos poucos vamos tentar transformar isso em tutorial, explicando cada etapa. Por isso teremos comentários de montão nos códigos produzidos.
 
 P.S.: Esse escopo pode ser alterado a qualquer momento.
