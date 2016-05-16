@@ -21,10 +21,24 @@ $(function() {
 			$('#modalUserSignup').removeAttr('style');
 			$('#modalUserLogin').show();
 			$('#modalUserTitle').text('Login no site');
+			$('#modalUser').removeClass('toggled')
 		} else if (dataTarget == 'signup') {
 			$('#modalUserLogin').removeAttr('style');
 			$('#modalUserSignup').show();
 			$('#modalUserTitle').text('Cadastre-se');
+		}
+	});
+	$('.toggle-signup').on('click', function(event) {
+		$('#modalUser').addClass('toggled');
+	});
+
+	$(document).on('hidden.bs.modal', '#modalUser', function (event) {
+		if($('#modalUser').hasClass('toggled')) {
+			console.log('funfou');
+			$('#modalUserLogin').removeAttr('style');
+			$('#modalUserSignup').show();
+			$('#modalUserTitle').text('Cadastre-se');
+			$('#modalUser').modal('show').removeClass('toggled');
 		}
 	});
 

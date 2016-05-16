@@ -1,5 +1,18 @@
-.modal.in .modal-dialog {
-  z-index: 10005
+.modal-dialog {
+  z-index: 10005;
+}
+.modal-header {
+  background: $base-dark;
+  color: $base-white;
+
+  .close {
+    color: $base-white;
+
+    &:hover,
+    &:focus {
+      color: $base-white;
+    }
+  }
 }
 .modal-user {
   display: none;
@@ -28,9 +41,31 @@ body {
   font-family: $font-default;
 }
 main {
-  padding-top: 2em;  
+  padding-top: 2em;
 }
-
+.btn-primary {
+  @include button-variant($base-white, $atomic-orange, $atomic-orange);
+  border: 0;
+  box-shadow: none;
+  outline: none;
+  &:focus {
+    box-shadow: none;
+    outline: none;
+  }
+}
+.btn-secondary {
+  @include button-variant($btn-primary-color, $base-dark, lighten($base-dark, 40%));
+  border: 0;
+  box-shadow: none;
+  outline: none;
+  &:focus {
+    box-shadow: none;
+    outline: none;
+  }
+}
+.btn-max {
+  padding: 0.5em 2em;
+}
 footer {
   padding: 3em 0;
 }
