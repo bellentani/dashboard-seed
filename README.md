@@ -60,7 +60,6 @@ Telas feitas em separado na pasta ``src``:
 * Erro 500
 
 ---
-
 Aos poucos vamos tentar transformar isso em tutorial, explicando cada etapa. Por isso teremos comentários de montão nos códigos produzidos.
 
 P.S.: Esse escopo pode ser alterado a qualquer momento.
