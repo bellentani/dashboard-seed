@@ -4,19 +4,58 @@
   color: $base-white;
 
   .avatar {
+    position: relative;
+    z-index: 20;
     @include border-radius(1000px);
     overflow: hidden;
     margin-bottom: 1em;
+    @include transform(scale(1));
+    @include transition(all 250ms linear);
+    cursor: pointer;
 
     img {
       width: 100%;
       height: auto;
+      @include transition(all 250ms linear);
+    }
+    &.in {
+      @include transition(all 250ms linear);
+      @include transform(scale(0));
+    }
+    span {
+      position: absolute;
+      z-index: 100;
+      top: 36%;
+      font-size: 4em;
+      left: 0;
+      bottom: 0;
+      text-align: center;
+      right: 0;
+      color: rgba($base-dark, 0.5);
+      vertical-align: middle;
+      margin: 0 auto;
+      opacity: 0;
+      @include transition(all 250ms linear);
+    }
+    &:hover,
+    &:focus {
+      span {
+        @include opacity(1);
+        @include transition(all 250ms linear);
+      }
+      img {
+        @include opacity(0.5);
+        @include transition(all 250ms linear);
+      }
     }
   }
   .user-name {
     font-size: 1.4em;
     color: $base-white;
     padding-right: 3.5em;
+  }
+  &-col {
+    position: relative;
   }
   &--data {
     color: darken($base-white, 50%);
@@ -45,6 +84,8 @@
       overflow: hidden;
       vertical-align: middle;
       @include transition(all 250ms linear);
+      font-size: 0.8em;
+      text-transform: uppercase;
     }
     &:hover,
     &:focus {
@@ -55,11 +96,26 @@
     }
   }
   .resume {
-    background-color: rgba($base-dark, 0.2);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    @include opacity(0);
+    @include transition(all 250ms linear);
+    //@include border-radius(1000px);
+    //background-color: rgba($base-dark, 0.2);
     color: $base-white;
     padding: 1em;
     margin-top: 1em;
     font-size: 1em;
+
+    &.in {
+      @include opacity(1);
+      @include transition(all 250ms linear);
+    }
+    p {
+      margin: 0;
+    }
   }
 
 }

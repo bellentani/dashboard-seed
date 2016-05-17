@@ -42,6 +42,17 @@ $(function() {
 		}
 	});
 
+	$('.avatar').on({
+	  click: function() {
+	    $(this).addClass('in').siblings('.resume').addClass('in');
+	  }
+	});
+	$('.resume').on({
+	  click: function() {
+	    $(this).removeClass('in').siblings('.avatar').removeClass('in');
+	  }
+	});
+
 	//Abre submenus
 	$('.submenu-opener').on('click', function(event) {
 		event.preventDefault();
@@ -65,6 +76,9 @@ $(function() {
       if($('.submenu').is(":visible")) {
           $('.submenu').slideUp();
       }
+    }
+		if(!$(event.target).closest('.avatar').length && !$(event.target).is('.avatar')) {
+      $('.resume').removeClass('in').siblings('.avatar').removeClass('in');
     }
 	});
 
