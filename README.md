@@ -48,11 +48,12 @@ Telas feitas em separado na pasta ``src``:
   * ~~Modal de login e signup~~
   * ~~Barra fixa~~
   * ~~About~~
+  * Página de recuperação de senha
   * Validação dos forms
     * login
     * signup
 * Tela de profile
-  * Landing Page (profile)
+  * ~~Landing Page (profile)~~
   * Edição de Profile
   * Tela de Signout
 * Erro 404
