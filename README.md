@@ -28,7 +28,7 @@ O escopo de ferramentas que farão parte desse app são:
   * Avatar
 * ~~Acesso do usuário (/login)~~
   * ~~Login e Sign out~~
-* Recuperação de senha (/forgot)
+* ~~Recuperação de senha (/forgot)~~
 * Validação de formulários (via frontend)
 * Cadastro e login através de ferramentas de terceiros (Google, Twitter, etc) usando Passport
 * Área personalizada (/profile)
