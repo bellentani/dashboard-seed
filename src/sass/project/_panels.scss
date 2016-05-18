@@ -1,0 +1,7 @@
+// Contextual variations
+.panel-secondary {
+  // border-out, font, background, border
+  @include panel-variant(lighten($dandelion-green, 10%), $base-white, $dandelion-green, lighten($dandelion-green, 10%));
+  border: 0;
+  @include box-shadow(0 0 2em rgba($base-dark, 0.15));
+}
