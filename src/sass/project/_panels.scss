@@ -4,4 +4,13 @@
   @include panel-variant(lighten($dandelion-green, 10%), $base-white, $dandelion-green, lighten($dandelion-green, 10%));
   border: 0;
   @include box-shadow(0 0 2em rgba($base-dark, 0.15));
+
+  .panel-heading {
+    text-transform: uppercase;
+  }
+}
+.panel-lg {
+  .panel-heading {
+    padding: 1.5em;
+  }
 }
