@@ -104,4 +104,37 @@ $(function() {
       }
     }
   });
+
+  //Validator
+  $('#modalUserSignup').validate({
+    rules: {
+      email: {
+        required: true,
+        email: true
+      },
+      password: {
+        required: true,
+        minlength: 5
+      },
+      passwordConfirm: {
+        required: true,
+        minlength: 5,
+        equalTo: '#password'
+      }
+    },
+    messages: {
+      email: {
+        required: "Por favor, o e-mail é obrigatório.",
+      },
+      password: {
+        required: "Escolha um password.",
+        minlength: "Senha muito curta, o tamanho mínimo é de 5 caracteres."
+      },
+      passwordConfirm: {
+        required: "Por favor, confirme a senha.",
+        minlength: "Senha muito curta, o tamanho mínimo é de 5 caracteres",
+        equalTo: "As senhas digitadas não são iguais, digite novamente"
+      }
+    }
+  });
 });
