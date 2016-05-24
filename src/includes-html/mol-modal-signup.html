@@ -6,10 +6,10 @@
         <h4 class="modal-title" id="modalUserTitle"></h4>
       </div>
       <div class="modal-body">
-        <form id="modalUserLogin" class="modal-user" action="/login" method="post" data-toggle="validator">
+        <form id="modalUserLogin" class="modal-user" action="/login" method="post">
           <div class="form-group">
             <label for="email">E-mail</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Insira seu e-mail" required="required">
+            <input type="email" class="form-control" id="email" name="email" placeholder="Insira seu e-mail">
             <p class="help-block">Help text here.</p>
           </div>
           <div class="form-group">
@@ -24,27 +24,27 @@
             <button type="button" class="btn btn-link toggle-signup" data-dismiss="modal">Ou cadastre-se</button>
           </div>
         </form>
-        <form id="modalUserSignup" class="modal-user" action="/signup" method="post" data-toggle="validator">
+        <form id="modalUserSignup" class="modal-user" action="/signup" method="post">
           <input type="hidden" name="permission" value="user">
           <div class="form-group">
             <label for="email">E-mail</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Adicione seu e-mail" required>
-            <div class="help-block with-errors"></div>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Adicione seu e-mail">
+            <p class="help-block">Texto de ajuda, no futuro será a msg se erro.</p>
           </div>
           <div class="form-group">
             <label for="name">Nome</label>
-            <input type="text" class="form-control" id="name" name="name" data-minlength="5" placeholder="Digite seu nome" required>
-            <div class="help-block with-errors"></div>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Digite seu nome">
+            <p class="help-block">Texto de ajuda, no futuro será a msg se erro.</p>
           </div>
           <div class="form-group">
             <label for="password">Senha</label>
-            <input type="password" class="form-control" id="password" name="password" data-minlength="5" placeholder="Digite seu nome" required>
-            <div class="help-block with-errors"></div>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Digite seu nome">
+            <p class="help-block">Texto de ajuda, no futuro será a msg se erro.</p>
           </div>
           <div class="form-group">
             <label for="passwordConfirm">Confirme a Senha</label>
-            <input type="passwordConfirm" class="form-control" id="passwordConfirm" name="passwordConfirm" placeholder="Digite seu nome">
-            <div class="help-block with-errors"></div>
+            <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" placeholder="Digite seu nome">
+            <p class="help-block">Texto de ajuda, no futuro será a msg se erro.</p>
           </div>
           <button type="submit" class="btn btn-primary btn-lg">
             Fazer cadastro

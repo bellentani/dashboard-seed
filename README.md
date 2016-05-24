@@ -48,7 +48,7 @@ Telas feitas em separado na pasta ``src``:
   * ~~Modal de login e signup~~
   * ~~Barra fixa~~
   * ~~About~~
-  * Página de recuperação de senha
+  * ~~Página de recuperação de senha~~
   * Validação dos forms
     * login
     * signup

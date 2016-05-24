@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+include "head-metatags-model.html"
+include "head-css-scripts-global.html"
+</head>
+<body>
+<!--[if lt IE 8]>
+    <p class="browserupgrade">Você está usando um navegador <strong>antigo</strong>. Por favor, <a href="http://browsehappy.com/">atualize seu navegador</a> para uma melhor experiência.</p>
+<![endif]-->
+include "header.html"
+<main role="main" class="sys-msg">
+  <div class="container">
+    <div class="col-xs-24 col-md-12 col-md-offset-6">
+      <div class="panel panel-secondary panel-lg">
+        <div class="panel-heading">
+          <h3 class="panel-title">Esqueci a senha</h3>
+        </div>
+        <div class="panel-body">
+          <p>Se você esqueceu sua senha preencha o e-mail que se cadastrou abaixo e clique em "Gerar nova senha".</p>
+          <p>Você receberá um e-mail com as instruções de como gerar uma nova senha.</p>
+          <form action="">
+            <input type="email" class="form-control input-lg" placeholder="Inclusa seu e-mail aqui.">
+            <p class="help-block bg-danger">Texto de ajuda caso dê erro de validação.</p>
+            <div class="text-right">
+              <button class="btn btn-primary btn-lg btn-block">Gerar nova senha</button>
+            </div>
+          </form>
+          <div class="help-block bg-info">
+            <h3>Um e-mail foi enviado para <b>contato@fernandob.com.br</b></h3>
+            <p>Veja as instruções para gerar uma nova senha.</p>
+            <hr>
+            <p><strong>Importante:</strong> ele pode demorar alguns instantes para chegar em sua caixa de mensagens, caso isso não aconteça em breve verifique a sua caixa de SPAM.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+include "footer.html"
+include "mol-modal-signup.html"
+include "footer-scripts-default.html"
+</body>
+</html>

@@ -43,6 +43,13 @@ body {
 main {
   padding-top: 2em;
 }
+.btn {
+  &,
+  &:hover,
+  &:focus {
+    @include transition(all 250ms linear);
+  }
+}
 .btn-primary {
   @include button-variant($base-white, $atomic-orange, $atomic-orange);
   border: 0;
@@ -68,4 +75,7 @@ main {
 }
 footer {
   padding: 3em 0;
+}
+.sys-msg {
+  background: url(../img/congruent_pentagon.png) $water-green;
 }
