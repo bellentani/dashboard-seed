@@ -104,21 +104,49 @@ $(function() {
       }
     }
   });
+  $('#signup_password').pwstrength({
+    ui: {
+        // i18n pt-br
+        errorMessages: {
+            wordLength: "Sua senha é muito curta",
+            wordNotEmail: "Não use seu e-mail como senha",
+            wordSimilarToUsername: "Sua senha não pode conter o seu nome de usuário",
+            wordTwoCharacterClasses: "Use diferentes classes de caracteres",
+            wordRepetitions: "Muitas repetições ",
+            wordSequences: "Sua senha contém sequências"
+        },
+        verdicts: ["Fraca", "Normal", "Média", "Forte", "Muito Forte"],
+        // end: i18n pt-br
+        showVerdictsInsideProgressBar: true,
+        showErrors: true
+    }
+  });
 
   //Validator signup
   $('#modalUserSignup').validate({
-    errorElement: 'p',
+    //debug: true,
+    //onkeyup: false,
+    errorPlacement: function(label, element) {
+        label.addClass('help-block');
+        label.insertAfter(element);
+    },
     wrapper: 'div',
+    errorElement: 'p',
     validClass: 'has-success',
     errorClass: 'has-error',
     highlight: function(element, errorClass, validClass) {
-      $(element).closest('.form-group').addClass(errorClass).removeClass(validClass);
+      $(element).closest('.form-group').addClass('has-error').removeClass('has-success');
+      // $(element).on('keydown, blur', function(event) {
+      //   if($(this).closest('.form-group').children('div').length > 0) {
+      //     $(this).closest('.form-group').children('div:first').addClass('help-block');
+      //   }
+      // });
     },
     unhighlight: function(element, errorClass, validClass) {
-      $(element).closest('.form-group').removeClass(errorClass).addClass(validClass);
+      $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
     },
     rules: {
-      email: {
+      signup_email: {
         required: true,
         email: true
       },
@@ -133,17 +161,18 @@ $(function() {
       }
     },
     messages: {
-      email: {
-        required: "Por favor, o e-mail é obrigatório.",
+      signup_email: {
+        required: 'Por favor, o e-mail é obrigatório.',
+        email: 'Adicione um formato válido'
       },
       signup_password: {
-        required: "Escolha um password.",
-        minlength: "Senha muito curta, o tamanho mínimo é de 5 caracteres."
+        required: 'Escolha um password.',
+        minlength: 'Senha muito curta, o tamanho mínimo é de 5 caracteres.'
       },
       confirm_password: {
-        required: "Por favor, confirme a senha.",
-        minlength: "Senha muito curta, o tamanho mínimo é de 5 caracteres",
-        equalTo: "As senhas digitadas não são iguais, digite novamente"
+        required: 'Por favor, confirme a senha.',
+        minlength: 'Senha muito curta, o tamanho mínimo é de 5 caracteres',
+        equalTo: 'As senhas digitadas não são iguais, digite novamente'
       }
     }
   });
