@@ -8,14 +8,12 @@
       <div class="modal-body">
         <form id="modalUserLogin" class="modal-user" action="/login" method="post">
           <div class="form-group">
-            <label for="email">E-mail</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Insira seu e-mail">
-            <p class="help-block">Help text here.</p>
+            <label for="emailLogin">E-mail</label>
+            <input type="email" class="form-control input-lg" id="emailLogin" name="emailLogin" placeholder="Insira seu e-mail">
           </div>
           <div class="form-group">
-            <label for="password">Senha</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Insira sua senha">
-            <p class="help-block">Help text here.</p>
+            <label for="passwordLogin">Senha</label>
+            <input type="password" class="form-control input-lg" id="passwordLogin" name="passwordLogin" placeholder="Insira sua senha">
           </div>
           <div class="form-group text-right">
             <button type="submit" class="btn btn-lg btn-success">
@@ -25,28 +23,23 @@
           </div>
         </form>
         <form id="modalUserSignup" class="modal-user" action="/signup" method="post">
-          <input type="hidden" name="permission" value="user">
           <div class="form-group">
-            <label for="email">E-mail</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Adicione seu e-mail">
-            <p class="help-block">Texto de ajuda, no futuro será a msg se erro.</p>
+            <label for="emailSignup">E-mail</label>
+            <input type="email" class="form-control input-lg" id="emailSignup" name="emailSignup" placeholder="Adicione seu e-mail">
           </div>
           <div class="form-group">
             <label for="name">Nome</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="Digite seu nome">
-            <p class="help-block">Texto de ajuda, no futuro será a msg se erro.</p>
+            <input type="text" class="form-control input-lg" id="name" name="name" placeholder="Digite seu nome">
           </div>
           <div class="form-group">
-            <label for="signup_password">Senha</label>
-            <input type="password" class="form-control" id="signup_password" name="signup_password" placeholder="Digite seu nome">
-            <p class="help-block">Texto de ajuda, no futuro será a msg se erro.</p>
+            <label for="passwordSignup">Senha</label>
+            <input type="password" class="form-control input-lg" id="passwordSignup" name="passwordSignup" placeholder="Digite seu nome">
           </div>
           <div class="form-group">
-            <label for="confirm_password">Confirme a Senha</label>
-            <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Digite seu nome">
-            <p class="help-block">Texto de ajuda, no futuro será a msg se erro.</p>
+            <label for="passwordSignupConfirm">Confirme a Senha</label>
+            <input type="password" class="form-control input-lg" id="passwordSignupConfirm" name="passwordSignupConfirm" placeholder="Digite seu nome">
           </div>
-          <button type="submit" class="btn btn-primary btn-lg">
+          <button type="submit" class="btn btn-primary btn-lg" disabled>
             Fazer cadastro
           </button>
         </form>

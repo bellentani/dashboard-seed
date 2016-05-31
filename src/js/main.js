@@ -108,8 +108,8 @@ $(function() {
   //Validator signup
   $('#modalUserSignup').validate({
     errorElement: 'p',
-    wrapper: 'div',
-    success: 'has-success',
+    wrapper: 'div class="help-block warning-block"',
+    validClass: 'has-success',
     errorClass: 'has-error',
     highlight: function(element, errorClass, validClass) {
       $(element).closest('.form-group').addClass(errorClass).removeClass(validClass);
@@ -118,29 +118,30 @@ $(function() {
       $(element).closest('.form-group').removeClass(errorClass).addClass(validClass);
     },
     rules: {
-      email: {
+      emailSignup: {
         required: true,
         email: true
       },
-      signup_password: {
+      passwordSignup: {
         required: true,
         minlength: 5
       },
-      confirm_password: {
+      passwordSignupConfirm: {
         required: true,
         minlength: 5,
-        equalTo: '#signup_password'
+        equalTo: '#passwordSignup'
       }
     },
     messages: {
-      email: {
+      emailSignup: {
         required: "Por favor, o e-mail é obrigatório.",
+        email: "Esse não é um formato de e-mail válido"
       },
-      signup_password: {
+      passwordSignup: {
         required: "Escolha um password.",
         minlength: "Senha muito curta, o tamanho mínimo é de 5 caracteres."
       },
-      confirm_password: {
+      passwordSignupConfirm: {
         required: "Por favor, confirme a senha.",
         minlength: "Senha muito curta, o tamanho mínimo é de 5 caracteres",
         equalTo: "As senhas digitadas não são iguais, digite novamente"
