@@ -109,7 +109,7 @@ $(function() {
   $('#modalUserSignup').validate({
     errorElement: 'p',
     wrapper: 'div',
-    success: 'has-success',
+    validClass: 'has-success',
     errorClass: 'has-error',
     highlight: function(element, errorClass, validClass) {
       $(element).closest('.form-group').addClass(errorClass).removeClass(validClass);
