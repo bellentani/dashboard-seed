@@ -104,21 +104,35 @@ $(function() {
       }
     }
   });
+
+  //senha
   $('#signup_password').pwstrength({
+    common: {
+      minChar: 8
+    },
+    rules: {
+      activated: {
+        wordTwoCharacterClasses: true,
+        wordRepetitions: true
+      }
+    },
     ui: {
-        // i18n pt-br
-        errorMessages: {
-            wordLength: "Sua senha é muito curta",
-            wordNotEmail: "Não use seu e-mail como senha",
-            wordSimilarToUsername: "Sua senha não pode conter o seu nome de usuário",
-            wordTwoCharacterClasses: "Use diferentes classes de caracteres",
-            wordRepetitions: "Muitas repetições ",
-            wordSequences: "Sua senha contém sequências"
-        },
-        verdicts: ["Fraca", "Normal", "Média", "Forte", "Muito Forte"],
-        // end: i18n pt-br
-        showVerdictsInsideProgressBar: true,
-        showErrors: true
+      showErrors: true,
+      //showPopover: true,
+      //popoverPlacement: 'bottom',
+      showVerdictsInsideProgressBar: true,
+      verdict: ["Fraca", "Normal", "Média", "Forte", "Muito Forte"],
+      // i18n pt-br
+      errorMessages: {        
+          wordLength: "Sua senha é muito curta",
+          wordNotEmail: "Não use seu e-mail como senha",
+          wordSimilarToUsername: "Sua senha não pode conter o seu nome de usuário",
+          wordTwoCharacterClasses: "Use diferentes classes de caracteres",
+          wordRepetitions: "Muitas repetições ",
+          wordSequences: "Sua senha contém sequências"
+      },
+      verdicts: ["Fraca", "Normal", "Média", "Forte", "Muito Forte"],
+      // end: i18n pt-br
     }
   });
 
