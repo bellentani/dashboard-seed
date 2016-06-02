@@ -37,3 +37,50 @@
 .has-success {
 
 }
+
+.error-list {
+  background-color: $mega-magenta;
+  color: $base-white;
+  font-size: 0.85em;
+  padding-left: 2.5em;
+  // padding-top: 1em;
+  // padding-bottom: 1em;
+  //
+  > li {
+    padding: 0.5em 0;
+  }
+}
+form {
+  .password-verdict {
+    display: block;
+    background-color: darken($mega-magenta, 20%);
+    color: $base-white;
+
+    &.danger,
+    &.warning,
+    &.success {
+      padding: 1em;
+      font-size: 0.85em;
+    }
+  }
+  .progress {
+    position: relative;
+    top: -3px;
+    @include border-radius(0);
+    margin-bottom: 0;
+    height: 5px;
+    background-color: $gray-mid;
+
+    > {
+      .pwstr {
+        @include border-radius(0);
+      }
+    }
+    .password-verdict {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 0.8em;
+    }
+  }
+}

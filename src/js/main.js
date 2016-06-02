@@ -73,7 +73,7 @@ $(function() {
 	//Fecha as coisas se clica fora
 	$(document).click(function(event) {
     if(!$(event.target).closest('.submenu').length && !$(event.target).is('.submenu, .submenu-opener')) {
-      if($('.submenu').is(":visible")) {
+      if($('.submenu').is(':visible')) {
           $('.submenu').slideUp();
       }
     }
@@ -117,21 +117,30 @@ $(function() {
       }
     },
     ui: {
+      //colorClasses: ['danger', 'danger', 'danger', 'warning', 'warning', 'success'],
       showErrors: true,
-      //showPopover: true,
-      //popoverPlacement: 'bottom',
-      showVerdictsInsideProgressBar: true,
-      verdict: ["Fraca", "Normal", "Média", "Forte", "Muito Forte"],
-      // i18n pt-br
-      errorMessages: {        
-          wordLength: "Sua senha é muito curta",
-          wordNotEmail: "Não use seu e-mail como senha",
-          wordSimilarToUsername: "Sua senha não pode conter o seu nome de usuário",
-          wordTwoCharacterClasses: "Use diferentes classes de caracteres",
-          wordRepetitions: "Muitas repetições ",
-          wordSequences: "Sua senha contém sequências"
+      spanError: function (options, key) {
+        var text = options.i18n.t(key);
+        if (!text) { return ''; }
+        return '<span>' + text + '</span>';
       },
-      verdicts: ["Fraca", "Normal", "Média", "Forte", "Muito Forte"],
+      progressBarExtraCssClasses: 'pwstr',
+      //showPopover: true,
+      //popoverPlacement: 'top',
+      useVerdictCssClass: true,
+      showVerdictsInsideProgressBar: false,
+      showVerdicts: true,
+      verdict: ['Fraca', 'Normal', 'Média', 'Forte', 'Muito Forte'],
+      // i18n pt-br
+      errorMessages: {
+          wordLength: 'Sua senha é muito curta',
+          wordNotEmail: 'Não use seu e-mail como senha',
+          wordSimilarToUsername: 'Sua senha não pode conter o seu nome de usuário',
+          wordTwoCharacterClasses: 'Use diferentes classes de caracteres',
+          wordRepetitions: 'Muitas repetições ',
+          wordSequences: 'Sua senha contém sequências'
+      },
+      verdicts: ['Fraca', 'Normal', 'Média', 'Forte', 'Muito Forte'],
       // end: i18n pt-br
     }
   });
