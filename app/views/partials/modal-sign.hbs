@@ -8,43 +8,34 @@
       <div class="modal-body">
         <form id="modalUserLogin" class="modal-user" action="/login" method="post">
           <div class="form-group">
-            <label for="email">E-mail</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Insira seu e-mail">
-            <p class="help-block">Help text here.</p>
+            <label for="login_email">E-mail</label>
+            <input type="email" class="form-control" id="login_email" name="login_email" placeholder="Insira seu e-mail">
           </div>
           <div class="form-group">
-            <label for="password">Senha</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Insira sua senha">
-            <p class="help-block">Help text here.</p>
+            <label for="login_password">Senha</label>
+            <input type="password" class="form-control" id="login_password" name="login_password" placeholder="Insira sua senha">
           </div>
-          <div class="form-group">
+          <div class="form-group text-right">
             <button type="submit" class="btn btn-lg btn-success">
               Entrar no site
             </button>
-            <button type="button" class="btn btn-link">Ou cadastre-se</button>
+            <button type="button" class="btn btn-link toggle-signup" data-dismiss="modal">Ou cadastre-se</button>
           </div>
         </form>
         <form id="modalUserSignup" class="modal-user" action="/signup" method="post">
           <input type="hidden" name="permission" value="user">
           <div class="form-group">
-            <label for="email">E-mail</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Adicione seu e-mail">
-            <p class="help-block">Texto de ajuda, no futuro será a msg se erro.</p>
+            <label for="signup_email">E-mail</label>
+            <input type="email" class="form-control" id="signup_email" name="signup_email" placeholder="Adicione seu e-mail">
           </div>
           <div class="form-group">
-            <label for="name">Nome</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="Digite seu nome">
-            <p class="help-block">Texto de ajuda, no futuro será a msg se erro.</p>
+            <label for="signup_password">Senha</label>
+            <input type="password" class="form-control" id="signup_password" name="signup_password" placeholder="Digite seu nome">
+            <div id="#verdict-location"></div>
           </div>
           <div class="form-group">
-            <label for="password">Senha</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Digite seu nome">
-            <p class="help-block">Texto de ajuda, no futuro será a msg se erro.</p>
-          </div>
-          <div class="form-group">
-            <label for="passwordConfirm">Confirme a Senha</label>
-            <input type="passwordConfirm" class="form-control" id="passwordConfirm" name="passwordConfirm" placeholder="Digite seu nome">
-            <p class="help-block">Texto de ajuda, no futuro será a msg se erro.</p>
+            <label for="confirm_password">Confirme a Senha</label>
+            <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Digite seu nome">
           </div>
           <button type="submit" class="btn btn-primary btn-lg">
             Fazer cadastro
