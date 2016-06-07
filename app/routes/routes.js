@@ -31,9 +31,9 @@ module.exports = function(app, passport) {
 
   app.post('/signup', function(req, res) {
 
-      req.check('email', 'E-mail inválido').isEmail();
-      req.check('password', 'A senha precisa ter mais que 4 caracteres').isLength({min: 4});
-      req.check('password', 'As senhas não são iguais').equals(req.body.passwordConfirm);
+      req.check('signup_email', 'E-mail inválido').isEmail();
+      req.check('signup_password', 'A senha precisa ter mais que 4 caracteres').isLength({min: 4});
+      req.check('signup_password', 'As senhas não são iguais').equals(req.body.confirm_password);
 
       var errors = req.validationErrors(true); //colocar (true) para transformar em objeto
 

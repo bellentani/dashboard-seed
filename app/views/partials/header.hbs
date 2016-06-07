@@ -1,30 +1,45 @@
-<header>
-  <nav class="navbar navbar-default" role="navigation">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#"></a>
+<header class="main-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-6">
+        <a class="navbar-brand" href="/"><img src="/img/logo-dashboard-seed.png" alt="Dashboard Seed"></a>
       </div>
-
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="navbar">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#" data-user="login" data-toggle="modal" data-target="#modalUser">Sign In</a></li>
+      <div class="col-xs-8">
+        <ul class="list-inline menu-about">
+          <li><a href="#about"> Sobre</a></li>
+          <li><a href="https://github.com/bellentani/dashboard-node">GitHub <i class="fa fa-github" aria-hidden="true"></i></a></li>
         </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#" data-user="signup" data-toggle="modal" data-target="#modalUser">Signup</a></li>
+      </div>
+      <div class="col-xs-10 text-right">
+        <ul class="main-menu list-inline">
+          <li class="active"><a href="#" class="btn btn-primary" data-user="login" data-toggle="modal" data-target="#modalUser">Login</a></li>
+          <li><a href="/signup" class="btn btn-secondary" data-user="signup" data-toggle="modal" data-target="#modalUser">Signup</a></li>
           {{#if user}}
-          <li>Seja bem vindo, {{user.email}}</li>
-          <li><a href="/logout">Signout</a></li>
+          <li>
+            <div class="user-info">
+              <a href="#" class="submenu-opener">
+                <span class="user-avatar">
+                  <i class="fa fa-user" aria-hidden="true"></i>
+                </span>
+                {{user.email}}
+              </a>
+              <ul class="submenu list-unstyled">
+                <li>
+                  <a href="#">
+                    <span class="user-avatar">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    </span>
+                    {{user.email}}
+                  </a>
+                </li>
+                <li><a href="#"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Editar perfil</a></li>
+                <li><a href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Sair</a></li>
+              </ul>
+          </div>
+          </li>
           {{/if}}
         </ul>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-  </nav>
+      </div>
+    </div>
+  </div>
 </header>
