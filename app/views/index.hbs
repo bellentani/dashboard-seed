@@ -1,8 +1,3 @@
-{{#if user}}
-<p>
-  {{{user.email}}}
-</p>
-{{else}}
 {{#if message}}
 <div>
   <div class="alert alert-danger">{{message}}</div>
@@ -15,15 +10,36 @@
   {{/each}}
   </ul>
 {{/if}}
-<div class="jumbotron">
-  {{#if title}}
-  <h1>{{{title}}}</h1>
-  {{/if}}
-  <p>Esse aplicativo tem como objetivo criar um boot para projetos que precisem de gerenciamento de usuários e área exclusiva. É quase que um "big snippet" de código para quem quiser começar um site ou serviço. É como um "trabalho de conclusão de curso" para mim, pois estou aplicando neles meus estudos em Node. Ele está sendo utilizado em outro projeto privado que estou fazendo, mas as coisas globais estou atualizando aqui e dividindo com quem tiver interesse.</p>
-  <p>
-    <button class="btn btn-lg btn-success" data-user="login" data-toggle="modal" data-target="#modalUser">Faça seu login</button> ou
-    <button class="btn btn-lg btn-primary" data-user="signup" data-toggle="modal" data-target="#modalUser">Cadastre-se</button>
-    <a href="/auth/facebook" class="btn btn-primary"><span class="fa fa-facebook"></span> Facebook</a>
-  </p>
-</div>
-{{/if}}
+<main role="main" class="home">
+  <div class="container">
+    <div class="jumbotron jumbotron__home">
+      {{#if title}}
+      <h1>{{{title}}}</h1>
+      {{/if}}
+      <p>Esse é um boot para aplicativos Node.js que já faz a conexão utilizando Passport, mongoDB e Express.</p>
+      <hr>
+      <p>
+        <button class="btn btn-primary btn-lg btn-max" data-user="login" data-toggle="modal" data-target="#modalUser">Entre agora</button>
+        ou
+        <button class="btn btn-secondary btn-lg btn-max" data-user="signup" data-toggle="modal" data-target="#modalUser">Cadastre-se</button>
+      </p>
+    </div>
+    <section id="about" class="row about">
+      <div class="col-xs-8 text-center">
+        <span class="glyphicon glyphicon-grain" aria-hidden="true"></span>
+        <h2>O que é o Dashboard Seed?</h2>
+        <p>É uma estrutura de início de projeto para sites que precisam de área de usuário, com login e senha, com diversas autenticações: login em base de dados <strong>mongoDB</strong> local, Facebook, Google e Twitter.</p>
+      </div>
+      <div class="col-xs-8 text-center">
+        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+        <h2>Quais tecnologias ela usa?</h2>
+        <p>A base do projeto é Node.js, utilizando o Handlebars, Passport.js e Express.js. O frontend base é feito usando Grunt, Sass, Compass e Bower.</p>
+      </div>
+      <div class="col-xs-8 text-center">
+        <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+        <h2>Tenho que pagar algo pra usar?</h2>
+        <p>Nope! O projeto é gratuito e aberto no GitHub para coloboração e download. Se você tem interesse em ajudar, dá um fork ou manda uma mensagem pra gente por lá.</p>
+      </div>
+    </section>
+  </div>
+</main>

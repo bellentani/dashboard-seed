@@ -6,30 +6,28 @@
       </div>
       <div class="col-xs-8">
         <ul class="list-inline menu-about">
-          <li><a href="#about"> Sobre</a></li>
+          <li><a href="/#about"> Sobre</a></li>
           <li><a href="https://github.com/bellentani/dashboard-node">GitHub <i class="fa fa-github" aria-hidden="true"></i></a></li>
         </ul>
       </div>
       <div class="col-xs-10 text-right">
         <ul class="main-menu list-inline">
-          <li class="active"><a href="#" class="btn btn-primary" data-user="login" data-toggle="modal" data-target="#modalUser">Login</a></li>
-          <li><a href="/signup" class="btn btn-secondary" data-user="signup" data-toggle="modal" data-target="#modalUser">Signup</a></li>
           {{#if user}}
           <li>
             <div class="user-info">
-              <a href="#" class="submenu-opener">
+              <a href="/profile" class="submenu-opener">
                 <span class="user-avatar">
                   <i class="fa fa-user" aria-hidden="true"></i>
                 </span>
-                {{user.email}}
+                {{user.local.email}}
               </a>
               <ul class="submenu list-unstyled">
                 <li>
-                  <a href="#">
+                  <a href="/profile">
                     <span class="user-avatar">
                     <i class="fa fa-user" aria-hidden="true"></i>
                     </span>
-                    {{user.email}}
+                    {{user.local.email}}
                   </a>
                 </li>
                 <li><a href="#"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Editar perfil</a></li>
@@ -37,6 +35,9 @@
               </ul>
           </div>
           </li>
+          {{else}}
+          <li class="active"><a href="#" class="btn btn-primary" data-user="login" data-toggle="modal" data-target="#modalUser">Login</a></li>
+          <li><a href="#" class="btn btn-secondary" data-user="signup" data-toggle="modal" data-target="#modalUser">Signup</a></li>
           {{/if}}
         </ul>
       </div>

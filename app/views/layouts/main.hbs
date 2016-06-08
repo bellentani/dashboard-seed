@@ -6,43 +6,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{{title}}}</title>
 
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <!-- Header funcional: estilos e scripts -->
+    <!-- Google Font -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800|Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/bootstrap-custom.css">
+    <link rel="stylesheet" href="/css/plugins.css">
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/main.css">
 
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <!-- SCRIPTS -->
+    <script src="/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+
+    <!-- fav icon / touch icon -->
+    <link rel="shortcut icon"  href="/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon-precomposed.png">
   </head>
   <body>
     {{>header}}
-    <main>
-      <div class="container">
-          <div class="row">
-            <div class="col-xs-12">
-              {{{body}}}
-            </div>
-          </div>
-      </div>
-    </main>
+
+    {{{body}}}
+
     <footer>
       <div class="container">
-          Creative Commons (cc) 2016 - Pode ser utilizado desde que mencionado em crédito.
+        <div class="row">
+          <div class="col-xs-24">
+            Copyright (c) 2016 - Poe Bellentani: Todos os direitos reservados. License <a href="https://opensource.org/licenses/MIT">MIT</a>
+          </div>
+        </div>
       </div>
     </footer>
+
     {{>modal-sign}}
 
     <script src="/js/vendor/jquery-1.11.1.min.js"></script> <!-- Usado como lib geral -->
     <script src="/js/vendor/bootstrap.min.js"></script> <!-- Usado para os plugins do Bootstrap -->
     <script src="/js/vendor/jquery-ui.js"></script> <!-- Validação da força de senha -->
-    <script src="/js/plugins/validator.min.js"></script> <!-- Bootstrap Validador -->
     <script src="/js/plugins/isMobile.min.js"></script>
     <script src="/js/plugins/jquery.validate.min.js"></script>
     <script src="/js/plugins/icheck.js"></script>  <!-- Usado para nos checkboxes e radios personalizados -->
     <script src="/js/plugins/ekko-lightbox.js"></script> <!-- Usado para chamadas de modal em lightbox -->
     <script src="/js/plugins/jasny-bootstrap.min.js"></script> <!-- Usado input mask -->
-    <script src="/js/plugins/pwstrength-bootstrap-2.0.js"></script> <!-- Validação da força de senha -->
+    <script src="/js/plugins/pwstrength-bootstrap.js"></script> <!-- Validação da força de senha -->
     <script src="/js/plugins/equalizer.js"></script> <!-- Usado para ajustar tamanho das colunas -->
     <script src="/js/plugins/anijs-min.js"></script>
     <script src="/js/custom-functions.js"></script> <!-- Chama funções globais do site -->

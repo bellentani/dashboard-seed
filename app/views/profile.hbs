@@ -1,21 +1,30 @@
-<h1>Área do usuário</h1>
-<p>
-  Seja bem vindo!
-</p>
-<p>
-  Seu e-mail é {{user.local.email}}
-</p>
-<ul>
+<!--ul>
   <li>{{user.local.email}}</li>
   <li>{{user.name}}</li>
   <li>{{user.permission}}</li>
-</ul>
-{{#if user.facebook.id}}
-<h3 class="text-primary"><span class="fa fa-facebook"></span> Facebook</h3>
-<p>
-    <strong>id</strong>: {{user.facebook.id}}<br>
-    <strong>token</strong>:  {{user.facebook.token}}<br>
-    <strong>email</strong>:  {{user.facebook.email}}<br>
-    <strong>name</strong>: {{user.facebook.name}}
-</p>
-{{/if}}
+</ul-->
+<main role="main" class="profile">
+  <div class="container">
+    <div class="col-xs-24 col-md-5 profile-col">
+      <div class="user-detail">
+        <figure class="avatar">
+          <img src="img/avatar-sample.jpg" alt="{{user.local.email}}">
+          <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+        </figure>
+        <div class="resume">
+          <p><strong>Resume:</strong></p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime incidunt officia, officiis, aliquid ad nemo nulla ratione. Quaerat, voluptatibus reiciendis porro officiis, provident, enim, ipsam sint amet consequuntur cum excepturi.</p>
+        </div>
+      </div>
+      <ul class="list-unstyled profile--data">
+        <li class="user-name">{{user.local.email}}<a href="#" class="btn btn-secondary btn-sm edit"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> <b>Editar</b></a></li>
+        <li>{{user.local.email}}</li>
+        <li>{{user.permission}}</li>
+        <li>ativo 5 minutos atrás</li>
+      </ul>
+    </div>
+    <div class="col-xs-24 col-md-19">
+
+    </div>
+  </div>
+</main>

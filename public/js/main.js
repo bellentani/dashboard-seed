@@ -106,7 +106,7 @@ $(function() {
   });
 
   //senha
-  $('#isignup_password').pwstrength({
+  $('#signup_password').pwstrength({
     common: {
       minChar: 8
     },

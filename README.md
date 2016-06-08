@@ -49,9 +49,9 @@ Telas feitas em separado na pasta ``src``:
   * ~~Barra fixa~~
   * ~~About~~
   * ~~Página de recuperação de senha~~
-  * Validação dos forms
-    * login
-    * signup
+  * ~~Validação dos forms~~
+    * ~~login~~
+    * ~~signup~~
 * Tela de profile
   * ~~Landing Page (profile)~~
   * Edição de Profile
