@@ -8,7 +8,7 @@ https://scotch.io/tutorials/easy-node-authentication-setup-and-local
 http://mongoosejs.com/docs/models.html
 */
 
-module.exports = function(app, passport) {
+module.exports = function(app, passport, db) {
   //var User = require('../models/user');
 
   //Main page
@@ -52,6 +52,26 @@ module.exports = function(app, passport) {
       }
     }
   );
+
+  //Verifica se o e-mail existe
+
+  app.post('/endpoint', function(req, res){
+  	var obj = {};
+  	//console.log('body: ' + JSON.stringify(req.body), req.body.email);
+
+    db.collection('user').findOne({ 'local.email' : req.body.email}, function (err, doc) {
+      if(err) throw err;
+      if(doc) {
+        console.log("Found: " + local.email);
+        console.log('body: ', req.body.email);
+        res.send(req.body);
+      } else {
+        console.log("Not found: " + local.email);
+      }
+      db.close();
+    });
+
+  });
 
   // =====================================
   // FACEBOOK ROUTES =====================

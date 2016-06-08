@@ -250,5 +250,47 @@ $(function() {
     }
   });
 
-  
+  //ajax test
+  $('#signup_email').on('blur', function(e){
+
+    //https://gist.github.com/diorahman/1520485
+    //http://stackoverflow.com/questions/34376858/get-user-info-from-mongodb-w-ajax
+    //http://stackoverflow.com/questions/20321291/ajax-call-to-from-mongodb-example-for-node-express
+    //e.preventDefault();
+    console.log('funcionou o blur');
+
+     /*$.ajax({
+        dataType: 'jsonp',
+        data: "data=yeah",
+        jsonp: 'callback',
+        url: 'http://localhost:3000/endpoint?callback=?',
+        success: function(data) {
+            console.log('success');
+            console.log(JSON.stringify(data));
+        }
+    });*/
+		var data = {};
+		data.email = $(this).val();
+
+		$.ajax({
+			type: 'POST',
+			data: JSON.stringify(data),
+	        contentType: 'application/json',
+          url: 'http://localhost:5000/endpoint',
+          success: function(data) {
+              console.log('success');
+              console.log(JSON.stringify(data));
+          },
+          error: function() {
+            console.log('error');
+          }
+      });
+		/*$.ajax('http://localhost:3000/endpoint', {
+		        type: 'POST',
+		        data: JSON.stringify(data),
+		        contentType: 'application/json',
+		        success: function() { console.log('success');},
+		        error  : function() { console.log('error');}
+		});*/
+  });
 });
