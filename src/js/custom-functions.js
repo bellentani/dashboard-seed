@@ -29,3 +29,10 @@ function menuTopFunc () {
     $('.search-top input').blur();
     //console.log($(window).scrollTop());
 };
+
+function loadAjaxEle() {
+  $(this).siblings('.glyphicon').fadeIn().addClass('animate');
+}
+function dismissAjaxEle() {
+  $(this).siblings('.glyphicon').fadeOut().removeClass('animate');
+}

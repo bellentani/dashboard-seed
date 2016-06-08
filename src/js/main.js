@@ -249,4 +249,7 @@ $(function() {
       }
     }
   });
+
+  //Ajax verifica e-mail
+  
 });

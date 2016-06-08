@@ -26,7 +26,18 @@
           <input type="hidden" name="permission" value="user">
           <div class="form-group">
             <label for="signup_email">E-mail</label>
-            <input type="email" class="form-control" id="signup_email" name="signup_email" placeholder="Adicione seu e-mail">
+            <input type="email" class="form-control col-xs-22" id="signup_email" name="signup_email" placeholder="Adicione seu e-mail">
+            <div class="ajax-form-loader">
+              <div class="ajax-checking bg-info">
+                <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Verificando se o e-mail já está cadastrado.
+              </div>
+              <div class="ajax-checked-ok help-block bg-success">
+                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> E-mail disponível.
+              </div>
+              <div class="ajax-checked-ok help-block bg-danger">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> E-mail já utilizado. Cadastre outro e-mail ou, caso tenha esquecido, <a href="#">clique para recuperar sua senha.</a>
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label for="signup_password">Senha</label>
