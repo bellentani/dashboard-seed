@@ -1,4 +1,7 @@
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+
+var User = require('../models/user');
 
 /*
 Artigos que estamos usando como referência para configuração inicial:
@@ -8,7 +11,7 @@ https://scotch.io/tutorials/easy-node-authentication-setup-and-local
 http://mongoosejs.com/docs/models.html
 */
 
-module.exports = function(app, passport, db) {
+module.exports = function(app, passport) {
   //var User = require('../models/user');
 
   //Main page
@@ -56,20 +59,39 @@ module.exports = function(app, passport, db) {
   //Verifica se o e-mail existe
 
   app.post('/endpoint', function(req, res){
-  	var obj = {};
-  	//console.log('body: ' + JSON.stringify(req.body), req.body.email);
 
-    db.collection('user').findOne({ 'local.email' : req.body.email}, function (err, doc) {
-      if(err) throw err;
-      if(doc) {
-        console.log("Found: " + local.email);
-        console.log('body: ', req.body.email);
-        res.send(req.body);
+    var obj = {};
+
+    User.findOne({ 'local.email' :  req.body.email }, function(err, user) {
+      // if there are any errors, return the error
+      if (err)
+          return done(err);
+
+      // check to see if theres already a user with that email
+      if (user) {
+          return done(null, false, req.flash('signupMessage', 'Esse e-mail já está em uso.'));
       } else {
-        console.log("Not found: " + local.email);
+
       }
-      db.close();
+      console.log('buscou')
     });
+
+  	console.log('body: ' + JSON.stringify(req.body), req.body.email);
+    res.send(req.body);
+
+
+
+    // db.collection('user').findOne({ 'local.email' : req.body.email}, function (err, doc) {
+    //   if(err) throw err;
+    //   if(doc) {
+    //     console.log("Found: " + local.email);
+    //     console.log('body: ', req.body.email);
+    //     res.send(req.body);
+    //   } else {
+    //     console.log("Not found: " + local.email);
+    //   }
+    //   db.close();
+    // });
 
   });
 

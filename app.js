@@ -78,7 +78,7 @@ app.use(flash());
 
 
 //===============ROUTES===============
-require('./app/routes/routes')(app, passport, db);
+require('./app/routes/routes')(app, passport);
 
 app.listen(app.get('port'), function() {
   console.log('Node está brincando na porta ' + app.get('port'));
