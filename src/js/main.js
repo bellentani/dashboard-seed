@@ -257,7 +257,7 @@ $(function() {
     //http://stackoverflow.com/questions/34376858/get-user-info-from-mongodb-w-ajax
     //http://stackoverflow.com/questions/20321291/ajax-call-to-from-mongodb-example-for-node-express
     //e.preventDefault();
-    console.log('funcionou o blur');
+    //console.log('funcionou o blur');
 
      /*$.ajax({
         dataType: 'jsonp',
@@ -269,8 +269,13 @@ $(function() {
             console.log(JSON.stringify(data));
         }
     });*/
+
+    var eleTarg = $(this);
+    loadAjaxEle(eleTarg);
+
 		var data = {};
 		data.email = $(this).val();
+    data.status = '';
 
 		$.ajax({
 			type: 'POST',
@@ -280,6 +285,12 @@ $(function() {
           success: function(data) {
               console.log('success');
               console.log(JSON.stringify(data));
+              console.log(data.email);
+              //return data;
+              var dataSent = data.status;
+              setTimeout(function() {
+                dismissAjaxEle(eleTarg, dataSent);
+              }, 3000);
           },
           error: function() {
             console.log('error');

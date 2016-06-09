@@ -30,9 +30,17 @@ function menuTopFunc () {
     //console.log($(window).scrollTop());
 };
 
-function loadAjaxEle() {
-  $(this).siblings('.glyphicon').fadeIn().addClass('animate');
+function loadAjaxEle(eleTarg) {
+  $(eleTarg).parent().children('.ajax-form-loader').find('.ajax-checking:hidden').fadeIn();
+  $(eleTarg).siblings('.ajax-form-loader').find('.ajax-checked-ok:visible').fadeOut();
 }
-function dismissAjaxEle() {
-  $(this).siblings('.glyphicon').fadeOut().removeClass('animate');
+function dismissAjaxEle(eleTarg, dataSent) {
+  console.log('some');
+  if (dataSent == 'email livre') {
+    $(eleTarg).parent().children('.ajax-form-loader').find('.ajax-checking:visible').fadeOut();
+    $(eleTarg).parent().children('.ajax-form-loader').find('.ajax-checked-ok.bg-success').fadeIn();
+  } else if (dataSent == 'email existe') {
+    $(eleTarg).parent().children('.ajax-form-loader').find('.ajax-checking:visible').fadeOut();
+    $(eleTarg).parent().children('.ajax-form-loader').find('.ajax-checked-ok.bg-danger').fadeIn();
+  }
 }

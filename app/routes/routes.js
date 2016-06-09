@@ -61,24 +61,32 @@ module.exports = function(app, passport) {
   app.post('/endpoint', function(req, res){
 
     var obj = {};
+    obj.email = req.body.email;
+    obj.status = 'email existe';
 
     User.findOne({ 'local.email' :  req.body.email }, function(err, user) {
       // if there are any errors, return the error
       if (err)
-          return done(err);
+        return done(err);
+
+      obj = {};
 
       // check to see if theres already a user with that email
       if (user) {
-          return done(null, false, req.flash('signupMessage', 'Esse e-mail já está em uso.'));
+        obj.status = 'email existe';
+        obj.email = req.body.email;
+        console.log('email já existe');
+        return obj
       } else {
-
+        obj.status = 'email livre';
+        obj.email = req.body.email;
+        console.log('email livre');
+        return obj
       }
-      console.log('buscou')
     });
 
-  	console.log('body: ' + JSON.stringify(req.body), req.body.email);
-    res.send(req.body);
-
+  	console.log('body: ' + JSON.stringify(obj), req.body.email);
+    res.send(obj);
 
 
     // db.collection('user').findOne({ 'local.email' : req.body.email}, function (err, doc) {

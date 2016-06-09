@@ -80,6 +80,9 @@ footer {
   background: url(../img/congruent_pentagon.png) $water-green;
 }
 .ajax-form-loader {
+  > div {
+    display: none;
+  }
   .ajax-checking .glyphicon {
     vertical-align: middle;
     margin-left: 10px;
