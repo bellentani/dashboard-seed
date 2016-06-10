@@ -249,7 +249,7 @@ $(function() {
       }
     }
   });
-
+  
   //ajax test
   $('#signup_email').on('blur', function(e){
 
