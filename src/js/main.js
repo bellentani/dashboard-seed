@@ -146,6 +146,7 @@ $(function() {
   });
 
   //Validator signup
+  // testar https://jqueryvalidation.org/category/methods/ > remote method
   $('#modalUserSignup').validate({
     //debug: true,
     //onkeyup: false,
