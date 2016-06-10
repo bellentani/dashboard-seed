@@ -12,8 +12,6 @@ http://mongoosejs.com/docs/models.html
 */
 
 module.exports = function(app, passport) {
-  //var User = require('../models/user');
-
   //Main page
   app.get('/', function(req, res){
     res.render('index', {
@@ -57,38 +55,33 @@ module.exports = function(app, passport) {
   );
 
   //Verifica se o e-mail existe
-
   app.post('/endpoint', function(req, res){
-
     var obj = {};
-    obj.email = req.body.email;
-    obj.status = 'email existe';
+    // obj.email = req.body.email;
+    // obj.status = 'teste';
 
     User.findOne({ 'local.email' :  req.body.email }, function(err, user) {
       // if there are any errors, return the error
       if (err)
         return done(err);
 
-      obj = {};
-
       // check to see if theres already a user with that email
       if (user) {
-        obj.status = 'email existe';
-        obj.email = req.body.email;
-        console.log('email já existe');
-        return obj
+        doMe('email existe');
       } else {
-        obj.status = 'email livre';
-        obj.email = req.body.email;
-        console.log('email livre');
-        return obj
+        doMe('email livre');
       }
     });
 
-  	console.log('body: ' + JSON.stringify(obj), req.body.email);
-    res.send(obj);
+    function doMe(i) {
+      obj.status = i;
+      obj.email = req.body.email;
+      res.send(obj);
+      //console.log(obj);
+      //console.log('body: ' + JSON.stringify(obj), req.body.email);
+    }
 
-
+    //Sample to future use
     // db.collection('user').findOne({ 'local.email' : req.body.email}, function (err, doc) {
     //   if(err) throw err;
     //   if(doc) {
