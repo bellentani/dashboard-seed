@@ -146,9 +146,10 @@ $(function() {
   });
 
   //Validator signup
+  // testar https://jqueryvalidation.org/category/methods/ > remote method
   $('#modalUserSignup').validate({
     //debug: true,
-    //onkeyup: false,
+    onkeyup: false,
     errorPlacement: function(label, element) {
         label.addClass('help-block');
         label.insertAfter(element);
@@ -167,6 +168,15 @@ $(function() {
     },
     unhighlight: function(element, errorClass, validClass) {
       $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
+    },
+    success: function(label) {
+      //label.addClass('eu').text('ok!');
+      var element = label.closest('.form-group').find('input');
+      if (element.attr('id') == 'signup_email') {
+        console.log('poxa');
+        ajaxGo(element);
+      }
+      //console.log(element.attr('id'));
     },
     rules: {
       signup_email: {
@@ -250,8 +260,8 @@ $(function() {
     }
   });
 
-  //ajax test
-  $('#signup_email').on('blur', function(e){
+  //ajax onblur
+  $('#signup_email_').on('blur', function(e){
 
     //https://gist.github.com/diorahman/1520485
     //http://stackoverflow.com/questions/34376858/get-user-info-from-mongodb-w-ajax
@@ -306,3 +316,34 @@ $(function() {
   });
 
 });
+
+//
+//ajax function
+function ajaxGo(eleTarg) {
+  var eleTarg = $(eleTarg);
+  loadAjaxEle(eleTarg);
+
+  var data = {};
+  data.email = $(eleTarg).val();
+  data.status = '';
+
+  $.ajax({
+    type: 'POST',
+    data: JSON.stringify(data),
+        contentType: 'application/json',
+        url: '/endpoint',
+        success: function(data) {
+            console.log('success');
+            console.log(JSON.stringify(data));
+            console.log(data.email);
+            //return data;
+            var dataSent = data.status;
+            setTimeout(function() {
+              dismissAjaxEle(eleTarg, dataSent);
+            }, 3000);
+        },
+        error: function() {
+          console.log('error');
+        }
+    });
+};
