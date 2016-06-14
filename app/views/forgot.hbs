@@ -1,10 +1,20 @@
 <main role="main" class="profile">
   <div class="container">
     <div class="row">
-      <div class="col-xs-6">
-        {{#if message}}
+      <div class="col-xs-12 col-xs-offset-6">
+        {{#if message.error}}
         <div>
-          <div class="alert alert-danger">{{message}}</div>
+          <div class="alert alert-danger">{{message.error}}</div>
+        </div>
+        {{/if}}
+        {{#if message.info}}
+        <div>
+          <div class="alert alert-info">{{message.info}}</div>
+        </div>
+        {{/if}}
+        {{#if message.success}}
+        <div>
+          <div class="alert alert-success">{{message.success}}</div>
         </div>
         {{/if}}
         {{#if errors}}
@@ -14,17 +24,20 @@
           {{/each}}
           </ul>
         {{/if}}
-        <div class="panel panel-default">
+        <div class="panel panel-success">
           <div class="panel-heading">
-            <h3 class="panel-title">Signup</h3>
+            <h3 class="panel-title">Recuperar senha</h3>
           </div>
           <div class="panel-body">
+            <p>
+              Adicione o e-mail que efetuou o cadastro em nosso site.
+            </p>
             <form class="" action="/forgot" method="post">
               <div class="form-group">
                 <label for="email">E-mail</label>
                 <input type="email" name="email" value="" class="form-control" placeholder="Insira seu e-mail">
               </div>
-              <button type="submit" name="button" class="btn btn-primary">Reset Password</button>
+              <button type="submit" name="button" class="btn btn-primary">Gerar nova senha</button>
             </form>
           </div>
           <div class="panel-footer">
@@ -34,4 +47,4 @@
       </div>
     </div>
   </div>
-</div>
+</main>

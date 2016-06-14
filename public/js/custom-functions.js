@@ -39,7 +39,7 @@ function dismissAjaxEle(eleTarg, dataSent) {
   if (dataSent == 'email livre') {
     $(eleTarg).parent().children('.ajax-form-loader').find('.ajax-checking:visible').fadeOut();
     $(eleTarg).parent().children('.ajax-form-loader').find('.ajax-checked-ok.bg-success').fadeIn();
-    $(eleTarg).closest('form').find('input[type="submit"]').removeAttr('disabled')
+    //$(eleTarg).closest('form').find('input[type="submit"]').removeAttr('disabled')
   } else if (dataSent == 'email existe') {
     $(eleTarg).parent().children('.ajax-form-loader').find('.ajax-checking:visible').fadeOut();
     $(eleTarg).parent().children('.ajax-form-loader').find('.ajax-checked-ok.bg-danger').fadeIn();

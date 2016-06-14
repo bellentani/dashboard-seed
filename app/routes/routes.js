@@ -138,7 +138,8 @@ module.exports = function(app, passport) {
   //Using base http://sahatyalkabov.com/how-to-implement-password-reset-in-nodejs/
   app.get('/forgot', function(req, res) {
     res.render('forgot', {
-      user: req.user
+      user: req.user,
+      message: req.flash()
     });
   });
 
@@ -180,7 +181,7 @@ module.exports = function(app, passport) {
         var mailOptions = {
           to: user.local.email,
           from: 'passwordreset@demo.com',
-          subject: 'Node.js Password Reset',
+          subject: 'Recuperação de senha Dashboard Node',
           text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
             'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
             'http://' + req.headers.host + '/reset/' + token + '\n\n' +
@@ -243,11 +244,11 @@ module.exports = function(app, passport) {
         };
         var transporter = nodemailer.createTransport(connection);
         var mailOptions = {
-          to: user.email,
+          to: user.local.email,
           from: 'passwordreset@demo.com',
-          subject: 'Your password has been changed',
-          text: 'Hello,\n\n' +
-            'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
+          subject: 'Sua senha foi reiniciada com sucesso',
+          text: 'Olá,\n\n' +
+            'Essa é a confirmação que sua senha para a conta ' + user.local.email + ' foi modificada.\n'
         };
         transporter.sendMail(mailOptions, function(err) {
           req.flash('success', 'Success! Your password has been changed.');
@@ -255,7 +256,7 @@ module.exports = function(app, passport) {
         });
       }
     ], function(err) {
-      res.redirect('/');
+      res.redirect('/profile');
     });
   });
 
