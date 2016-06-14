@@ -73,6 +73,7 @@ module.exports = function(app, passport) {
       }
     });
 
+    //This function works on Async, if we dont use it the send(obj) will be empty
     function doMe(i) {
       obj.status = i;
       obj.email = req.body.email;
