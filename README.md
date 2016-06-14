@@ -1,4 +1,4 @@
-#Dashboard Seed
+#Dashboard Seed v0.1.1606141427pb
 Esse aplicativo tem como objetivo criar um boot para projetos que precisem de gerenciamento de usuários e área exclusiva. É quase que um "big snippet" de código para quem quiser começar um site ou serviço. É como um "trabalho de conclusão de curso" para mim, pois estou aplicando neles meus estudos em Node. Ele está sendo utilizado em outro projeto privado que estou fazendo, mas as coisas globais estou atualizando aqui e dividindo com quem tiver interesse.
 
 Usaremos nesse projeto:
@@ -28,8 +28,17 @@ O escopo de ferramentas que farão parte desse app são:
   * Avatar
 * ~~Acesso do usuário (/login)~~
   * ~~Login e Sign out~~
-* Recuperação de senha (/forgot)
-* Validação de formulários (via frontend)
+* ~~Recuperação de senha (/forgot)~~
+  * ~~Reset password com token ~~
+* ~~ Validação de formulários (via frontend) ~~
+  * Validação de recuperar senha (se as senhas são iguais)
+  * Validação de cadastro
+    * ~~Validação de força de senha~~
+    * ~~Validação de campos iguais~~
+    * ~~Ajax de verificação de conta (se o e-mail já existe no sistema)~~
+  * Validação de login
+    * Verifica se o e-mail é válido
+    * Verifica através de ajax se o usuário e senha estão corretos e imprime os erros
 * Cadastro e login através de ferramentas de terceiros (Google, Twitter, etc) usando Passport
 * Área personalizada (/profile)
   * Avatar
