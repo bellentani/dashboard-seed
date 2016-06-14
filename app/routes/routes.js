@@ -135,6 +135,7 @@ module.exports = function(app, passport) {
   });
 
   //reset password
+  //Using base http://sahatyalkabov.com/how-to-implement-password-reset-in-nodejs/
   app.get('/forgot', function(req, res) {
     res.render('forgot', {
       user: req.user
