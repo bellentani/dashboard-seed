@@ -1,1 +1,37 @@
-Forgot
+<main role="main" class="profile">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-6">
+        {{#if message}}
+        <div>
+          <div class="alert alert-danger">{{message}}</div>
+        </div>
+        {{/if}}
+        {{#if errors}}
+          <ul>
+          {{#each errors}}
+            <li>{{this.msg}}</li>
+          {{/each}}
+          </ul>
+        {{/if}}
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Signup</h3>
+          </div>
+          <div class="panel-body">
+            <form class="" action="/forgot" method="post">
+              <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" name="email" value="" class="form-control" placeholder="Insira seu e-mail">
+              </div>
+              <button type="submit" name="button" class="btn btn-primary">Reset Password</button>
+            </form>
+          </div>
+          <div class="panel-footer">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

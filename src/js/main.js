@@ -159,7 +159,8 @@ $(function() {
     validClass: 'has-success',
     errorClass: 'has-error',
     highlight: function(element, errorClass, validClass) {
-      $(element).closest('.form-group').addClass('has-error').removeClass('has-success');
+      $(element).closest('.form-group').addClass('has-error').removeClass('has-success').find('.help-block').removeClass('hidden');
+      $(element).closest('.form-group').find('.ajax-checked-ok').hide();
       // $(element).on('keydown, blur', function(event) {
       //   if($(this).closest('.form-group').children('div').length > 0) {
       //     $(this).closest('.form-group').children('div:first').addClass('help-block');
@@ -168,13 +169,16 @@ $(function() {
     },
     unhighlight: function(element, errorClass, validClass) {
       $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
+      //$(element.form).find("label[for=" + element.id + "]").removeClass(errorClass);
     },
     success: function(label) {
-      //label.addClass('eu').text('ok!');
+      //label.addClass('eu');
+      label.parent().addClass('hidden');
       var element = label.closest('.form-group').find('input');
       if (element.attr('id') == 'signup_email') {
         console.log('poxa');
         ajaxGo(element);
+        label.parent().hide();
       }
       //console.log(element.attr('id'));
     },
