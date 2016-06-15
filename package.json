@@ -1,6 +1,6 @@
 {
   "name": "dashboard-node",
-  "version": "0.0.1",
+  "version": "0.1.94055.53",
   "description": "Estudos e criação de snippet de código para base de login, signup, recuperação de senha e administração de contas de usuários.",
   "main": "app.js",
   "scripts": {
