@@ -23,3 +23,11 @@ module.exports = {
   'url' : 'mongodb://{{seuservidor}}/dashboard-node'
 };
 ```
+
+Criar o arquivo ``config/connection.js``
+```javascript
+module.exports = {
+  'user': '{{seu-username}}',
+  'pass': '{{sua-senha}}'
+}
+```

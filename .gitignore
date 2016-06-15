@@ -2,5 +2,6 @@
 node_modules/
 data/
 config/db.js
+config/connection.js
 mockups/
 src/components

@@ -5,6 +5,8 @@ var flash    = require('connect-flash');
 var mongoose = require('mongoose');
 var nodemailer = require('nodemailer');
 
+
+var connect = require('../../config/connection');
 var User = require('../models/user');
 
 /*
@@ -172,8 +174,8 @@ module.exports = function(app, passport) {
             port: 465,
             secure: true, // use SSL
             auth: {
-                user: 'ocoelhobranco@gmail.com',
-                pass: 'mcoedhradqbsqaaj'
+                user: connect.user,
+                pass: connect.pass
             }
         };
         var transporter = nodemailer.createTransport(connection);
@@ -238,8 +240,8 @@ module.exports = function(app, passport) {
             port: 465,
             secure: true, // use SSL
             auth: {
-                user: 'ocoelhobranco@gmail.com',
-                pass: 'mcoedhradqbsqaaj'
+              user: connect.user,
+              pass: connect.pass
             }
         };
         var transporter = nodemailer.createTransport(connection);
