@@ -13,3 +13,7 @@
 
     HTML5, CSS3
     jQuery, Modernizr
+
+
+<a href="http://www.freepik.com/free-vector/animal-avatars_766618.htm">Designed by Freepik</a>
+<a href="http://www.freepik.com/free-vector/animal-avatars-in-flat-design_772910.htm">Designed by Freepik</a>
