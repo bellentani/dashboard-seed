@@ -4,6 +4,7 @@ var crypto = require('crypto');
 var flash    = require('connect-flash');
 var mongoose = require('mongoose');
 var nodemailer = require('nodemailer');
+var gravatar = require('gravatar-api');
 
 
 var connect = require('../../config/connection');
@@ -125,8 +126,17 @@ module.exports = function(app, passport) {
 
   //Perfil do usuário
   app.get('/profile', isLoggedIn, function(req, res) {
+    var options = {
+      email: req.user.local.email,
+      parameters: { "size": "200" }
+    }
+    var avatar = gravatar.imageUrl(options);
+
+    console.log(avatar, options.email);
+
     res.render('profile', {
-        user: req.user
+        user: req.user,
+        avatar: avatar
     });
   });
 
