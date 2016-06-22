@@ -44,8 +44,15 @@ module.exports = function(passport) {
           // create the user
           var newUser            = new User();
 
+          function randomAvatar(min, max) {
+            return ~~(Math.random() * (max - min + 1)) + min
+          }
+
+          var avatar_user = +randomAvatar(1, 17);
+
           // set the user's local credentials
           newUser.local.email = signup_email;
+          newUser.avatar = avatar_user;
           newUser.permission = 'user';
           newUser.name = req.body.name;
           newUser.local.password = newUser.generateHash(signup_password);

@@ -4,8 +4,8 @@ var crypto = require('crypto');
 var flash    = require('connect-flash');
 var mongoose = require('mongoose');
 var nodemailer = require('nodemailer');
-var gravatar = require('gravatar-api');
 
+var gravatar = require('gravatar-api'); //load gravatar
 
 var connect = require('../../config/connection');
 var User = require('../models/user');
@@ -128,9 +128,20 @@ module.exports = function(app, passport) {
   app.get('/profile', isLoggedIn, function(req, res) {
     var options = {
       email: req.user.local.email,
-      parameters: { "size": "200" }
+      type: 'png',
+      parameters: { 'size': '200', 'd': 'retro'}, //https://localhost:5000/img/avatares/'+randomAvatar(1, 17)+'.png
+      secure: true
     }
     var avatar = gravatar.imageUrl(options);
+
+    // Random script
+    // var userAvatar = req.user.avatar;
+    // if (userAvatar == '') {
+    //   avatar = '/img/avatares/'+randomAvatar(1, 17)+'.png';
+    // }
+    // function randomAvatar(min, max) {
+    //   return ~~(Math.random() * (max - min + 1)) + min
+    // }
 
     console.log(avatar, options.email);
 
