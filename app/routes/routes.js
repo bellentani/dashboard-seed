@@ -5,6 +5,7 @@ var flash    = require('connect-flash');
 var mongoose = require('mongoose');
 var nodemailer = require('nodemailer');
 
+var request = require('request'); // trata request
 var gravatar = require('gravatar-api'); //load gravatar
 
 var connect = require('../../config/connection');
@@ -128,11 +129,17 @@ module.exports = function(app, passport) {
   app.get('/profile', isLoggedIn, function(req, res) {
     var options = {
       email: req.user.local.email,
-      type: 'png',
-      parameters: { 'size': '200', 'd': 'retro'}, //https://localhost:5000/img/avatares/'+randomAvatar(1, 17)+'.png
+      parameters: { 'size': '200', 'd': '404'}, //https://localhost:5000/img/avatares/'+randomAvatar(1, 17)+'.png
       secure: true
     }
     var avatar = gravatar.imageUrl(options);
+
+    request({uri:avatar}, function (error, response) {
+      if (!error && response.statusCode == 200) {
+        //sys.puts(body) // Print the google web page.
+      }
+      console.log(response.statusCode);
+    });
 
     // Random script
     // var userAvatar = req.user.avatar;
@@ -143,7 +150,7 @@ module.exports = function(app, passport) {
     //   return ~~(Math.random() * (max - min + 1)) + min
     // }
 
-    console.log(avatar, options.email);
+    //console.log(avatar, options.email);
 
     res.render('profile', {
         user: req.user,

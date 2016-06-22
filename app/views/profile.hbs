@@ -9,7 +9,7 @@
       <div class="user-detail">
         <figure class="avatar">
           {{#if user.avatar}}
-          <img src="/img/avatares/{{user.avatar}}.png" alt="{{user.local.email}}">
+          <img src="{{user.avatar}}" alt="{{user.local.email}}">
           <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
           {{else}}
           <img src="{{avatar}}" alt="{{user.local.email}}">

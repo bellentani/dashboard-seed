@@ -3,6 +3,9 @@
 var LocalStrategy  = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 
+var request = require('request'); // trata request
+var gravatar = require('gravatar-api'); //load gravatar
+
 var User = require('../app/models/user');
 
 // load the auth variables
@@ -44,25 +47,48 @@ module.exports = function(passport) {
           // create the user
           var newUser            = new User();
 
+          //tratar avatar
+          var options = {
+            email: signup_email,
+            parameters: { 'size': '200', 'd': '404'}, //https://localhost:5000/img/avatares/'+randomAvatar(1, 17)+'.png
+            secure: true
+          }
+          var avatar = gravatar.imageUrl(options);
+
+          var avatar_user;
+
+          request({uri:avatar}, function (error, response) {
+            if (!error && response.statusCode == 404) {
+              //sys.puts(body) // Print the google web page.
+              avatar_user = '/img/avatares/'+randomAvatar(1, 17)+'.png';
+              createNewUser(avatar_user, signup_email, signup_password);
+            } else {
+              avatar_user = '';
+              createNewUser(avatar_user, signup_email, signup_password);
+            }
+            console.log(response.statusCode);
+          });
+
           function randomAvatar(min, max) {
             return ~~(Math.random() * (max - min + 1)) + min
           }
 
-          var avatar_user = +randomAvatar(1, 17);
+          function createNewUser(avatar_user, signup_email, signup_password) {
+            // set the user's local credentials
+            newUser.local.email = signup_email;
+            newUser.avatar = avatar_user;
+            newUser.permission = 'user';
+            newUser.name = req.body.name;
+            newUser.local.password = newUser.generateHash(signup_password);
 
-          // set the user's local credentials
-          newUser.local.email = signup_email;
-          newUser.avatar = avatar_user;
-          newUser.permission = 'user';
-          newUser.name = req.body.name;
-          newUser.local.password = newUser.generateHash(signup_password);
+            // save the user
+            newUser.save(function(err) {
+                if (err)
+                    throw err;
+                return done(null, newUser);
+            });
+          }
 
-          // save the user
-          newUser.save(function(err) {
-              if (err)
-                  throw err;
-              return done(null, newUser);
-          });
         }
       });
     });
