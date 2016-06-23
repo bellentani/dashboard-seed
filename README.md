@@ -44,6 +44,7 @@ O escopo de ferramentas que farão parte desse app são:
   * ~~Avatar~~
   * ~~Informações básicas~~
   * Edição de informações (/profile/edit)
+  * Criar profile por user ID ou User name (/profile/12313123 || /profile/bellentani)
 * Área administrativa (/profile/::user::admin)
   * Níveis de usuário (user, admin, owner)
   * Relatório de atividade gerais dos usuários (logs)
