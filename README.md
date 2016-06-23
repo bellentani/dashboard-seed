@@ -29,16 +29,16 @@ O escopo de ferramentas que farão parte desse app são:
 * ~~Acesso do usuário (/login)~~
   * ~~Login e Sign out~~
 * ~~Recuperação de senha (/forgot)~~
-  * ~~Reset password com token ~~
-* ~~ Validação de formulários (via frontend) ~~
-  * Validação de recuperar senha (se as senhas são iguais)
-  * Validação de cadastro
+  * ~~Reset password com token~~
+* ~~Validação de formulários (via frontend)~~
+  * ~~Validação de recuperar senha (se as senhas são iguais)~~
+  * ~~Validação de cadastro~~
     * ~~Validação de força de senha~~
     * ~~Validação de campos iguais~~
     * ~~Ajax de verificação de conta (se o e-mail já existe no sistema)~~
-  * Validação de login
-    * Verifica se o e-mail é válido
-    * Verifica através de ajax se o usuário e senha estão corretos e imprime os erros
+  * ~~Validação de login~~
+    * ~~Verifica se o e-mail é válido~~
+    * ~~Verifica através de ajax se o usuário e senha estão corretos e imprime os erros~~
 * Cadastro e login através de ferramentas de terceiros (Google, Twitter, etc) usando Passport
 * Área personalizada (/profile)
   * ~~Avatar~~
@@ -64,7 +64,7 @@ Telas feitas em separado na pasta ``src``:
 * Tela de profile
   * ~~Landing Page (profile)~~
   * Edição de Profile
-  * Tela de Signout
+  * ~~Tela de Signout (virou botão no header)~~
 * Erro 404
 * Erro 500
 
