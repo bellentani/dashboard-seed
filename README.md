@@ -1,4 +1,4 @@
-#Dashboard Seed v0.1.94055.53
+#Dashboard Seed v0.1.94078.62
 Esse aplicativo tem como objetivo criar um boot para projetos que precisem de gerenciamento de usuários e área exclusiva. É quase que um "big snippet" de código para quem quiser começar um site ou serviço. É como um "trabalho de conclusão de curso" para mim, pois estou aplicando neles meus estudos em Node. Ele está sendo utilizado em outro projeto privado que estou fazendo, mas as coisas globais estou atualizando aqui e dividindo com quem tiver interesse.
 
 Usaremos nesse projeto:
