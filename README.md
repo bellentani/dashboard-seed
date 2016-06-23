@@ -22,13 +22,13 @@ Portanto, ao final do desenvolvimento da versão 1.0 teremos que ter uma área a
 
 O escopo de ferramentas que farão parte desse app são:
 * ~~Configuração inicial de servidor~~
-* Cadastro de usuário (/signup)
+* Cadastro de usuário (``/signup``)
   * ~~E-mail~~
   * ~~Senha~~
   * ~~Avatar~~
-* ~~Acesso do usuário (/login)~~
+* ~~Acesso do usuário (``/login``)~~
   * ~~Login e Sign out~~
-* ~~Recuperação de senha (/forgot)~~
+* ~~Recuperação de senha (``/forgot``)~~
   * ~~Reset password com token~~
 * ~~Validação de formulários (via frontend)~~
   * ~~Validação de recuperar senha (se as senhas são iguais)~~
@@ -40,12 +40,12 @@ O escopo de ferramentas que farão parte desse app são:
     * ~~Verifica se o e-mail é válido~~
     * ~~Verifica através de ajax se o usuário e senha estão corretos e imprime os erros~~
 * Cadastro e login através de ferramentas de terceiros (Google, Twitter, etc) usando Passport
-* Área personalizada (/profile)
+* Área personalizada (``/profile``)
   * ~~Avatar~~
   * ~~Informações básicas~~
-  * Edição de informações (/profile/edit)
-  * Criar profile por user ID ou User name (/profile/12313123 || /profile/bellentani)
-* Área administrativa (/profile/::user::admin)
+  * Edição de informações (``/profile/edit``)
+  * Criar profile por user ID ou User name (``/profile/12313123`` || ``/profile/bellentani``)
+* Área administrativa (``/profile/::user::admin``)
   * Níveis de usuário (user, admin, owner)
   * Relatório de atividade gerais dos usuários (logs)
 * Adição de ferramentas de frontend
