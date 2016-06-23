@@ -132,14 +132,36 @@ module.exports = function(app, passport) {
       parameters: { 'size': '200', 'd': '404'}, //https://localhost:5000/img/avatares/'+randomAvatar(1, 17)+'.png
       secure: true
     }
+    var hasAvatar = req.user.avatar;
     var avatar = gravatar.imageUrl(options);
+    //verifica se tem avatar cadastrado
+    if (hasAvatar == '' || hasAvatar == null) {
+      request({uri:avatar}, function (error, response) {
+        //verificar se o gravatar existe - se ele não existe vai retornar 404 devido ao parametro passado ao api
+        if (!error && response.statusCode == 200) {
+          //se o gravatar existe, então avatar é igual a url dele
+          avatar = avatar;
+        } else if (!error && response.statusCode == 404) {
+          //se não existe, o avatar será o cachorro (por enquanto). :P
+          avatar = '/img/avatares/1.png';
+        }
+        //o sender tem que ser depois que o request for feito, senão não pega a variável --> Oláááá, callback hell!
+        res.render('profile', {
+            user: req.user,
+            avatar: avatar
+        });
+        //console.log(response.statusCode);
+      });
+    } else {
+      //Nesse caso já tem avatar cadastrado, por personalização, portanto, não precisa do gravatar
+      avatar = hasAvatar;
+      //o sender tem que ser depois que o request for feito, senão não pega a variável --> Oláááá, callback hell!
+      res.render('profile', {
+          user: req.user,
+          avatar: avatar
+      });
+    }
 
-    request({uri:avatar}, function (error, response) {
-      if (!error && response.statusCode == 200) {
-        //sys.puts(body) // Print the google web page.
-      }
-      console.log(response.statusCode);
-    });
 
     // Random script
     // var userAvatar = req.user.avatar;
@@ -151,11 +173,11 @@ module.exports = function(app, passport) {
     // }
 
     //console.log(avatar, options.email);
-
-    res.render('profile', {
-        user: req.user,
-        avatar: avatar
-    });
+    //
+    // res.render('profile', {
+    //     user: req.user,
+    //     avatar: avatar
+    // });
   });
 
   //Logout
