@@ -5,6 +5,7 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 
 var request = require('request'); // trata request
 var gravatar = require('gravatar-api'); //load gravatar
+var chance = require('chance').Chance(); // Load and instantiate Chance
 
 var User = require('../app/models/user');
 
@@ -60,18 +61,14 @@ module.exports = function(passport) {
           request({uri:avatar}, function (error, response) {
             if (!error && response.statusCode == 404) {
               //sys.puts(body) // Print the google web page.
-              avatar_user = '/img/avatares/'+randomAvatar(1, 17)+'.png';
+              avatar_user = '/img/avatares/'+chance.natural({min: 1, max: 17})+'.png';
               createNewUser(avatar_user, signup_email, signup_password);
             } else {
               avatar_user = '';
               createNewUser(avatar_user, signup_email, signup_password);
             }
-            console.log(response.statusCode);
+            //console.log(response.statusCode);
           });
-
-          function randomAvatar(min, max) {
-            return ~~(Math.random() * (max - min + 1)) + min
-          }
 
           function createNewUser(avatar_user, signup_email, signup_password) {
             // set the user's local credentials
