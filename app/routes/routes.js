@@ -142,8 +142,8 @@ module.exports = function(app, passport) {
           //se o gravatar existe, então avatar é igual a url dele
           avatar = avatar;
         } else if (!error && response.statusCode == 404) {
-          //se não existe, o avatar será o cachorro (por enquanto). :P
-          avatar = '/img/avatares/1.png';
+          //se não existe, o avatar será o coelho (por enquanto). :P
+          avatar = '/img/avatares/6.png';
         }
         //o sender tem que ser depois que o request for feito, senão não pega a variável --> Oláááá, callback hell!
         res.render('profile', {
