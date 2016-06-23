@@ -25,7 +25,7 @@ O escopo de ferramentas que farão parte desse app são:
 * Cadastro de usuário (/signup)
   * ~~E-mail~~
   * ~~Senha~~
-  * Avatar
+  * ~~Avatar~~
 * ~~Acesso do usuário (/login)~~
   * ~~Login e Sign out~~
 * ~~Recuperação de senha (/forgot)~~
@@ -41,8 +41,8 @@ O escopo de ferramentas que farão parte desse app são:
     * Verifica através de ajax se o usuário e senha estão corretos e imprime os erros
 * Cadastro e login através de ferramentas de terceiros (Google, Twitter, etc) usando Passport
 * Área personalizada (/profile)
-  * Avatar
-  * Informações básicas
+  * ~~Avatar~~
+  * ~~Informações básicas~~
   * Edição de informações (/profile/edit)
 * Área administrativa (/profile/::user::admin)
   * Níveis de usuário (user, admin, owner)
