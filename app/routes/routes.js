@@ -120,13 +120,22 @@ module.exports = function(app, passport) {
     });
 
   app.post('/login', passport.authenticate('local-login', {
-    successRedirect : '/profile', // redirect to the secure profile section
-    failureRedirect : '/', // redirect back to the signup page if there is an error
-    failureFlash : true // allow flash messages
-  }));
+      failureRedirect : '/', // redirect back to the signup page if there is an error
+      failureFlash : true // allow flash messages
+    }),
+    function(req, res) {
+      res.redirect('/profile/' + req.user._id);
+    }
+  );
+
+  app.post('/login', passport.authenticate('local-login'),
+    function(req, res) {
+      res.redirect('/profile/' + req.user._id);
+    }
+  );
 
   //Perfil do usuário
-  app.get('/profile', isLoggedIn, function(req, res) {
+  app.get('/profile/:id', isLoggedIn, function(req, res) {
     var options = {
       email: req.user.local.email,
       parameters: { 'size': '200', 'd': '404'}, //https://localhost:5000/img/avatares/'+randomAvatar(1, 17)+'.png

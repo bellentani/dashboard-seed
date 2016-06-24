@@ -7,6 +7,9 @@ var request = require('request'); // trata request
 var gravatar = require('gravatar-api'); //load gravatar
 var chance = require('chance').Chance(); // Load and instantiate Chance
 
+var shortid = require('shortid');
+shortid.seed(1984);
+
 var User = require('../app/models/user');
 
 // load the auth variables
@@ -72,6 +75,7 @@ module.exports = function(passport) {
 
           function createNewUser(avatar_user, signup_email, signup_password) {
             // set the user's local credentials
+            newUser._id = shortid.generate();
             newUser.local.email = signup_email;
             newUser.avatar = avatar_user;
             newUser.permission = 'user';
