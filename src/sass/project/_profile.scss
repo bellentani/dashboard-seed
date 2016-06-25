@@ -118,4 +118,15 @@
     }
   }
 
+  &-edit {
+    .avatar-edit {
+      label {
+        display: block;
+      }
+      .thumbnail {
+        @include border-radius(1000px);
+        padding: 0;
+      }
+    }
+  }
 }

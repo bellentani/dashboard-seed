@@ -45,6 +45,9 @@ O escopo de ferramentas que farão parte desse app são:
   * ~~Informações básicas~~
   * Edição de informações (``/profile/edit``)
   * Criar profile por user ID ou User name (``/profile/12313123`` || ``/profile/bellentani``)
+* Tela de usuário
+  * Pública
+  * Escolha de itens que podem ser exibidos (privacidade)
 * Área administrativa (``/profile/::user::admin``)
   * Níveis de usuário (user, admin, owner)
   * Relatório de atividade gerais dos usuários (logs)
@@ -66,6 +69,7 @@ Telas feitas em separado na pasta ``src``:
   * ~~Landing Page (profile)~~
   * Edição de Profile
   * ~~Tela de Signout (virou botão no header)~~
+* Tela de usuário
 * Erro 404
 * Erro 500
 
