@@ -128,7 +128,7 @@ module.exports = function(app, passport) {
 
   //Perfil do usuário - pessoal
   app.get('/profile/', isLoggedIn, function(req, res) {
-    avatarUser(req, res, req.user);
+    avatarUser(req, res, req.user, req.user);
 
     // Random script
     // var userAvatar = req.user.avatar;
@@ -157,21 +157,21 @@ module.exports = function(app, passport) {
         return res.redirect('/');
       }
       //console.log(user.local.email)
-      avatarUser(req, res, user);
+      avatarUser(req, res, user, req.user);
     });
   });
 
   //Function to load user with avatar
-  function avatarUser(req, res, user) {
+  function avatarUser(req, res, userView, userLogged) {
     //a definição da variávei user altera o local que ele lê,
     //se vier como req.user quer dizer que vai pegar a seção do USUARIO LOGADO na roda /profile
     //se vier como user é do usuário sendo consultado no banco pela rota user/:id
     var options = {
-      email: user.local.email,
+      email: userView.local.email,
       parameters: { 'size': '200', 'd': '404'}, //https://localhost:5000/img/avatares/'+randomAvatar(1, 17)+'.png
       secure: true
     }
-    var hasAvatar = user.avatar;
+    var hasAvatar = userView.avatar;
     var avatar = gravatar.imageUrl(options);
     //verifica se tem avatar cadastrado
     if (hasAvatar == '' || hasAvatar == null) {
@@ -186,8 +186,9 @@ module.exports = function(app, passport) {
         }
         //o sender tem que ser depois que o request for feito, senão não pega a variável --> Oláááá, callback hell!
         res.render('profile', {
-            user: user,
-            avatar: avatar
+          userView: userView,
+          userLogged: userLogged,
+          avatar: avatar
         });
         //console.log(response.statusCode);
       });
@@ -196,8 +197,9 @@ module.exports = function(app, passport) {
       avatar = hasAvatar;
       //o sender tem que ser depois que o request for feito, senão não pega a variável --> Oláááá, callback hell!
       res.render('profile', {
-          user: user,
-          avatar: avatar
+        userView: userView,
+        userLogged: userLogged,
+        avatar: avatar
       });
     }
   }

@@ -9,14 +9,14 @@
       <div class="user-detail">
         <figure class="avatar">
           {{#if user.avatar}}
-          <img src="{{user.avatar}}" alt="{{user.local.email}}">
+          <img src="{{userView.avatar}}" alt="{{userView.local.email}}">
           <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
           {{else}}
-          <img src="{{avatar}}" alt="{{user.local.email}}">
+          <img src="{{avatar}}" alt="{{userView.local.email}}">
           {{/if}}
         </figure>
         <div class="resume">
-          {{#if user.resume}}
+          {{#if userView.resume}}
           <p><strong>Resume:</strong></p>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime incidunt officia, officiis, aliquid ad nemo nulla ratione. Quaerat, voluptatibus reiciendis porro officiis, provident, enim, ipsam sint amet consequuntur cum excepturi.</p>
           {{else}}
@@ -29,12 +29,12 @@
       <div class="profile--data">
         <ul class="list-unstyled">
           <li class="user-name">
-          {{#if user.name}}
-            {{user.name}}
+          {{#if userView.name}}
+            {{userView.name}}
           {{/if}}
           </li>
-          <li>{{user.local.email}}</li>
-          <li>{{user.permission}} {{user.id}}</li>
+          <li>{{userView.local.email}}</li>
+          <li>{{userView.permission}} {{userView.id}}</li>
           <li>ativo 5 minutos atrás</li>
         </ul>
         <a href="#" class="btn btn-secondary btn-sm edit">
