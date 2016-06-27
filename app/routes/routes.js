@@ -128,7 +128,28 @@ module.exports = function(app, passport) {
 
   //Perfil do usuário - pessoal
   app.get('/profile/', isLoggedIn, function(req, res) {
-    avatarUser(req, res, req.user, req.user);
+    avatarUser(req, res, req.user, req.user, 'profile');
+
+    // Random script
+    // var userAvatar = req.user.avatar;
+    // if (userAvatar == '') {
+    //   avatar = '/img/avatares/'+randomAvatar(1, 17)+'.png';
+    // }
+    // function randomAvatar(min, max) {
+    //   return ~~(Math.random() * (max - min + 1)) + min
+    // }
+
+    //console.log(avatar, options.email);
+    //
+    // res.render('profile', {
+    //     user: req.user,
+    //     avatar: avatar
+    // });
+  });
+
+  //Perfil do usuário - pessoal
+  app.get('/profile/edit', isLoggedIn, function(req, res) {
+    avatarUser(req, res, req.user, req.user, 'profile_edit');
 
     // Random script
     // var userAvatar = req.user.avatar;
@@ -157,12 +178,12 @@ module.exports = function(app, passport) {
         return res.redirect('/');
       }
       //console.log(user.local.email)
-      avatarUser(req, res, user, req.user);
+      avatarUser(req, res, user, req.user, 'profile');
     });
   });
 
   //Function to load user with avatar
-  function avatarUser(req, res, userView, userLogged) {
+  function avatarUser(req, res, userView, userLogged, renderView) {
     //a definição da variávei user altera o local que ele lê,
     //se vier como req.user quer dizer que vai pegar a seção do USUARIO LOGADO na roda /profile
     //se vier como user é do usuário sendo consultado no banco pela rota user/:id
@@ -185,7 +206,7 @@ module.exports = function(app, passport) {
           avatar = '/img/avatares/6.png';
         }
         //o sender tem que ser depois que o request for feito, senão não pega a variável --> Oláááá, callback hell!
-        res.render('profile', {
+        res.render(renderView, {
           userView: userView,
           userLogged: userLogged,
           avatar: avatar
@@ -196,7 +217,7 @@ module.exports = function(app, passport) {
       //Nesse caso já tem avatar cadastrado, por personalização, portanto, não precisa do gravatar
       avatar = hasAvatar;
       //o sender tem que ser depois que o request for feito, senão não pega a variável --> Oláááá, callback hell!
-      res.render('profile', {
+      res.render(renderView, {
         userView: userView,
         userLogged: userLogged,
         avatar: avatar
