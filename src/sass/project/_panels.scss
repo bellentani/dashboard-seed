@@ -17,6 +17,9 @@
 }
 .profile {
   .panel {
-    color: $dirty-gray;  
+    color: $dirty-gray;
+  }
+  &-edit {
+    color: $dirty-gray;
   }
 }

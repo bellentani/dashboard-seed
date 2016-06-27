@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+include "head-metatags-model.html"
+include "head-css-scripts-global.html"
+</head>
+<body>
+<!--[if lt IE 8]>
+    <p class="browserupgrade">Você está usando um navegador <strong>antigo</strong>. Por favor, <a href="http://browsehappy.com/">atualize seu navegador</a> para uma melhor experiência.</p>
+<![endif]-->
+include "header.html"
+<main role="main" class="profile">
+  <div class="container">
+    <div class="col-xs-24 col-md-5">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Menu geral</h3>
+        </div>
+        <div class="panel-body">
+          <ul class="list-unstyled">
+            <li><a href="#">Informações gerais</a></li>
+            <li><a href="#">Aparência</a></li>
+            <li><a href="#">Alter senha</a></li>
+            <li><a href="#">Lista de amigos</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-24 col-md-19">
+      <div class="profile-edit">
+        include "profile-edit.html"
+      </div>
+    </div>
+  </div>
+</main>
+include "footer.html"
+include "mol-modal-signup.html"
+include "footer-scripts-default.html"
+</body>
+</html>
