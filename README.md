@@ -1,4 +1,4 @@
-#Dashboard Seed v0.1.94078.62
+#Dashboard Seed v0.1.94093.72
 Esse aplicativo tem como objetivo criar um boot para projetos que precisem de gerenciamento de usuários e área exclusiva. É quase que um "big snippet" de código para quem quiser começar um site ou serviço. É como um "trabalho de conclusão de curso" para mim, pois estou aplicando neles meus estudos em Node. Ele está sendo utilizado em outro projeto privado que estou fazendo, mas as coisas globais estou atualizando aqui e dividindo com quem tiver interesse.
 
 Usaremos nesse projeto:
@@ -45,6 +45,8 @@ O escopo de ferramentas que farão parte desse app são:
   * ~~Informações básicas~~
   * Edição de informações (``/profile/edit``)
   * Criar profile por user ID ou User name (``/profile/12313123`` || ``/profile/bellentani``)
+    * Criar profile com apelido (quando o campo ``alias`` estiver preenchido no banco, senão usará o ID)
+    * Quando criar o campo ``alias`` precisaremos checar se ele está sendo usado, porque ele também será um registro único (registros únicos são ``id``,``email`` e ``alias``).
 * Tela de usuário
   * Pública
   * Escolha de itens que podem ser exibidos (privacidade)
@@ -53,7 +55,7 @@ O escopo de ferramentas que farão parte desse app são:
   * Relatório de atividade gerais dos usuários (logs)
 * Adição de ferramentas de frontend
   * ~~Grunt~~
-  * ~~Bower~~
+  * Bower
 
 ###Lista de frontend feito separado
 Telas feitas em separado na pasta ``src``:
