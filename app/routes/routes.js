@@ -169,6 +169,17 @@ module.exports = function(app, passport) {
   });
 
   //Perfil do usuário - pessoal
+  app.post('/profile/edit', isLoggedIn, function(req, res) {
+    User.findOne({ 'local.email' :  req.body.email }, function(err, user) {
+      // if there are any errors, return the error
+      if (err)
+        return done(err);
+
+      console.log('email existe', user);
+    });
+  });
+
+  //Perfil do usuário - pessoal
   app.get('/user/:id', function(req, res) {
   //app.get('/user/', isLoggedIn, function(req, res) { exemplo de função que checa se está logado
 

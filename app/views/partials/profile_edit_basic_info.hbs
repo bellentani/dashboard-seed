@@ -1,28 +1,30 @@
 <div class="row">
   <div class="col-xs-16">
-    <div class="form-group">
-      <label for="name">Nome</label>
-      <input type="text" class="form-control" id="" placeholder="Insira seu nome" value="{{userLogged.name}}">
-      <p class="help-block">Help text here.</p>
-    </div>
-    <div class="form-group">
-      <label for="">E-mail</label>
-      <input type="text" class="form-control" id="" placeholder="Insira E-mail" value="{{userLogged.local.email}}">
-      <p class="help-block">Help text here.</p>
-    </div>
-    <div class="form-group">
-      <label for="">URL personalizada</label>
-      <input type="text" class="form-control" id="" placeholder="Escolha o nome">
-      <p class="help-block">Help text here.</p>
-    </div>
-    <div class="form-group">
-      <label for="Descrição">Sobre você</label>
-      <textarea name="name" rows="6" class="form-control"></textarea>
-      <p class="help-block">Help text here.</p>
-    </div>
-    <div class="form-group">
-      <button class="btn btn-success btn-lg">Salvar alterações</button>
-    </div>
+    <form class="" action="/profile/edit" method="post">
+      <div class="form-group">
+        <label for="name">Nome</label>
+        <input type="text" class="form-control" id="" placeholder="Insira seu nome" value="{{userLogged.name}}">
+        <p class="help-block">Help text here.</p>
+      </div>
+      <div class="form-group">
+        <label for="">E-mail</label>
+        <input type="text" class="form-control" id="email" placeholder="Insira E-mail" value="{{userLogged.local.email}}">
+        <p class="help-block">Help text here.</p>
+      </div>
+      <div class="form-group">
+        <label for="">URL personalizada</label>
+        <input type="text" class="form-control" id="" placeholder="Escolha o nome" value="{{userLogged.alias}}">
+        <p class="help-block">Help text here.</p>
+      </div>
+      <div class="form-group">
+        <label for="Descrição">Sobre você</label>
+        <textarea name="name" rows="6" class="form-control">{{userLogged.local.email}}</textarea>
+        <p class="help-block">Help text here.</p>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-success btn-lg">Salvar alterações</button>
+      </div>
+    </form>
   </div>
   <div class="col-xs-8">
     <div class="form-group avatar-edit">
