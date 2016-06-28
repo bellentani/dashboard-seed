@@ -7,6 +7,8 @@ var userSchema = new Schema({
   name: String,
   permission: String,
   avatar: String,
+  resume: String,
+  alias: String,
   resetPasswordToken: String,
   resetPasswordExpires: Date,
   local: {

@@ -16,6 +16,28 @@
       </div>
     </div>
     <div class="col-xs-24 col-md-19">
+      {{#if message.error}}
+      <div>
+        <div class="alert alert-danger">{{message.error}}</div>
+      </div>
+      {{/if}}
+      {{#if message.info}}
+      <div>
+        <div class="alert alert-info">{{message.info}}</div>
+      </div>
+      {{/if}}
+      {{#if message.success}}
+      <div>
+        <div class="alert alert-success">{{message.success}}</div>
+      </div>
+      {{/if}}
+      {{#if errors}}
+        <ul>
+        {{#each errors}}
+          <li>{{this.msg}}</li>
+        {{/each}}
+        </ul>
+      {{/if}}
       <div class="profile-edit">
         <div class="panel panel-default">
           <div class="panel-heading">

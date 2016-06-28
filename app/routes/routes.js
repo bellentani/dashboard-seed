@@ -1,3 +1,5 @@
+var path = require('path');
+var fs = require('fs');
 var async = require('async');
 var bodyParser = require('body-parser');
 var crypto = require('crypto');
@@ -150,33 +152,34 @@ module.exports = function(app, passport) {
   //Perfil do usuário - pessoal
   app.get('/profile/edit', isLoggedIn, function(req, res) {
     avatarUser(req, res, req.user, req.user, 'profile_edit');
-
-    // Random script
-    // var userAvatar = req.user.avatar;
-    // if (userAvatar == '') {
-    //   avatar = '/img/avatares/'+randomAvatar(1, 17)+'.png';
-    // }
-    // function randomAvatar(min, max) {
-    //   return ~~(Math.random() * (max - min + 1)) + min
-    // }
-
-    //console.log(avatar, options.email);
-    //
-    // res.render('profile', {
-    //     user: req.user,
-    //     avatar: avatar
-    // });
   });
 
   //Perfil do usuário - pessoal
   app.post('/profile/edit', isLoggedIn, function(req, res) {
-    User.findOne({ 'local.email' :  req.body.email }, function(err, user) {
-      // if there are any errors, return the error
-      if (err)
-        return done(err);
+    // use our bear model to find the bear we want
+    User.findById(req.user.id, function(err, user) {
 
-      console.log('email existe', user);
+        if (err)
+            res.send(err);
+
+        user.name = req.body.name;  // update the user info
+        user.local.email = req.body.email;
+        user.alias = req.body.alias;
+        user.resume = req.body.resume;
+
+        // save user
+        user.save(function(err) {
+            if (err)
+                res.send(err);
+
+            res.redirect('/profile/edit');
+            req.flash('success', 'usuário atualizado');
+        });
     });
+    //adicionar arquivos
+    //http://stackoverflow.com/questions/15772394/how-to-upload-display-and-save-images-using-node-js-and-express
+    //http://stackoverflow.com/questions/5294470/writing-image-to-local-server
+    //http://stackoverflow.com/questions/16860334/how-to-load-and-save-image-using-node-js
   });
 
   //Perfil do usuário - pessoal
@@ -191,6 +194,8 @@ module.exports = function(app, passport) {
       //console.log(user.local.email)
       avatarUser(req, res, user, req.user, 'profile');
     });
+
+
   });
 
   //Function to load user with avatar
