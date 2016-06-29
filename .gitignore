@@ -5,3 +5,4 @@ config/db.js
 config/connection.js
 mockups/
 src/components
+public/uploads

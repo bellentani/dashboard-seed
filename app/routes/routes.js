@@ -25,23 +25,30 @@ http://mongoosejs.com/docs/models.html
 
 module.exports = function(app, passport) {
 
-  var upload = multer({
-    dest: '../../public/uploads/',
-    rename: function (fieldname, filename) {
-        return filename+"_"+Date.now();
+  var upload = multer.diskStorage({
+    destination: function (req, file, callback) {
+      callback(null, 'public/uploads');
     },
-    onFileUploadStart: function (file) {
-        console.log(file.originalname + ' is starting ...')
-    },
-    onFileUploadComplete: function (file) {
-        console.log(file.fieldname + ' uploaded to  ' + file.path)
-        done=true;
-    },
-    inMemory: true,
-    onError: function (error, next) {
-      console.log(error)
-      next(error)
+    filename: function (req, file, callback) {
+      crypto.pseudoRandomBytes(16, function (err, raw) {
+        callback(null, raw.toString('hex') + Date.now());
+      });
     }
+    // rename: function (fieldname, filename) {
+    //     return filename+"_"+Date.now();
+    // },
+    // onFileUploadStart: function (file) {
+    //     console.log(file.originalname + ' is starting ...')
+    // },
+    // onFileUploadComplete: function (file) {
+    //     console.log(file.fieldname + ' uploaded to  ' + file.path)
+    //     done=true;
+    // },
+    // inMemory: true,
+    // onError: function (error, next) {
+    //   console.log(error)
+    //   next(error)
+    // }
   });
 
 
@@ -178,8 +185,6 @@ module.exports = function(app, passport) {
   });
 
   //Perfil do usuário - pessoal
-  var uploader = upload.single('avatar');
-  
   app.post('/profile/edit', function(req, res) {
     // Update User
     User.findById(req.user.id, function(err, user) {
@@ -199,26 +204,24 @@ module.exports = function(app, passport) {
             res.redirect('/profile/edit');
             req.flash('success', 'usuário atualizado');
         });
+
     });
+  });
 
-
-    uploader(req, res, function (err) {
-      if (err) {
-        // An error occurred when uploading
-        return
-      }
-
-      // Everything went fine
-      console.log('foi');
-      console.log(req.file);
+  app.get('/sendfile', function(req, res) {
+    res.render('sendfile', {
+      userView: req.user
     });
-
-
-    //adicionar arquivos
-    //https://www.terlici.com/2015/05/16/uploading-files-locally.html
-    //http://stackoverflow.com/questions/15772394/how-to-upload-display-and-save-images-using-node-js-and-express
-    //http://stackoverflow.com/questions/5294470/writing-image-to-local-server
-    //http://stackoverflow.com/questions/16860334/how-to-load-and-save-image-using-node-js
+  });
+  var uploader = multer({ storage : upload}).single('avatar');
+  app.post('/sendfile', function(req,res){
+    uploader(req,res,function(err) {
+        if(err) {
+            return res.end("Error uploading file.");
+        }
+        res.end("File is uploaded");
+        console.log(req.file);
+    });
   });
 
   //Perfil do usuário - pessoal
