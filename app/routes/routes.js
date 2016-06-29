@@ -204,24 +204,39 @@ module.exports = function(app, passport) {
             res.redirect('/profile/edit');
             req.flash('success', 'usuário atualizado');
         });
-
     });
+    console.log(req.body);
   });
 
-  app.get('/sendfile', function(req, res) {
-    res.render('sendfile', {
-      userView: req.user
-    });
-  });
-  var uploader = multer({ storage : upload}).single('avatar');
-  app.post('/sendfile', function(req,res){
+  var uploader = multer({ storage : upload}).single('avatarEdit');
+  app.post('/profile/edit/avatar', function(req,res){
     uploader(req,res,function(err) {
         if(err) {
             return res.end("Error uploading file.");
         }
-        res.end("File is uploaded");
         console.log(req.file);
+
+        User.findById(req.user.id, function(err, user) {
+            if (err)
+                res.send(err);
+
+            user.avatar = '/uploads/' + req.file.filename;  // update the user info
+
+            // save user
+            user.save(function(err) {
+                if (err)
+                    res.send(err);
+
+                res.redirect('/profile/edit');
+                req.flash('success', 'usuário atualizado');
+            });
+        });
     });
+    //adicionar arquivos
+    //https://www.terlici.com/2015/05/16/uploading-files-locally.html
+    //http://stackoverflow.com/questions/15772394/how-to-upload-display-and-save-images-using-node-js-and-express
+    //http://stackoverflow.com/questions/5294470/writing-image-to-local-server
+    //http://stackoverflow.com/questions/16860334/how-to-load-and-save-image-using-node-js
   });
 
   //Perfil do usuário - pessoal

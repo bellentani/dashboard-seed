@@ -1,53 +1,56 @@
-<form class="form-edit" action="/profile/edit" method="post" enctype="multipart/form-data" >
   <div class="row">
-    <div class="col-xs-16">
-      <div class="form-group">
-        <label for="name">Nome</label>
-        <input type="text" class="form-control" id="name" name="name" placeholder="Insira seu nome" value="{{userLogged.name}}">
-        <p class="help-block">Help text here.</p>
-      </div>
-      <div class="form-group">
-        <label for="">E-mail</label>
-        <input type="text" class="form-control" id="email" name="email" placeholder="Insira E-mail" value="{{userLogged.local.email}}">
-        <p class="help-block">Help text here.</p>
-      </div>
-      <div class="form-group">
-        <label for="">URL personalizada</label>
-        <input type="text" class="form-control" id="alias" name="alias" placeholder="Escolha o nome" value="{{userLogged.alias}}">
-        <p class="help-block">Help text here.</p>
-      </div>
-      <div class="form-group">
-        <label for="Descrição">Sobre você</label>
-        <textarea rows="6" class="form-control" id="resume" name="resume">{{userLogged.resume}}</textarea>
-        <p class="help-block">Help text here.</p>
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-success btn-lg">Salvar alterações</button>
-      </div>
+    <form class="form-edit" action="/profile/edit" method="post">
+      <div class="col-xs-16">
+        <div class="form-group">
+          <label for="name">Nome</label>
+          <input type="text" class="form-control" id="name" name="name" placeholder="Insira seu nome" value="{{userLogged.name}}">
+          <p class="help-block">Help text here.</p>
+        </div>
+        <div class="form-group">
+          <label for="">E-mail</label>
+          <input type="text" class="form-control" id="email" name="email" placeholder="Insira E-mail" value="{{userLogged.local.email}}">
+          <p class="help-block">Help text here.</p>
+        </div>
+        <div class="form-group">
+          <label for="">URL personalizada</label>
+          <input type="text" class="form-control" id="alias" name="alias" placeholder="Escolha o nome" value="{{userLogged.alias}}">
+          <p class="help-block">Help text here.</p>
+        </div>
+        <div class="form-group">
+          <label for="Descrição">Sobre você</label>
+          <textarea rows="6" class="form-control" id="resume" name="resume">{{userLogged.resume}}</textarea>
+          <p class="help-block">Help text here.</p>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-success btn-lg">Salvar alterações</button>
+        </div>
+      </form>
     </div>
     <div class="col-xs-8">
       <div class="form-group avatar-edit">
-        <label for="Descrição">Avatar</label>
-        <div class="fileinput fileinput-new" data-provides="fileinput">
-          <div class="fileinput-new thumbnail" style="width: 200px; height: 200px;">
-            {{#if user.avatar}}
-            <img src="{{userView.avatar}}" alt="{{userView.local.email}}">
-            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-            {{else}}
-            <img src="{{avatar}}" alt="{{userView.local.email}}">
-            {{/if}}
+        <form class="form-edit" action="/profile/edit/avatar" method="post" enctype="multipart/form-data" >
+          <label for="Descrição">Avatar</label>
+          <div class="fileinput fileinput-new" data-provides="fileinput">
+            <div class="fileinput-new thumbnail" style="width: 200px; height: 200px;">
+              {{#if user.avatar}}
+              <img src="{{userView.avatar}}" alt="{{userView.local.email}}">
+              <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+              {{else}}
+              <img src="{{avatar}}" alt="{{userView.local.email}}">
+              {{/if}}
+            </div>
+            <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 200px;"></div>
+            <div>
+              <span class="btn btn-default btn-file">
+                <span class="fileinput-new">Select image</span>
+                <span class="fileinput-exists">Change</span>
+                <input type="file" id="avatarEdit" name="avatarEdit" accept="image/*" value="{{#if user.avatar}}{{userView.avatar}}{{else}}{{/if}}">
+              </span>
+              <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+            </div>
           </div>
-          <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 200px;"></div>
-          <div>
-            <span class="btn btn-default btn-file">
-              <span class="fileinput-new">Select image</span>
-              <span class="fileinput-exists">Change</span>
-              <input type="file" id="avatar" name="avatar" accept="image/*">
-            </span>
-            <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
-          </div>
-        </div>
+          <button type="submit" class="btn btn-success btn-lg">Trocar imagem</button>
+        </form>
       </div>
     </div>
   </div>
-</form>
