@@ -7,6 +7,8 @@ var flash    = require('connect-flash');
 var mongoose = require('mongoose');
 var nodemailer = require('nodemailer');
 
+var multer = require('multer'); //controla arquivos
+
 var request = require('request'); // trata request
 var gravatar = require('gravatar-api'); //load gravatar
 
@@ -22,6 +24,22 @@ http://mongoosejs.com/docs/models.html
 */
 
 module.exports = function(app, passport) {
+
+  var upload = multer({
+    dest: '../../public/uploads/',
+    rename: function (fieldname, filename) {
+        return filename+"_"+Date.now();
+    },
+    onFileUploadStart: function (file) {
+        console.log(file.originalname + ' is starting ...')
+    },
+    onFileUploadComplete: function (file) {
+        console.log(file.fieldname + ' uploaded to  ' + file.path)
+        done=true;
+    }
+  });
+
+
   //Main page
   app.get('/', function(req, res){
     res.render('index', {
@@ -155,10 +173,9 @@ module.exports = function(app, passport) {
   });
 
   //Perfil do usuário - pessoal
-  app.post('/profile/edit', isLoggedIn, function(req, res) {
-    // use our bear model to find the bear we want
+  app.post('/profile/edit', upload.single('avatar'), function(req, res) {
+    // Update User
     User.findById(req.user.id, function(err, user) {
-
         if (err)
             res.send(err);
 
@@ -176,7 +193,17 @@ module.exports = function(app, passport) {
             req.flash('success', 'usuário atualizado');
         });
     });
+
+    //req.file;
+    console.log(req.file);
+    fs.writeFile(req.file, buffer, function(err){
+        if (err) throw err
+        console.log('File saved.')
+    })
+
+
     //adicionar arquivos
+    //https://www.terlici.com/2015/05/16/uploading-files-locally.html
     //http://stackoverflow.com/questions/15772394/how-to-upload-display-and-save-images-using-node-js-and-express
     //http://stackoverflow.com/questions/5294470/writing-image-to-local-server
     //http://stackoverflow.com/questions/16860334/how-to-load-and-save-image-using-node-js

@@ -24,7 +24,10 @@ module.exports = {
 };
 ```
 
-Criar o arquivo ``config/connection.js``
+Criar o arquivo ``config/connection.js``, ele vai ter a conexão de e-mail que será usado para mandar mensagens de sistema.
+
+Eu uso a minha conta do Google, o que indico por ser prático. Para isso você terá que criar um App Password, você pode seguir o tutorial em https://support.google.com/accounts/answer/185833?hl=en
+
 ```javascript
 module.exports = {
   'user': '{{seu-username}}',

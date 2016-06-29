@@ -65,7 +65,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(expressValidator());
 app.use(express.static(__dirname + '/public/')); //determina o conteúdo estático
-//app.use(express.bodyParser({uploadDir:'/temp/files/'}));
 app.use(session({
   secret: 'eapoerulez',
   saveUninitialized: true,
@@ -76,6 +75,18 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
+// app.use(multer({ dest: 'uploads',
+//     rename: function (fieldname, filename) {
+//         return filename+"_"+Date.now();
+//     },
+//     onFileUploadStart: function (file) {
+//         console.log(file.originalname + ' is starting ...')
+//     },
+//     onFileUploadComplete: function (file) {
+//         console.log(file.fieldname + ' uploaded to  ' + file.path)
+//         done=true;
+//     }
+// }));
 
 
 //===============ROUTES===============
