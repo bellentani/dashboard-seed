@@ -65,7 +65,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(expressValidator());
 app.use(express.static(__dirname + '/public/')); //determina o conteúdo estático
-app.use(express.bodyParser({uploadDir:'/temp/files/'}));
+//app.use(express.bodyParser({uploadDir:'/temp/files/'}));
 app.use(session({
   secret: 'eapoerulez',
   saveUninitialized: true,

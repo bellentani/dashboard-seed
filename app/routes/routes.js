@@ -157,25 +157,25 @@ module.exports = function(app, passport) {
   //Perfil do usuário - pessoal
   app.post('/profile/edit', isLoggedIn, function(req, res) {
     // use our bear model to find the bear we want
-    User.findById(req.user.id, function(err, user) {
-
-        if (err)
-            res.send(err);
-
-        user.name = req.body.name;  // update the user info
-        user.local.email = req.body.email;
-        user.alias = req.body.alias;
-        user.resume = req.body.resume;
-
-        // save user
-        user.save(function(err) {
-            if (err)
-                res.send(err);
-
-            res.redirect('/profile/edit');
-            req.flash('success', 'usuário atualizado');
-        });
-    });
+    // User.findById(req.user.id, function(err, user) {
+    //
+    //     if (err)
+    //         res.send(err);
+    //
+    //     user.name = req.body.name;  // update the user info
+    //     user.local.email = req.body.email;
+    //     user.alias = req.body.alias;
+    //     user.resume = req.body.resume;
+    //
+    //     // save user
+    //     user.save(function(err) {
+    //         if (err)
+    //             res.send(err);
+    //
+    //         res.redirect('/profile/edit');
+    //         req.flash('success', 'usuário atualizado');
+    //     });
+    // });
     //adicionar arquivos
     //http://stackoverflow.com/questions/15772394/how-to-upload-display-and-save-images-using-node-js-and-express
     //http://stackoverflow.com/questions/5294470/writing-image-to-local-server
