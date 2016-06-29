@@ -178,7 +178,8 @@ module.exports = function(app, passport) {
   });
 
   //Perfil do usuário - pessoal
-  var uploader = upload.single('avatar')
+  var uploader = upload.single('avatar');
+  
   app.post('/profile/edit', function(req, res) {
     // Update User
     User.findById(req.user.id, function(err, user) {
