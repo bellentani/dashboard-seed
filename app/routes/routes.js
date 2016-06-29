@@ -36,6 +36,11 @@ module.exports = function(app, passport) {
     onFileUploadComplete: function (file) {
         console.log(file.fieldname + ' uploaded to  ' + file.path)
         done=true;
+    },
+    inMemory: true,
+    onError: function (error, next) {
+      console.log(error)
+      next(error)
     }
   });
 
@@ -173,7 +178,8 @@ module.exports = function(app, passport) {
   });
 
   //Perfil do usuário - pessoal
-  app.post('/profile/edit', upload.single('avatar'), function(req, res) {
+  var uploader = upload.single('avatar')
+  app.post('/profile/edit', function(req, res) {
     // Update User
     User.findById(req.user.id, function(err, user) {
         if (err)
@@ -194,12 +200,17 @@ module.exports = function(app, passport) {
         });
     });
 
-    //req.file;
-    console.log(req.file);
-    fs.writeFile(req.file, buffer, function(err){
-        if (err) throw err
-        console.log('File saved.')
-    })
+
+    uploader(req, res, function (err) {
+      if (err) {
+        // An error occurred when uploading
+        return
+      }
+
+      // Everything went fine
+      console.log('foi');
+      console.log(req.file);
+    });
 
 
     //adicionar arquivos
