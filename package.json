@@ -48,7 +48,8 @@
     "passport-local": "^1.0.0",
     "request": "^2.72.0",
     "serve-favicon": "^2.3.0",
-    "shortid": "^2.2.6"
+    "shortid": "^2.2.6",
+    "validate.js": "^0.10.0"
   },
   "devDependencies": {
     "bower": "^1.7.9",

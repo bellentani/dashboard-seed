@@ -169,16 +169,21 @@ module.exports = function(app, passport) {
         user.local.email = req.body.email;
         user.alias = req.body.alias;
         user.resume = req.body.resume;
-
-        // save user
-        user.save(function(error) {
-          if (error) {
-            req.flash('error', 'Ops, tivemos um problemas em atualizar seu cadastro.');
-            //res.send(error);
-          }
-          req.flash('success', 'usuário atualizado');
+        if (req.body.email) {
+          // save user
+          user.save(function(error) {
+            if (error) {
+              req.flash('error', 'Ops, tivemos um problemas em atualizar seu cadastro.');
+              //res.send(error);
+            }
+            req.flash('success', 'usuário atualizado');
+            res.redirect('/profile/edit');
+          });
+        } else {
+          req.flash('error', 'O e-mail não pode ser vazio');
           res.redirect('/profile/edit');
-        });
+        }
+
     });
     console.log(req.body);
   });
@@ -211,7 +216,7 @@ module.exports = function(app, passport) {
               //res.send(err);
             }
 
-            user.avatar = '/uploads/' + req.file.filename;  // update the user info
+            user.avatar = '/uploads/avatar/' + req.file.filename;  // update the user info
 
             // save user
             user.save(function(err) {
