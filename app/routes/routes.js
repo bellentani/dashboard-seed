@@ -24,34 +24,6 @@ http://mongoosejs.com/docs/models.html
 */
 
 module.exports = function(app, passport) {
-
-  var upload = multer.diskStorage({
-    destination: function (req, file, callback) {
-      callback(null, 'public/uploads');
-    },
-    filename: function (req, file, callback) {
-      crypto.pseudoRandomBytes(16, function (err, raw) {
-        callback(null, raw.toString('hex') + Date.now());
-      });
-    }
-    // rename: function (fieldname, filename) {
-    //     return filename+"_"+Date.now();
-    // },
-    // onFileUploadStart: function (file) {
-    //     console.log(file.originalname + ' is starting ...')
-    // },
-    // onFileUploadComplete: function (file) {
-    //     console.log(file.fieldname + ' uploaded to  ' + file.path)
-    //     done=true;
-    // },
-    // inMemory: true,
-    // onError: function (error, next) {
-    //   console.log(error)
-    //   next(error)
-    // }
-  });
-
-
   //Main page
   app.get('/', function(req, res){
     res.render('index', {
@@ -187,9 +159,11 @@ module.exports = function(app, passport) {
   //Perfil do usuário - pessoal
   app.post('/profile/edit', function(req, res) {
     // Update User
-    User.findById(req.user.id, function(err, user) {
-        if (err)
-            res.send(err);
+    User.findById(req.user.id, function(error, user) {
+        if (error) {
+          req.flash('error', 'Ops, tivemos um problemas em atualizar seu cadastro.');
+          //res.send(error);
+        }
 
         user.name = req.body.name;  // update the user info
         user.local.email = req.body.email;
@@ -197,35 +171,54 @@ module.exports = function(app, passport) {
         user.resume = req.body.resume;
 
         // save user
-        user.save(function(err) {
-            if (err)
-                res.send(err);
-
-            res.redirect('/profile/edit');
-            req.flash('success', 'usuário atualizado');
+        user.save(function(error) {
+          if (error) {
+            req.flash('error', 'Ops, tivemos um problemas em atualizar seu cadastro.');
+            //res.send(error);
+          }
+          req.flash('success', 'usuário atualizado');
+          res.redirect('/profile/edit');
         });
     });
     console.log(req.body);
   });
 
-  var uploader = multer({ storage : upload}).single('avatarEdit');
+  app.get('/profile/edit/avatar',isLoggedIn, function(req,res) {
+    avatarUser(req, res, req.user, req.user, 'profile_edit');
+  });
   app.post('/profile/edit/avatar', function(req,res){
+    var upload = multer.diskStorage({
+      destination: function (req, file, callback) {
+        callback(null, 'public/uploads/avatar');
+      },
+      filename: function (req, file, callback) {
+        crypto.pseudoRandomBytes(16, function (err, raw) {
+          callback(null, raw.toString('hex') + Date.now());
+        });
+      }
+    });
+    var uploader = multer({ storage : upload}).single('avatarEdit');
     uploader(req,res,function(err) {
         if(err) {
-            return res.end("Error uploading file.");
+          req.flash('error', 'Houve algum problema em subir seu arquivo.');
+          //return res.end("Error uploading file.");
         }
         console.log(req.file);
 
         User.findById(req.user.id, function(err, user) {
-            if (err)
-                res.send(err);
+            if (err) {
+              req.flash('error', 'Tivemos um problema em encontrar o seu avatar.');
+              //res.send(err);
+            }
 
             user.avatar = '/uploads/' + req.file.filename;  // update the user info
 
             // save user
             user.save(function(err) {
-                if (err)
-                    res.send(err);
+                if (err) {
+                  req.flash('error', 'Houve um problema enviando seu avatar.');
+                  //res.send(err);
+                }
 
                 res.redirect('/profile/edit');
                 req.flash('success', 'usuário atualizado');
@@ -240,10 +233,10 @@ module.exports = function(app, passport) {
   });
 
   //Perfil do usuário - pessoal
-  app.get('/user/:id', function(req, res) {
+  app.get('/user/:alias', function(req, res) {
   //app.get('/user/', isLoggedIn, function(req, res) { exemplo de função que checa se está logado
 
-    User.findOne({ _id: req.params.id}, function(err, user) {
+    User.findOne({ alias: req.params.alias}, function(err, user) {
       if (!user) {
         req.flash('error', 'Usuário não existe');
         return res.redirect('/');
@@ -251,7 +244,6 @@ module.exports = function(app, passport) {
       //console.log(user.local.email)
       avatarUser(req, res, user, req.user, 'profile');
     });
-
 
   });
 
@@ -282,7 +274,8 @@ module.exports = function(app, passport) {
         res.render(renderView, {
           userView: userView,
           userLogged: userLogged,
-          avatar: avatar
+          avatar: avatar,
+          message: req.flash()
         });
         //console.log(response.statusCode);
       });
@@ -293,7 +286,8 @@ module.exports = function(app, passport) {
       res.render(renderView, {
         userView: userView,
         userLogged: userLogged,
-        avatar: avatar
+        avatar: avatar,
+        message: req.flash()
       });
     }
   }

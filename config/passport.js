@@ -75,8 +75,8 @@ module.exports = function(passport) {
 
           function createNewUser(avatar_user, signup_email, signup_password) {
             // set the user's local credentials
-            newUser._id = shortid.generate();
             newUser.local.email = signup_email;
+            newUser.alias = shortid.generate();
             newUser.avatar = avatar_user;
             newUser.permission = 'user';
             newUser.name = req.body.name;
