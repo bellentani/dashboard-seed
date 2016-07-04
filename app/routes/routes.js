@@ -12,7 +12,7 @@ var multer = require('multer'); //controla arquivos
 var request = require('request'); // trata request
 var gravatar = require('gravatar-api'); //load gravatar
 
-var im = require('imagemagick');
+//var im = require('imagemagick'); //opcional
 
 var connect = require('../../config/connection');
 var User = require('../models/user');
@@ -260,6 +260,8 @@ module.exports = function(app, passport) {
         var dstPath = __dirname+'/uploads/avatar/' + req.file.filename;
         //fs.unlinkSync(srcPath);
         console.log(srcPath, dstPath);
+
+
 
         User.findById(req.user.id, function(err, user) {
             if (err) {
