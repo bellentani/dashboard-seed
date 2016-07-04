@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h2>{{title}}</h2>
+    {{#if message.error}}
+    <div>
+      <div class="alert alert-danger">{{message.error}}</div>
+    </div>
+    {{/if}}
+    {{#if message.info}}
+    <div>
+      <div class="alert alert-info">{{message.info}}</div>
+    </div>
+    {{/if}}
+    {{#if message.success}}
+    <div>
+      <div class="alert alert-success">{{message.success}}</div>
+    </div>
+    {{/if}}
+    <p>
+      Foi
+    </p>
+  </div>
+</div>

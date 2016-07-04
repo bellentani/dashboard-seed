@@ -33,7 +33,6 @@
     "cookie-parser": "^1.4.1",
     "crypto": "0.0.3",
     "debug": "^2.2.0",
-    "easyimage": "^2.1.0",
     "email-validator": "^1.0.4",
     "express": "^4.13.4",
     "express-handlebars": "^3.0.0",

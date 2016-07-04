@@ -7,11 +7,11 @@ var userSchema = new Schema({
   permission: String,
   avatar: String,
   resume: String,
-  alias: String,
+  alias: {type: String, unique: true},
   resetPasswordToken: String,
   resetPasswordExpires: Date,
   local: {
-    email: String,
+    email: {type: String, unique: true},
     password: String
   },
   facebook         : {

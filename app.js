@@ -11,6 +11,8 @@ var bodyParser   = require('body-parser');
 var expressValidator =  require('express-validator');
 var session      = require('express-session');
 
+var multer = require('multer'); //controla arquivos
+
 var app = express();
 
 //seta o local das views

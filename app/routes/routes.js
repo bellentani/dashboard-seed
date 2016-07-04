@@ -12,6 +12,8 @@ var multer = require('multer'); //controla arquivos
 var request = require('request'); // trata request
 var gravatar = require('gravatar-api'); //load gravatar
 
+var im = require('imagemagick');
+
 var connect = require('../../config/connection');
 var User = require('../models/user');
 
@@ -188,6 +190,49 @@ module.exports = function(app, passport) {
     console.log(req.body);
   });
 
+  //test crop
+  app.get('/imagecrop', function(req, res) {
+    var path = __dirname+'/../../public/tile-wide.png';
+    var destPath = __dirname+'/../../public/uploads/avatar/cropped/cropped';
+    im.identify(path, function(err, features){
+      if (err) throw err;
+      console.log(features);
+      // { format: 'JPEG', width: 3904, height: 2622, depth: 8 }
+    });
+    im.crop({
+      srcPath: path,
+      dstPath: destPath,
+      width: 20,
+      height: 20,
+      quality: 1,
+      gravity: 'North'
+    }, function(err, stdout, stderr){
+      if (err) throw err;
+      //console.log(stdout, stderr);
+    });
+    res.render('test', {
+      title: 'Teste imagem',
+      user: req.user,
+      message: req.flash()
+    });
+  });
+  app.post('/imagecrop', function(req, res) {
+
+    //crop-img
+    im.readMetadata('/public/img/avatar-sample.png', function(err, metadata){
+      if (err) {
+        throw err;
+      }
+      console.log('Shot at '+metadata.exif.dateTimeOriginal);
+
+      res.render('test', {
+        title: 'Teste imagem',
+        user: req.user,
+        message: req.flash()
+      });
+    })
+  });
+
   app.get('/profile/edit/avatar',isLoggedIn, function(req,res) {
     avatarUser(req, res, req.user, req.user, 'profile_edit');
   });
@@ -210,14 +255,18 @@ module.exports = function(app, passport) {
         }
         console.log(req.file);
 
+        //crop-img
+        var srcPath = __dirname+'/uploads/avatar/temp/' + req.file.filename;
+        var dstPath = __dirname+'/uploads/avatar/' + req.file.filename;
+        //fs.unlinkSync(srcPath);
+        console.log(srcPath, dstPath);
+
         User.findById(req.user.id, function(err, user) {
             if (err) {
               req.flash('error', 'Tivemos um problema em encontrar o seu avatar.');
               //res.send(err);
             }
-
             user.avatar = '/uploads/avatar/' + req.file.filename;  // update the user info
-
             // save user
             user.save(function(err) {
                 if (err) {
