@@ -6,7 +6,7 @@ Como este aplicativo está usando mongoDB, é preciso conhecer um pouco sobre o 
 
 É preciso criar a pasta: ``/data/db`` para rodar o banco.
 
-Rodar usando o comando: ``mongod --dbpath data/db``
+Rodar usando o comando: ``mongod -dbpath data/db``
 
 Usar para inserir o primeiro registro:
 
