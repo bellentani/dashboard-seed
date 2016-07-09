@@ -3,6 +3,7 @@ node_modules/
 data/
 config/db.js
 config/connection.js
+config/auth.js
 mockups/
 src/components
 public/uploads

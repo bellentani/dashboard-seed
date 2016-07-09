@@ -192,8 +192,8 @@ module.exports = function(app, passport) {
 
   //test crop
   app.get('/imagecrop', function(req, res) {
-    var path = __dirname+'/../../public/tile-wide.png';
-    var destPath = __dirname+'/../../public/uploads/avatar/cropped/cropped';
+    var path = __dirname+'/../../public/img/avatar-sample.jpg';
+    var destPath = __dirname+'/../../public/uploads/avatar/cropped/cropped.jpg';
     im.identify(path, function(err, features){
       if (err) throw err;
       console.log(features);
@@ -202,8 +202,8 @@ module.exports = function(app, passport) {
     im.crop({
       srcPath: path,
       dstPath: destPath,
-      width: 20,
-      height: 20,
+      width: 40,
+      height: 40,
       quality: 1,
       gravity: 'North'
     }, function(err, stdout, stderr){
@@ -256,11 +256,10 @@ module.exports = function(app, passport) {
         console.log(req.file);
 
         //crop-img
-        var srcPath = __dirname+'/uploads/avatar/temp/' + req.file.filename;
-        var dstPath = __dirname+'/uploads/avatar/' + req.file.filename;
+        //var srcPath = __dirname+'/uploads/avatar/temp/' + req.file.filename;
+        //var dstPath = __dirname+'/uploads/avatar/' + req.file.filename;
         //fs.unlinkSync(srcPath);
-        console.log(srcPath, dstPath);
-
+        //console.log(srcPath, dstPath);
 
 
         User.findById(req.user.id, function(err, user) {
