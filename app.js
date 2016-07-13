@@ -5,6 +5,8 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var flash    = require('connect-flash');
 
+var consign = require('consign'); //Gerenciador de rotas
+
 var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
@@ -90,7 +92,10 @@ app.use(flash());
 
 
 //===============ROUTES===============
-require('./app/routes/routes')(app, passport);
+//require('./app/routes/routes')(app, passport);
+//consign().include('app/controllers').then('app/routes').into(app);
+consign({cwd: 'app'}).include('controllers').then('routes').into(app);
+
 
 app.listen(app.get('port'), function() {
   console.log('Node está brincando na porta ' + app.get('port'));

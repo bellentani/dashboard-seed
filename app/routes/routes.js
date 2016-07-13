@@ -25,13 +25,7 @@ http://mongoosejs.com/docs/models.html
 
 module.exports = function(app, passport) {
   //Main page
-  app.get('/', function(req, res){
-    res.render('index', {
-      title: 'Dashboard Seed',
-      user: req.user,
-      message: req.flash('loginMessage'),
-    });
-  });
+  
 
   //Signup
   app.get('/signup', function(req, res){
@@ -113,26 +107,25 @@ module.exports = function(app, passport) {
   // FACEBOOK ROUTES =====================
   // =====================================
   // route for facebook authentication and login
-  app.get('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
+  /*app.get('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));*/
 
   // handle the callback after facebook has authenticated the user
-  app.get('/auth/facebook/callback',
+  /*app.get('/auth/facebook/callback',
     passport.authenticate('facebook', { failureRedirect: '/' }),
     function(req, res) {
       // Successful authentication, redirect home.
       res.redirect('/profile');
-    });
+    });*/
 
-  app.post('/login', passport.authenticate('local-login', {
+  /*app.post('/login', passport.authenticate('local-login', {
       successRedirect : '/profile', // redirect to the secure profile section
       failureRedirect : '/', // redirect back to the signup page if there is an error
       failureFlash : true // allow flash messages
     })
-  );
-
+  );*/
   //Perfil do usuário - pessoal
-  app.get('/profile/', isLoggedIn, function(req, res) {
-    avatarUser(req, res, req.user, req.user, 'profile');
+  /*app.get('/profile/', isLoggedIn, function(req, res) {
+    avatarUser(req, res, req.user, req.user, 'profile');*/
 
     // Random script
     // var userAvatar = req.user.avatar;
@@ -149,15 +142,15 @@ module.exports = function(app, passport) {
     //     user: req.user,
     //     avatar: avatar
     // });
-  });
+//});
 
   //Perfil do usuário - pessoal
-  app.get('/profile/edit', isLoggedIn, function(req, res) {
+  /*app.get('/profile/edit', isLoggedIn, function(req, res) {
     avatarUser(req, res, req.user, req.user, 'profile_edit');
-  });
+  });*/
 
   //Perfil do usuário - pessoal
-  app.post('/profile/edit', function(req, res) {
+  /*app.post('/profile/edit', function(req, res) {
     // Update User
     User.findById(req.user.id, function(error, user) {
         if (error) {
@@ -186,12 +179,12 @@ module.exports = function(app, passport) {
 
     });
     console.log(req.body);
-  });
+  });*/
 
-  app.get('/profile/edit/avatar',isLoggedIn, function(req,res) {
+/*  app.get('/profile/edit/avatar',isLoggedIn, function(req,res) {
     avatarUser(req, res, req.user, req.user, 'profile_edit');
-  });
-  app.post('/profile/edit/avatar', function(req,res){
+  });*/
+  /*app.post('/profile/edit/avatar', function(req,res){
     var upload = multer.diskStorage({
       destination: function (req, file, callback) {
         callback(null, 'public/uploads/avatar');
@@ -235,7 +228,7 @@ module.exports = function(app, passport) {
     //http://stackoverflow.com/questions/15772394/how-to-upload-display-and-save-images-using-node-js-and-express
     //http://stackoverflow.com/questions/5294470/writing-image-to-local-server
     //http://stackoverflow.com/questions/16860334/how-to-load-and-save-image-using-node-js
-  });
+  });*/
 
   //Perfil do usuário - pessoal
   app.get('/user/:alias', function(req, res) {
