@@ -93,8 +93,7 @@ app.use(flash());
 
 //===============ROUTES===============
 //require('./app/routes/routes')(app, passport);
-//consign().include('app/controllers').then('app/routes').into(app);
-consign({cwd: 'app'}).include('controllers').then('routes').into(app);
+consign({cwd: 'app'}).include('controllers').then('routes').into(app, passport);
 
 
 app.listen(app.get('port'), function() {
