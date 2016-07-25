@@ -1,4 +1,4 @@
-var path = require('path');
+﻿var path = require('path');
 var fs = require('fs');
 var async = require('async');
 var bodyParser = require('body-parser');
@@ -188,7 +188,6 @@ module.exports = function(app, passport) {
 
     });
     console.log(req.body);
-    //comentário
   });
 
   //test crop

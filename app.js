@@ -90,7 +90,6 @@ app.use(flash());
 //     }
 // }));
 
-
 //===============ROUTES===============
 require('./app/routes/home')(app, passport);
 // require('./app/routes/routes')(app, passport);
@@ -105,7 +104,6 @@ require('./app/routes/reset')(app, passport);
 require('./app/routes/user')(app, passport);
 require('./app/routes/404')(app, passport);
 require('./app/routes/error')(app, passport);
-
 
 app.listen(app.get('port'), function () {
     console.log('Node está brincando na porta ' + app.get('port'));
