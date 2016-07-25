@@ -1,5 +1,10 @@
 var funcoes = require('../controllers/index');
 var User = require('../models/user');
+var multer = require('multer');
+var crypto = require('crypto');
+var funcoes = require('../controllers/index');
+
+
 module.exports = function (app, passport) {
 
     app.get('/profile/', funcoes.isLoggedIn, function (req, res) {
