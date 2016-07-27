@@ -1,5 +1,7 @@
 var funcoes = require('../controllers/index');
 var User = require('../models/user');
+var async =  require('async');
+
 module.exports = function (app, passport) {
 
     app.get('/profile/', funcoes.isLoggedIn, function (req, res) {
@@ -29,34 +31,83 @@ module.exports = function (app, passport) {
 
     //Perfil do usuário - pessoal
     app.post('/profile/edit', function (req, res) {
-        // Update User
-        User.findById(req.user.id, function (error, user) {
+
+      req.checkBody('email', 'O e-mail não pode ser vazio').notEmpty();
+      req.checkBody('email', 'E-mail inválido').isEmail();
+      req.checkBody('alias', 'O alias não pode ser vazio').notEmpty();
+      var errors = req.validationErrors(); //colocar (true) para transformar em objeto
+      if (errors) {
+        req.flash('error', errors[0].msg); // primeira mensagem de erro
+        return res.redirect('/profile/edit');
+      }
+
+      async.waterfall([
+        function(done){
+          User.findById(req.user.id, function (error, user) {
+            if( error || user === null ) { return done(error) }
+            else { return done(null,user) }
+          });
+        },
+        function(user,done){
+          if( user.local.email !== req.body.email ){
+              User.findOne({ 'local.email':req.body.email }, function (error, email) {
+                if(error) {
+                  return done(error);
+                }
+                if(email){
+                  req.flash('error','E-mail já está em uso.');
+                  return res.redirect('/profile/edit');
+                }
+                else {
+                  return done(null,user);
+                }
+              });
+          } else {
+            return done(null,user);
+          }
+        },
+        function(user,done){
+          if( user.alias !== req.body.alias ){
+              User.findOne({ alias:req.body.alias }, function (error, alias) {
+                if(error) {
+                  return done(error);
+                }
+                if(alias){
+                  req.flash('error','Alias já está em uso.');
+                  return res.redirect('/profile/edit');
+                }
+                else {
+                  return done(null,user);
+                }
+              });
+          } else {
+            return done(null,user);
+          }
+        },
+        function(user,done){
+          user.name = req.body.name;  // update the user info
+          user.local.email = req.body.email;
+          user.alias = req.body.alias;
+          user.resume = req.body.resume;
+
+          // save user
+          user.save(function (error) {
             if (error) {
-                req.flash('error', 'Ops, tivemos um problemas em atualizar seu cadastro.');
-                //res.send(error);
+              console.log(error);
+              return done(error);
             }
-
-            user.name = req.body.name;  // update the user info
-            user.local.email = req.body.email;
-            user.alias = req.body.alias;
-            user.resume = req.body.resume;
-            if (req.body.email) {
-                // save user
-                user.save(function (error) {
-                    if (error) {
-                        req.flash('error', 'Ops, tivemos um problemas em atualizar seu cadastro.');
-                        //res.send(error);
-                    }
-                    req.flash('success', 'usuário atualizado');
-                    res.redirect('/profile/edit');
-                });
-            } else {
-                req.flash('error', 'O e-mail não pode ser vazio');
-                res.redirect('/profile/edit');
-            }
-
-        });
-        console.log(req.body);
+            console.log(req.body);
+            req.flash('success', 'usuário atualizado');
+            return res.redirect('/profile/edit');
+            done();
+          });
+        }
+      ],function(error){
+        if (error) {
+            req.flash('error', 'Ops, tivemos um problemas em atualizar seu cadastro.');
+            return res.redirect('/profile/edit');
+        }
+      });
     });
 
     app.get('/profile/edit/avatar', funcoes.isLoggedIn, function (req, res) {
