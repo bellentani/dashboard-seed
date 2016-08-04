@@ -1,3 +1,6 @@
+var funcoes = require('../controllers/index');
+var User = require('../models/user');
+
 module.exports = function (app, passport) {
     //Perfil do usuário - pessoal
     app.get('/user/:alias', function (req, res) {

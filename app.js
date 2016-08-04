@@ -98,10 +98,10 @@ require('./app/routes/signup')(app, passport);
 require('./app/routes/login')(app, passport);
 require('./app/routes/facebook')(app, passport);
 require('./app/routes/profile')(app, passport);
+require('./app/routes/user')(app, passport);
 require('./app/routes/forgot')(app, passport);
 require('./app/routes/logout')(app, passport);
 require('./app/routes/reset')(app, passport);
-require('./app/routes/user')(app, passport);
 require('./app/routes/404')(app, passport);
 require('./app/routes/error')(app, passport);
 
