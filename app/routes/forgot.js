@@ -10,7 +10,7 @@ module.exports = function (app, passport) {
             function (token, done) {
                 User.findOne({ 'local.email': req.body.email }, function (err, user) {
                     if (!user) {
-                        req.flash('error', 'No account with that email address exists.');
+                        req.flash('error', 'Nenhuma conta existe com esse email.');
                         return res.redirect('/forgot');
                     }
 
@@ -38,14 +38,14 @@ module.exports = function (app, passport) {
                     to: user.local.email,
                     from: 'passwordreset@demo.com',
                     subject: 'Recuperação de senha Dashboard Node',
-                    text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
-                    'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
+                    text: 'Você está recebendo isto por que você ou alguém solicitou a modificação da senha para sua conta.\n\n + 
+                    Por favor, clique no link abaixo ou cole-o no seu navegador para completar o processo:\n\n'
                     'http://' + req.headers.host + '/reset/' + token + '\n\n' +
-                    'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+                    'Se você não requisitou esta ação, por favor ignore este e-mail e sua senha continuará a mesma.'
                 };
 
                 transporter.sendMail(mailOptions, function (err) {
-                    req.flash('info', 'An e-mail has been sent to ' + user.local.email + ' with further instructions.');
+                    req.flash('info', 'Um email foi enviado para ' + user.local.email + ' com mais instruções.');
                     done(err, 'done');
                 });
             }
