@@ -10,7 +10,7 @@ module.exports = function (app, passport) {
     app.get('/reset/:token', function (req, res) {
         User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function (err, user) {
             if (!user) {
-                req.flash('error', 'Password reset token is invalid or has expired.');
+                req.flash('error', 'A senha é inválida ou está expirada.');
                 return res.redirect('/forgot');
             }
             res.render('reset', {
@@ -25,7 +25,7 @@ module.exports = function (app, passport) {
             function (done) {
                 User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function (err, user) {
                     if (!user) {
-                        req.flash('error', 'Password reset token is invalid or has expired.');
+                        req.flash('error', 'A senha é inválida ou está expirada.');
                         return res.redirect('back');
                     }
 

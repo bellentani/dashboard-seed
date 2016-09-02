@@ -374,7 +374,7 @@ module.exports = function(app, passport) {
       function(token, done) {
         User.findOne({ 'local.email': req.body.email }, function(err, user) {
           if (!user) {
-            req.flash('error', 'No account with that email address exists.');
+            req.flash('error', 'Não existe nenhum e-mail associado a essa conta.');
             return res.redirect('/forgot');
           }
 
@@ -402,14 +402,14 @@ module.exports = function(app, passport) {
           to: user.local.email,
           from: 'passwordreset@demo.com',
           subject: 'Recuperação de senha Dashboard Node',
-          text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
-            'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
+          text: 'Você está recebendo este e-mail porque você ou alguém pediu para restaurar a senha da sua conta.\n\n' +
+            'Por favor, clique no link a seguir, ou cole-o no seu navegador para completar o processo:\n\n' +
             'http://' + req.headers.host + '/reset/' + token + '\n\n' +
-            'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+            'Se você não requisitou, por favor ignore esse e-mail e sua senha continuará a mesma.\n'
         };
 
         transporter.sendMail(mailOptions, function(err) {
-          req.flash('info', 'An e-mail has been sent to ' + user.local.email + ' with further instructions.');
+          req.flash('info', 'Um e-mail foi enviado para' + user.local.email + ' com mais informações.');
           done(err, 'done');
         });
       }
@@ -422,7 +422,7 @@ module.exports = function(app, passport) {
   app.get('/reset/:token', function(req, res) {
     User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
       if (!user) {
-        req.flash('error', 'Password reset token is invalid or has expired.');
+        req.flash('error', 'Senha inválida ou expirada.');
         return res.redirect('/forgot');
       }
       res.render('reset', {
@@ -437,7 +437,7 @@ module.exports = function(app, passport) {
       function(done) {
         User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
           if (!user) {
-            req.flash('error', 'Password reset token is invalid or has expired.');
+            req.flash('error', 'Senha inválida ou expirada.');
             return res.redirect('back');
           }
 
