@@ -11,7 +11,7 @@ include "head-css-scripts-global.html"
 <!--[if lt IE 8]>
     <p class="browserupgrade">Você está usando um navegador <strong>antigo</strong>. Por favor, <a href="http://browsehappy.com/">atualize seu navegador</a> para uma melhor experiência.</p>
 <![endif]-->
-include "header.html"
+{{> header}}
 <main role="main" class="home">
   <div class="container">
     <div class="jumbotron jumbotron__home">
@@ -39,8 +39,8 @@ include "header.html"
     </section>
   </div>
 </main>
-include "footer.html"
-include "mol-modal-signup.html"
-include "footer-scripts-default.html"
+{{> footer}}
+{{> mol-modal-signup}}
+{{> footer-scripts-default}}
 </body>
 </html>
