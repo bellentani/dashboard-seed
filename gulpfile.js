@@ -64,6 +64,14 @@ gulp.task('fonts', function() {
   .pipe(gulp.dest(distPath+'fonts'))
 });
 
+gulp.task('copy:root', function() {
+  return gulp.src([
+    srcPath+'/*.*',
+    '!'+srcPath+'/*.+(zip|rar|psd)'
+  ])
+  .pipe(gulp.dest(distPath))
+});
+
 gulp.task('images', function() {
   return gulp.src([
     srcPath+'**/*.{png,jpg,gif,svg}',
@@ -146,7 +154,7 @@ gulp.task('clean:dist', function() {
 
 gulp.task('watch', ['browserSync'], function(callback){
   runSequence('clean:dist',
-    ['sass', 'js', 'hbs', 'images', 'fonts'],
+    ['sass', 'js', 'hbs', 'images', 'fonts', 'copy:root'],
     callback
   );
   gulp.watch([
@@ -176,14 +184,14 @@ gulp.task('watch', ['browserSync'], function(callback){
 
 gulp.task('build', function (callback) {
   runSequence('clean:dist',
-    ['sass', 'js', 'hbs', 'images', 'fonts'],
+    ['sass', 'js', 'hbs', 'images', 'fonts', 'copy:root'],
     callback
   )
 });
 
 gulp.task('build:min', function (callback) {
   runSequence('clean:dist',
-    ['sass', 'js', 'hbs', 'useref', 'images', 'images:opt', 'fonts'],
+    ['sass', 'js', 'hbs', 'useref', 'images', 'images:opt', 'fonts', 'copy:root'],
     callback
   )
 });

@@ -1,0 +1,25 @@
+{ "username":
+  [
+    {
+      "fullName": "Poe Bellentani",
+      "bio": "Hey i'm James and i'm a front-end dev currently working in Manchester.",
+      "twitterUsername": "@jburns",
+      "githubUsername": "jburns",
+      "website": "www.jburns.co.uk"
+    },
+    {
+      "fullName": "Gui Fernandes",
+      "bio": "Hey! I'm Jasmine and I love SASS!",
+      "twitterUsername": "@jazziehodgson_93",
+      "githubUsername": "jazziehodgson_93",
+      "website": "www.jazzie-hodgson.co.uk"
+    },
+    {
+      "fullName": "Alex Rimmer",
+      "bio": "Hey i'm Al and i'm a Senior Front-End Dev based in London.",
+      "twitterUsername": "@arimmer22",
+      "githubUsername": "alex_rimmer",
+      "website": "www.arimmer.co.uk/portfolio"
+    }
+  ]
+}

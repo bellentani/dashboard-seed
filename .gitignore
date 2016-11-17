@@ -1,6 +1,6 @@
 .sass-cache/
 node_modules/
-data/
+data/db
 config/db.js
 config/connection.js
 config/auth.js
