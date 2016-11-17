@@ -1,5 +1,6 @@
 var gulp = require('gulp'),
 sass = require('gulp-sass'),
+compass = require('gulp-compass'),
 sourcemaps = require('gulp-sourcemaps'),
 handlebars = require('gulp-compile-handlebars'),
 rename = require('gulp-rename'),
@@ -29,13 +30,33 @@ gulp.task('browserSync', function() {
 });
 
 gulp.task('sass', function(){
-  return gulp.src(srcPath+'scss/**/*.+(scss|sass)')
+  return gulp.src(srcPath+'sass/**/*.+(scss|sass)')
     .pipe(sourcemaps.init())
     .pipe(sass({
       outputStyle: 'compressed',
-      includePaths: require('node-bourbon').with(distPath+'scss/')
+      includePaths: require('node-bourbon').with(distPath+'sass/')
     }).on('error', sass.logError)) // Using gulp-sass
     .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest(distPath+'css'))
+    .pipe(browserSync.reload({
+      stream: true
+    }));
+});
+
+gulp.task('compass', function() {
+  gulp.src(srcPath+'sass/**/*.+(scss|sass)')
+    .pipe(compass({
+      css: distPath+'css/',
+      sass: srcPath+'sass/',
+      style: 'compressed',
+      sourcemap: true
+    }))
+    .on('error', function(error) {
+      // Would like to catch the error here
+      console.log(error);
+      this.emit('end');
+    })
+    //.pipe(minifyCSS())
     .pipe(gulp.dest(distPath+'css'))
     .pipe(browserSync.reload({
       stream: true
@@ -161,7 +182,7 @@ gulp.task('watch', ['browserSync'], function(callback){
     srcPath+'templates/**/*.hbs',
     srcPath+'templates/data/**/*.*'
   ], ['hbs']);
-  gulp.watch(srcPath+'scss/**/*.+(scss|sass)', ['sass']);
+  gulp.watch(srcPath+'sass/**/*.+(scss|sass)', ['sass']);
   gulp.watch([
     srcPath+'fonts/**/*',
     '!'+srcPath+'fonts/**/*.+(html|css)'
@@ -192,6 +213,50 @@ gulp.task('build', function (callback) {
 gulp.task('build:min', function (callback) {
   runSequence('clean:dist',
     ['sass', 'js', 'hbs', 'useref', 'images', 'images:opt', 'fonts', 'copy:root'],
+    callback
+  )
+});
+
+gulp.task('watch-compass', ['browserSync'], function(callback){
+  runSequence('hbs', //clean:dist e a task original aqui, removida porque deu problema no windows
+    ['compass', 'js', 'useref', 'images', 'fonts'],
+    callback
+  );
+  gulp.watch([
+    srcPath+'templates/**/*.hbs',
+    srcPath+'templates/data/**/*.*'
+  ], ['hbs']);
+  gulp.watch(srcPath+'sass/**/*.+(scss|sass)', ['compass']);
+  gulp.watch([
+    srcPath+'fonts/**/*',
+    '!'+srcPath+'fonts/**/*.+(html|css)'
+  ], ['fonts']);
+  gulp.watch([
+    srcPath+'**/*.js',
+    '!'+srcPath+'templates/**/*.*'
+  ], ['js']);
+  gulp.watch([
+    srcPath+'**/*.{png,jpg,gif,svg}',
+    '!'+srcPath+'fonts/**/*.*'
+  ], ['images']);
+  gulp.watch([
+    srcPath+'fonts/**/*',
+    distPath+'js/**/*.js',
+    distPath+'*.[html|css]',
+    '!'+srcPath+'fonts/**/*.+(html|css)'
+  ], browserSync.reload);
+})
+
+gulp.task('build-compass', function (callback) {
+  runSequence('clean:dist',
+    ['compass', 'js', 'hbs', 'images', 'fonts'],
+    callback
+  )
+});
+
+gulp.task('build-compass:min', function (callback) {
+  runSequence('clean:dist',
+    ['compass', 'js', 'hbs', 'useref', 'images', 'images:opt', 'fonts'],
     callback
   )
 });
