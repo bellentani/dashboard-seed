@@ -256,8 +256,8 @@ module.exports = function(app, passport) {
         console.log(req.file);
 
         //crop-img
-        //var srcPath = __dirname+'/uploads/avatar/temp/' + req.file.filename;
-        //var dstPath = __dirname+'/uploads/avatar/' + req.file.filename;
+        var srcPath = __dirname+'/../../public/uploads/avatar/temp/' + req.file.filename;
+        var dstPath = __dirname+'/../../public/uploads/avatar/' + req.file.filename;
         //fs.unlinkSync(srcPath);
         //console.log(srcPath, dstPath);
 

@@ -58,6 +58,7 @@
     position: relative;
   }
   &--data {
+    position: relative;
     color: darken($base-white, 50%);
 
     > li {
