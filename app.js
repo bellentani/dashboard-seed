@@ -55,6 +55,7 @@ app.engine('.hbs', exphbs({
 
 //Configurando o banco
 var db = require('./config/db.js');
+mongoose.Promise = global.Promise;
 mongoose.connect(db.url); // conexão para o banco de dados
 
 require('./config/passport')(passport);

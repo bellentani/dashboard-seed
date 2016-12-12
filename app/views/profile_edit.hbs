@@ -16,6 +16,17 @@
       </div>
     </div>
     <div class="col-xs-24 col-md-19">
+      {{#if message}}
+      <div class="alert alert-info">
+        <ul>
+        {{#each message}}
+          <li>
+            {{this.message}}
+          </li>
+        {{/each}}
+        </ul>
+      </div>
+      {{/if}}
       {{#if message.error}}
       <div>
         <div class="alert alert-danger">{{message.error}}</div>

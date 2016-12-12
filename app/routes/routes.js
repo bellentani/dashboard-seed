@@ -170,8 +170,8 @@ module.exports = function(app, passport) {
     // Update User
     User.findById(req.user.id, function(error, user) {
         if (error) {
-          req.flash('error', 'Ops, tivemos um problemas em atualizar seu cadastro.');
-          //res.send(error);
+          req.flash('error', 'Ops, tivemos um problemas em atualizar seu cadastro. ' + error);
+          res.send(error);
         }
 
         user.name = req.body.name;  // update the user info
