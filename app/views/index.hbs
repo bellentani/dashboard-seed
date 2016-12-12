@@ -1,8 +1,8 @@
-{{#if message}}
+{{!-- {{#if message}}
 <div>
-  <div class="alert alert-danger">{{message}}</div>
+  <div class="alert alert-info">{{message.message}}</div>
 </div>
-{{/if}}
+{{/if}} --}}
 {{#if errors}}
   <ul>
   {{#each errors}}
@@ -10,6 +10,11 @@
   {{/each}}
   </ul>
 {{/if}}
+{{#if userLogged}}
+<main role="main">
+  logado
+</main>
+{{else}}
 <main role="main" class="home">
   <div class="container">
     <div class="jumbotron jumbotron__home">
@@ -43,3 +48,4 @@
     </section>
   </div>
 </main>
+{{/if}}

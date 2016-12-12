@@ -28,11 +28,18 @@ http://mongoosejs.com/docs/models.html
 module.exports = function(app, passport) {
   //Main page
   app.get('/', function(req, res){
-    res.render('index', {
-      title: 'Dashboard Seed',
-      user: req.user,
-      message: req.flash('loginMessage'),
-    });
+    if (req.isAuthenticated()) {
+      res.redirect('/profile');
+      //por enquanto redirecionando para o profile, mas irá ter uma home
+      //com o resumo das atividades do usuário, como se fosse um dashboard mesmo
+      //avatarUser(req, res, req.user, req.user, 'profile');
+    } else {
+      res.render('index', {
+        title: 'Dashboard Seed',
+        user: req.user,
+        message: req.flash('loginMessage')
+      });
+    }
   });
 
   //Signup

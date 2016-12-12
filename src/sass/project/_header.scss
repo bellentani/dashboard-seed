@@ -46,6 +46,12 @@
     vertical-align: middle;
     line-height: 33px;
     padding: 0;
+
+    img {
+      width: 100%;
+      height: auto;
+      background-color: $base-dark;
+    }
   }
   .submenu {
     text-align: left;

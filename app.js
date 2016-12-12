@@ -77,6 +77,12 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
+app.use(function(req, res, next){
+    // if there's a flash message in the session request, make it available in the response, then delete it
+    res.locals.sessionFlash = req.session.sessionFlash;
+    delete req.session.sessionFlash;
+    next();
+});
 // app.use(multer({ dest: 'uploads',
 //     rename: function (fieldname, filename) {
 //         return filename+"_"+Date.now();
