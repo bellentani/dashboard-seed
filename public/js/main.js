@@ -264,7 +264,7 @@ $(function() {
     }
   });
 
-  //Validator signup
+  //Validator resetPassword
   $('#resetPassword').validate({
     //debug: true,
     //onkeyup: false,
@@ -305,6 +305,55 @@ $(function() {
       confirm: {
         required: 'Confirme o password',
         equalTo: 'As senhas digitadas não são iguais, digite novamente.'
+      }
+    }
+  });
+
+  $('#profile-edit-basic-info').validate({
+    //debug: true,
+    onkeyup: false,
+    errorPlacement: function(label, element) {
+        label.addClass('help-block');
+        label.insertAfter(element);
+    },
+    wrapper: 'div',
+    errorElement: 'p',
+    validClass: 'has-success',
+    errorClass: 'has-error',
+    highlight: function(element, errorClass, validClass) {
+      $(element).closest('.form-group').addClass('has-error').removeClass('has-success').find('.help-block').removeClass('hidden');
+      $(element).closest('.form-group').find('.ajax-checked-ok').hide();
+      // $(element).on('keydown, blur', function(event) {
+      //   if($(this).closest('.form-group').children('div').length > 0) {
+      //     $(this).closest('.form-group').children('div:first').addClass('help-block');
+      //   }
+      // });
+    },
+    unhighlight: function(element, errorClass, validClass) {
+      $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
+      //$(element.form).find("label[for=" + element.id + "]").removeClass(errorClass);
+    },
+    success: function(label) {
+      //label.addClass('eu');
+      label.parent().addClass('hidden');
+      var element = label.closest('.form-group').find('input');
+      if (element.attr('id') == 'signup_email') {
+        //console.log('poxa');
+        ajaxGo(element);
+        label.parent().hide();
+      }
+      //console.log(element.attr('id'));
+    },
+    rules: {
+      email: {
+        required: true,
+        email: true
+      }
+    },
+    messages: {
+      email: {
+        required: 'Por favor, o e-mail é obrigatório.',
+        email: 'Adicione um formato válido'
       }
     }
   });
@@ -396,3 +445,12 @@ function ajaxGo(eleTarg) {
         }
     });
 };
+
+function bootstrapValidate(element, errorClass, validClass, highlight) {
+  if (highlight) {
+    $(element).closest('.form-group').addClass('has-error').removeClass('has-success').find('.help-block').removeClass('hidden');
+    $(element).closest('.form-group').find('.ajax-checked-ok').hide();
+  } else {
+    $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
+  }
+}
