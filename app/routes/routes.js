@@ -33,17 +33,14 @@ var requireFiles = function (directory, app) {
   fs.readdirSync(directory).forEach(function (fileName) {
     // Recurse if directory
     if(fs.lstatSync(directory + '/' + fileName).isDirectory()) {
-      requireFiles(directory + '/' + fileName, app, config, db);
+      requireFiles(directory + '/' + fileName, app);
     } else {
-
       // Skip this file
       if(fileName === 'routes.js' && directory === __dirname) return;
-
       // Skip unknown filetypes
       if(validFileTypes.indexOf(fileName.split('.').pop()) === -1) return;
-
       // Require the file.
-      require(directory + '/' + fileName)(app, config, db);
+      require(directory + '/' + fileName)(app);
     }
   });
 };
