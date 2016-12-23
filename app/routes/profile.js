@@ -1,3 +1,5 @@
+var request = require('request'); // trata request
+var gravatar = require('gravatar-api'); //load gravatar
 var connect = require('../../config/connection');
 var User = require('../models/user');
 
@@ -5,12 +7,6 @@ module.exports = function(app, passport) {
   //Perfil do usuário - pessoal
   app.get('/profile/', isLoggedIn, function(req, res) {
     avatarUser(req, res, req.user, req.user, 'profile');
-    //console.log(avatar, options.email);
-    //
-    // res.render('profile', {
-    //     user: req.user,
-    //     avatar: avatar
-    // });
   });
 
   //Perfil do usuário - pessoal

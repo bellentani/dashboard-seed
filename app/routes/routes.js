@@ -29,18 +29,18 @@ http://mongoosejs.com/docs/models.html
 var excluded = ['routes'];
 var validFileTypes  = ['js'];
 
-var requireFiles = function (directory, app) {
+var requireFiles = function (directory, app, passport) {
   fs.readdirSync(directory).forEach(function (fileName) {
     // Recurse if directory
     if(fs.lstatSync(directory + '/' + fileName).isDirectory()) {
-      requireFiles(directory + '/' + fileName, app);
+      requireFiles(directory + '/' + fileName, app, passport);
     } else {
       // Skip this file
       if(fileName === 'routes.js' && directory === __dirname) return;
       // Skip unknown filetypes
       if(validFileTypes.indexOf(fileName.split('.').pop()) === -1) return;
       // Require the file.
-      require(directory + '/' + fileName)(app);
+      require(directory + '/' + fileName)(app, passport);
     }
   });
 };

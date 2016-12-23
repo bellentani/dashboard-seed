@@ -1,7 +1,7 @@
 var request = require('request');
 var gravatar = require('gravatar-api'); //load gravatar
 
-module.exports = {
+module.exports.controller = function() {
     avatarUser: function avatarUser(req, res, userView, userLogged, renderView) {
         //a definição da variávei user altera o local que ele lê,
         //se vier como req.user quer dizer que vai pegar a seção do USUARIO LOGADO na roda /profile
