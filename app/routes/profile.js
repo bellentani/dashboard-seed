@@ -1,9 +1,24 @@
+var path = require('path');
+var fs = require('fs');
+var async = require('async');
+var bodyParser = require('body-parser');
+var crypto = require('crypto');
+var flash    = require('connect-flash');
+var mongoose = require('mongoose');
+var nodemailer = require('nodemailer');
+
+var multer = require('multer'); //controla arquivos
+
 var request = require('request'); // trata request
 var gravatar = require('gravatar-api'); //load gravatar
+
+//var im = require('imagemagick'); //opcional
+
 var connect = require('../../config/connection');
 var User = require('../models/user');
 
 module.exports = function(app, passport) {
+
   //Perfil do usuário - pessoal
   app.get('/profile/', isLoggedIn, function(req, res) {
     avatarUser(req, res, req.user, req.user, 'profile');
@@ -13,8 +28,6 @@ module.exports = function(app, passport) {
   app.get('/profile/edit', isLoggedIn, function(req, res) {
     avatarUser(req, res, req.user, req.user, 'profile_edit');
   });
-
-  //Perfil do usuário - pessoal
   app.post('/profile/edit', function(req, res) {
     // Update User
     User.findById(req.user.id, function(error, user) {
@@ -46,49 +59,7 @@ module.exports = function(app, passport) {
     console.log(req.body);
   });
 
-  //test crop
-  app.get('/imagecrop', function(req, res) {
-    var path = __dirname+'/../../public/img/avatar-sample.jpg';
-    var destPath = __dirname+'/../../public/uploads/avatar/cropped/cropped.jpg';
-    im.identify(path, function(err, features){
-      if (err) throw err;
-      console.log(features);
-      // { format: 'JPEG', width: 3904, height: 2622, depth: 8 }
-    });
-    im.crop({
-      srcPath: path,
-      dstPath: destPath,
-      width: 40,
-      height: 40,
-      quality: 1,
-      gravity: 'North'
-    }, function(err, stdout, stderr){
-      if (err) throw err;
-      //console.log(stdout, stderr);
-    });
-    res.render('test', {
-      title: 'Teste imagem',
-      user: req.user,
-      message: req.flash()
-    });
-  });
-  app.post('/imagecrop', function(req, res) {
-
-    //crop-img
-    im.readMetadata('/public/img/avatar-sample.png', function(err, metadata){
-      if (err) {
-        throw err;
-      }
-      console.log('Shot at '+metadata.exif.dateTimeOriginal);
-
-      res.render('test', {
-        title: 'Teste imagem',
-        user: req.user,
-        message: req.flash()
-      });
-    })
-  });
-
+  //Editar profile
   app.get('/profile/edit/avatar',isLoggedIn, function(req,res) {
     avatarUser(req, res, req.user, req.user, 'profile_edit');
   });
@@ -141,21 +112,6 @@ module.exports = function(app, passport) {
     //http://stackoverflow.com/questions/15772394/how-to-upload-display-and-save-images-using-node-js-and-express
     //http://stackoverflow.com/questions/5294470/writing-image-to-local-server
     //http://stackoverflow.com/questions/16860334/how-to-load-and-save-image-using-node-js
-  });
-
-  //Perfil do usuário - pessoal
-  app.get('/user/:alias', function(req, res) {
-  //app.get('/user/', isLoggedIn, function(req, res) { exemplo de função que checa se está logado
-
-    User.findOne({ alias: req.params.alias}, function(err, user) {
-      if (!user) {
-        req.flash('error', 'Usuário não existe');
-        return res.redirect('/');
-      }
-      //console.log(user.local.email)
-      avatarUser(req, res, user, req.user, 'profile');
-    });
-
   });
 
   //Function to load user with avatar

@@ -18,55 +18,19 @@ var connect = require('../../config/connection');
 var User = require('../models/user');
 
 module.exports = function(app, passport) {
-  //Main page
-  app.get('/', function(req, res){
-    if (req.isAuthenticated()) {
-      res.redirect('/profile');
-      //por enquanto redirecionando para o profile, mas irá ter uma home
-      //com o resumo das atividades do usuário, como se fosse um dashboard mesmo
-      //avatarUser(req, res, req.user, req.user, 'profile');
-    } else {
-      res.render('index', {
-        title: 'Dashboard Seed',
-        user: req.user,
-        message: req.flash('loginMessage')
-      });
-    }
-  });
-
-  //Login
-  app.post('/login', passport.authenticate('local-login', {
-      successRedirect : '/profile', // redirect to the secure profile section
-      failureRedirect : '/', // redirect back to the signup page if there is an error
-      failureFlash : true // allow flash messages
-    })
-  );
-
-  //Logout
-  app.get('/logout', function(req, res) {
-    req.logout();
-    res.redirect('/');
-  });
-
   //Perfil do usuário - pessoal
-  app.get('/profile/', isLoggedIn, function(req, res) {
-    avatarUser(req, res, req.user, req.user, 'profile');
+  app.get('/user/:alias', function(req, res) {
+  //app.get('/user/', isLoggedIn, function(req, res) { exemplo de função que checa se está logado
 
-    // Random script
-    // var userAvatar = req.user.avatar;
-    // if (userAvatar == '') {
-    //   avatar = '/img/avatares/'+randomAvatar(1, 17)+'.png';
-    // }
-    // function randomAvatar(min, max) {
-    //   return ~~(Math.random() * (max - min + 1)) + min
-    // }
+    User.findOne({ alias: req.params.alias}, function(err, user) {
+      if (!user) {
+        req.flash('error', 'Usuário não existe');
+        return res.redirect('/');
+      }
+      //console.log(user.local.email)
+      avatarUser(req, res, user, req.user, 'profile');
+    });
 
-    //console.log(avatar, options.email);
-    //
-    // res.render('profile', {
-    //     user: req.user,
-    //     avatar: avatar
-    // });
   });
 
   //Function to load user with avatar
@@ -113,12 +77,4 @@ module.exports = function(app, passport) {
       });
     }
   }
-
-}
-
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated())
-        return next();
-
-    res.redirect('/');
 }
