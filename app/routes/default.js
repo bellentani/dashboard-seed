@@ -14,6 +14,8 @@ var gravatar = require('gravatar-api'); //load gravatar
 
 //var im = require('imagemagick'); //opcional
 
+var controllers = require('../controllers');
+
 var connect = require('../../config/connection');
 var User = require('../models/user');
 
@@ -49,7 +51,7 @@ module.exports = function(app, passport) {
   });
 
   //Perfil do usuário - pessoal
-  app.get('/profile/', isLoggedIn, function(req, res) {
+  app.get('/profile/', controllers.isLoggedIn, function(req, res) {
     avatarUser(req, res, req.user, req.user, 'profile');
 
     // Random script
@@ -114,11 +116,4 @@ module.exports = function(app, passport) {
     }
   }
 
-}
-
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated())
-        return next();
-
-    res.redirect('/');
 }

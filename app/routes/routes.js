@@ -14,6 +14,8 @@ var gravatar = require('gravatar-api'); //load gravatar
 
 //var im = require('imagemagick'); //opcional
 
+var controllers = require('../controllers');
+
 var connect = require('../../config/connection');
 var User = require('../models/user');
 
@@ -532,11 +534,4 @@ module.exports = function(app, passport) {
   //   console.error(err.stack);
   //   res.status(500).render('500.hbs', err);
   // });
-}
-
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated())
-        return next();
-
-    res.redirect('/');
 }

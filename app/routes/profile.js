@@ -13,6 +13,7 @@ var request = require('request'); // trata request
 var gravatar = require('gravatar-api'); //load gravatar
 
 //var im = require('imagemagick'); //opcional
+var controllers = require('../controllers');
 
 var connect = require('../../config/connection');
 var User = require('../models/user');
@@ -20,12 +21,12 @@ var User = require('../models/user');
 module.exports = function(app, passport) {
 
   //Perfil do usuário - pessoal
-  app.get('/profile/', isLoggedIn, function(req, res) {
+  app.get('/profile/', controllers.isLoggedIn, function(req, res) {
     avatarUser(req, res, req.user, req.user, 'profile');
   });
 
   //Perfil do usuário - pessoal
-  app.get('/profile/edit', isLoggedIn, function(req, res) {
+  app.get('/profile/edit', controllers.isLoggedIn, function(req, res) {
     avatarUser(req, res, req.user, req.user, 'profile_edit');
   });
   app.post('/profile/edit', function(req, res) {
@@ -60,7 +61,7 @@ module.exports = function(app, passport) {
   });
 
   //Editar profile
-  app.get('/profile/edit/avatar',isLoggedIn, function(req,res) {
+  app.get('/profile/edit/avatar', controllers.isLoggedIn, function(req,res) {
     avatarUser(req, res, req.user, req.user, 'profile_edit');
   });
   app.post('/profile/edit/avatar', function(req,res){
@@ -159,11 +160,4 @@ module.exports = function(app, passport) {
     }
   }
 
-}
-
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated())
-        return next();
-
-    res.redirect('/');
 }
