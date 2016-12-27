@@ -14,6 +14,8 @@ var gravatar = require('gravatar-api'); //load gravatar
 
 //var im = require('imagemagick'); //opcional
 
+var controllers = require('../controllers');
+
 var connect = require('../../config/connection');
 var User = require('../models/user');
 
@@ -64,18 +66,11 @@ module.exports = function(app, passport) {
 
       // check to see if theres already a user with that email
       if (user) {
-        doMe('email existe');
+        controllers.doMe('email existe', obj, req, res);
       } else {
-        doMe('email livre');
+        controllers.doMe('email livre', obj, req, res);
       }
     });
-
-    //This function works on Async, if we dont use it the send(obj) will be empty
-    function doMe(i) {
-      obj.status = i;
-      obj.email = req.body.email;
-      res.send(obj);
-    }
   });
 
 }
