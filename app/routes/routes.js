@@ -39,7 +39,6 @@ var requireFiles = function (directory, app, passport) {
 };
 
 module.exports = function(app, passport) {
-
   requireFiles(__dirname, app, passport);
 
   //Error 404
