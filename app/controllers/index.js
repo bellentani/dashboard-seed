@@ -1,4 +1,4 @@
-var request = require('request');
+var request = require('request'); // trata request
 var gravatar = require('gravatar-api'); //load gravatar
 
 module.exports = {
@@ -62,6 +62,17 @@ module.exports = {
     res.send(obj);
     //console.log(obj);
     //console.log('body: ' + JSON.stringify(obj), req.body.email);
-  }
+  },
+  path: require('path'),
+  fs: require('fs'),
+  async: require('async'),
+  bodyParser: require('body-parser'),
+  crypto: require('crypto'),
+  flash: require('connect-flash'),
+  mongoose: require('mongoose'),
+  nodemailer: require('nodemailer'),
+  multer: require('multer'),
+  request: request,
+  gravatar: gravatar
 
 };
