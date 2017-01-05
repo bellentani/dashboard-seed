@@ -16,7 +16,7 @@ var gravatar = require('gravatar-api'); //load gravatar
 
 var controllers = require('../controllers');
 
-// var connect = require('../../config/connection');
+var connect = require('../../config/connection');
 var User = require('../models/user');
 
 var excluded = ['index'];

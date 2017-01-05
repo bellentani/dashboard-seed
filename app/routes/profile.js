@@ -1,6 +1,6 @@
 var controllers = require('../controllers');
 
-// var connect = require('../../config/connection');
+var connect = require('../../config/connection');
 var User = require('../models/user');
 
 module.exports = function(app, passport) {
