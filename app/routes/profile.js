@@ -1,7 +1,7 @@
 var controllers = require('../controllers');
 
 var connect = require('../../config/connection');
-var User = require('../models/user');
+var UserDB = require('../services/user');
 
 module.exports = function(app, passport) {
 
@@ -16,31 +16,18 @@ module.exports = function(app, passport) {
   });
   app.post('/profile/edit', function(req, res) {
     // Update User
-    User.findById(req.user.id, function(error, user) {
-        if (error) {
-          req.flash('error', 'Ops, tivemos um problemas em atualizar seu cadastro. ' + error);
-          res.send(error);
-        }
-
-        user.name = req.body.name;  // update the user info
-        user.local.email = req.body.email;
-        user.alias = req.body.alias;
-        user.resume = req.body.resume;
-        if (req.body.email) {
-          // save user
-          user.save(function(error) {
-            if (error) {
-              req.flash('error', 'Ops, tivemos um problemas em atualizar seu cadastro.');
-              //res.send(error);
-            }
-            req.flash('success', 'usuário atualizado');
-            res.redirect('/profile/edit');
-          });
-        } else {
-          req.flash('error', 'O e-mail não pode ser vazio');
-          res.redirect('/profile/edit');
-        }
-
+    if (!req.body.email) {
+      req.flash('error', 'O e-mail não pode ser vazio');
+      res.redirect('/profile/edit');
+      return;
+    }
+    UserDB.findByIdAndUpdate(req.user.id, req.body).then(function (user) {
+      req.flash('success', 'usuário atualizado');
+      console.log('deu certo...');
+      res.redirect('/profile/edit');
+    }).catch(function(error) {
+      req.flash('error', 'Ops, tivemos um problemas em atualizar seu cadastro. ' + error);
+      res.send(error);
     });
     console.log(req.body);
   });
