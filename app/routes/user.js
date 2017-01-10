@@ -1,7 +1,6 @@
 var lib = require('../lib');
 var controllers = require('../controllers');
 
-var connect = require('../../config/connection');
 var User = require('../models/user');
 
 module.exports = function(app, passport) {
@@ -17,6 +16,6 @@ module.exports = function(app, passport) {
       //console.log(user.local.email)
       controllers.avatarUser(req, res, user, req.user, 'profile');
     });
-    
+
   });
 }

@@ -1,17 +1,13 @@
 var lib = require('../lib');
 var controllers = require('../controllers');
 
-var connect = require('../../config/connection');
-var User = require('../models/user');
-
 var excluded = ['index'];
 var validFileTypes  = ['js'];
 
-
 function requireFiles(directory, app, passport) {
-  fs.readdirSync(directory).map(function (fileName) {
+  lib.fs.readdirSync(directory).map(function (fileName) {
     // Recurse if directory
-    if(fs.lstatSync(directory + '/' + fileName).isDirectory()) {
+    if(lib.fs.lstatSync(directory + '/' + fileName).isDirectory()) {
       return requireFiles(directory + '/' + fileName, app, passport);
 
     }
