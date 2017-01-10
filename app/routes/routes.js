@@ -1,19 +1,4 @@
-var path = require('path');
-var fs = require('fs');
-var async = require('async');
-var bodyParser = require('body-parser');
-var crypto = require('crypto');
-var flash    = require('connect-flash');
-var mongoose = require('mongoose');
-var nodemailer = require('nodemailer');
-
-var multer = require('multer'); //controla arquivos
-
-var request = require('request'); // trata request
-var gravatar = require('gravatar-api'); //load gravatar
-
-//var im = require('imagemagick'); //opcional
-
+var lib = require('../lib');
 var controllers = require('../controllers');
 
 var connect = require('../../config/connection');
@@ -23,9 +8,9 @@ var excluded = ['index'];
 var validFileTypes  = ['js'];
 
 var requireFiles = function (directory, app, passport) {
-  fs.readdirSync(directory).forEach(function (fileName) {
+  lib.fs.readdirSync(directory).forEach(function (fileName) {
     // Recurse if directory
-    if(fs.lstatSync(directory + '/' + fileName).isDirectory()) {
+    if(lib.fs.lstatSync(directory + '/' + fileName).isDirectory()) {
       requireFiles(directory + '/' + fileName, app, passport);
     } else {
       // Skip this file

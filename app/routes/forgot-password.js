@@ -1,18 +1,4 @@
-var path = require('path');
-var fs = require('fs');
-var async = require('async');
-var bodyParser = require('body-parser');
-var crypto = require('crypto');
-var flash    = require('connect-flash');
-var mongoose = require('mongoose');
-var nodemailer = require('nodemailer');
-
-var multer = require('multer'); //controla arquivos
-
-var request = require('request'); // trata request
-var gravatar = require('gravatar-api'); //load gravatar
-
-//var im = require('imagemagick'); //opcional
+var lib = require('../lib');
 
 var connect = require('../../config/connection');
 var User = require('../models/user');
@@ -26,9 +12,9 @@ module.exports = function(app, passport) {
   });
 
   app.post('/forgot', function(req, res, next) {
-    async.waterfall([
+    lib.async.waterfall([
       function(done) {
-        crypto.randomBytes(20, function(err, buf) {
+        lib.crypto.randomBytes(20, function(err, buf) {
           var token = buf.toString('hex');
           done(err, token);
         });
@@ -58,7 +44,7 @@ module.exports = function(app, passport) {
                 pass: connect.pass
             }
         };
-        var transporter = nodemailer.createTransport(connection);
+        var transporter = lib.nodemailer.createTransport(connection);
 
         var mailOptions = {
           to: user.local.email,
@@ -95,7 +81,7 @@ module.exports = function(app, passport) {
   });
 
   app.post('/reset/:token', function(req, res) {
-    async.waterfall([
+    lib.async.waterfall([
       function(done) {
         User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
           if (!user) {
@@ -124,7 +110,7 @@ module.exports = function(app, passport) {
               pass: connect.pass
             }
         };
-        var transporter = nodemailer.createTransport(connection);
+        var transporter = lib.nodemailer.createTransport(connection);
         var mailOptions = {
           to: user.local.email,
           from: 'passwordreset@demo.com',

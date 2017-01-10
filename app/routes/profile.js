@@ -1,4 +1,5 @@
 var controllers = require('../controllers');
+var lib = require('../lib');
 
 var connect = require('../../config/connection');
 var User = require('../models/user');
@@ -50,17 +51,17 @@ module.exports = function(app, passport) {
     controllers.avatarUser(req, res, req.user, req.user, 'profile_edit');
   });
   app.post('/profile/edit/avatar', function(req,res){
-    var upload = controllers.multer.diskStorage({
+    var upload = lib.multer.diskStorage({
       destination: function (req, file, callback) {
         callback(null, 'public/uploads/avatar');
       },
       filename: function (req, file, callback) {
-        controllers.crypto.pseudoRandomBytes(16, function (err, raw) {
+        lib.crypto.pseudoRandomBytes(16, function (err, raw) {
           callback(null, raw.toString('hex') + Date.now());
         });
       }
     });
-    var uploader = controllers.multer({ storage : upload}).single('avatarEdit');
+    var uploader = lib.multer({ storage : upload}).single('avatarEdit');
     uploader(req,res,function(err) {
         if(err) {
           req.flash('error', 'Houve algum problema em subir seu arquivo.');
@@ -93,10 +94,5 @@ module.exports = function(app, passport) {
             });
         });
     });
-    //adicionar arquivos
-    //https://www.terlici.com/2015/05/16/uploading-files-locally.html
-    //http://stackoverflow.com/questions/15772394/how-to-upload-display-and-save-images-using-node-js-and-express
-    //http://stackoverflow.com/questions/5294470/writing-image-to-local-server
-    //http://stackoverflow.com/questions/16860334/how-to-load-and-save-image-using-node-js
   });
 }
