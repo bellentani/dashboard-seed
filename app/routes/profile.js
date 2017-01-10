@@ -1,18 +1,3 @@
-var path = require('path');
-var fs = require('fs');
-var async = require('async');
-var bodyParser = require('body-parser');
-var crypto = require('crypto');
-var flash    = require('connect-flash');
-var mongoose = require('mongoose');
-var nodemailer = require('nodemailer');
-
-var multer = require('multer'); //controla arquivos
-
-var request = require('request'); // trata request
-var gravatar = require('gravatar-api'); //load gravatar
-
-//var im = require('imagemagick'); //opcional
 var controllers = require('../controllers');
 
 var connect = require('../../config/connection');
@@ -65,17 +50,17 @@ module.exports = function(app, passport) {
     controllers.avatarUser(req, res, req.user, req.user, 'profile_edit');
   });
   app.post('/profile/edit/avatar', function(req,res){
-    var upload = multer.diskStorage({
+    var upload = controllers.multer.diskStorage({
       destination: function (req, file, callback) {
         callback(null, 'public/uploads/avatar');
       },
       filename: function (req, file, callback) {
-        crypto.pseudoRandomBytes(16, function (err, raw) {
+        controllers.crypto.pseudoRandomBytes(16, function (err, raw) {
           callback(null, raw.toString('hex') + Date.now());
         });
       }
     });
-    var uploader = multer({ storage : upload}).single('avatarEdit');
+    var uploader = controllers.multer({ storage : upload}).single('avatarEdit');
     uploader(req,res,function(err) {
         if(err) {
           req.flash('error', 'Houve algum problema em subir seu arquivo.');
