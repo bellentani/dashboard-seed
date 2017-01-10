@@ -1,19 +1,4 @@
-var path = require('path');
-var fs = require('fs');
-var async = require('async');
-var bodyParser = require('body-parser');
-var crypto = require('crypto');
-var flash    = require('connect-flash');
-var mongoose = require('mongoose');
-var nodemailer = require('nodemailer');
-
-var multer = require('multer'); //controla arquivos
-
-var request = require('request'); // trata request
-var gravatar = require('gravatar-api'); //load gravatar
-
-//var im = require('imagemagick'); //opcional
-
+var lib = require('../lib');
 var controllers = require('../controllers');
 
 var connect = require('../../config/connection');
@@ -22,11 +7,13 @@ var User = require('../models/user');
 var excluded = ['index'];
 var validFileTypes  = ['js'];
 
+
 function requireFiles(directory, app, passport) {
   fs.readdirSync(directory).map(function (fileName) {
     // Recurse if directory
     if(fs.lstatSync(directory + '/' + fileName).isDirectory()) {
       return requireFiles(directory + '/' + fileName, app, passport);
+
     }
     // Skip this file
     if(fileName === 'routes.js' && directory === __dirname) return;

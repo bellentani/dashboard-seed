@@ -1,4 +1,4 @@
-//var im = require('imagemagick'); //opcional
+var lib = require('../lib');
 
 var controllers = require('../controllers');
 
