@@ -7,19 +7,20 @@ var User = require('../models/user');
 var excluded = ['index'];
 var validFileTypes  = ['js'];
 
-var requireFiles = function (directory, app, passport) {
-  lib.fs.readdirSync(directory).forEach(function (fileName) {
+
+function requireFiles(directory, app, passport) {
+  fs.readdirSync(directory).map(function (fileName) {
     // Recurse if directory
-    if(lib.fs.lstatSync(directory + '/' + fileName).isDirectory()) {
-      requireFiles(directory + '/' + fileName, app, passport);
-    } else {
-      // Skip this file
-      if(fileName === 'routes.js' && directory === __dirname) return;
-      // Skip unknown filetypes
-      if(validFileTypes.indexOf(fileName.split('.').pop()) === -1) return;
-      // Require the file.
-      require(directory + '/' + fileName)(app, passport);
+    if(fs.lstatSync(directory + '/' + fileName).isDirectory()) {
+      return requireFiles(directory + '/' + fileName, app, passport);
+
     }
+    // Skip this file
+    if(fileName === 'routes.js' && directory === __dirname) return;
+    // Skip unknown filetypes
+    if(validFileTypes.indexOf(fileName.split('.').pop()) === -1) return;
+    // Require the file.
+    require(directory + '/' + fileName)(app, passport);
   });
 };
 
