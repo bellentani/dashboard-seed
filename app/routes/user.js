@@ -11,11 +11,17 @@ module.exports = function(app, passport) {
     User.findOne({ alias: req.params.alias}, function(err, user) {
       if (!user) {
         req.flash('error', 'Usuário não existe');
-        return res.redirect('/');
+        return res.status(404).redirect('/404/user');
       }
       //console.log(user.local.email)
       controllers.avatarUser(req, res, user, req.user, 'profile');
     });
 
+  });
+  app.get('/user/', function(req, res) {
+    res.redirect('/profile');
+  });
+  app.get('/404/user', function(req, res) {
+    res.render('404-user.hbs');
   });
 }
