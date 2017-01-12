@@ -5,6 +5,12 @@
 </ul-->
 <main role="main" class="profile">
   <div class="container">
+    {{#if userError}}
+    <div class="col-xs-24 col-sm-12 col-sm-offset-6">
+      <h2>There is no Agent Smith here!</h2>
+      <p>Usuário não existe, está inativo ou não quer que seus dados sejam divulgados publicamente. :(</p>
+    </div>
+    {{else}}
     <div class="col-xs-24 col-md-5 profile-col">
       <div class="user-detail">
         <figure class="avatar">
@@ -46,7 +52,8 @@
       </div>
     </div>
     <div class="col-xs-24 col-md-19">
-
     </div>
+    {{/if}}
+
   </div>
 </main>

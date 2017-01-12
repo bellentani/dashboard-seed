@@ -22,6 +22,9 @@ module.exports = function(app, passport) {
     res.redirect('/profile');
   });
   app.get('/404/user', function(req, res) {
-    res.render('404-user.hbs');
+    res.render('profile.hbs', {
+      userError: '404',
+      message: req.flash()
+    });
   });
 }
