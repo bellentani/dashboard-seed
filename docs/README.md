@@ -48,7 +48,7 @@ O escopo de ferramentas que farão parte desse app são:
 
 Alguns serviços que usamos de forma gratuíta e parceiros que fornecem espaço físico para nossas reuniões.
 
-[![Browser Stack](img/logo-browserstack.jpg)](https://www.browserstack.com)
+[![Browser Stack](img/logo-browserstack.jpg)](https://www.browserstack.com) [![Space Sorocaba](img/logo-space.jpg)](http://spacesorocaba.com.br/) [![GoHub Sorocaba](img/logo-gohub.jpg)](http://gohub.com.br/) [![Developer School](img/logo-developer-school.jpg)](http://developerschool.com.br/)
 
 ##Agradecimentos
 
