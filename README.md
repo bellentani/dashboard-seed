@@ -75,7 +75,12 @@ Telas feitas em separado na pasta ``src``:
 * Erro 404
 * Erro 500
 
----
-Aos poucos vamos tentar transformar isso em tutorial, explicando cada etapa. Por isso teremos comentários de montão nos códigos produzidos.
+##Apoio
 
-P.S.: Esse escopo pode ser alterado a qualquer momento.
+Alguns serviços que usamos de forma gratuíta e parceiros que fornecem espaço físico para nossas reuniões.
+
+[![Browser Stack](img/logo-browserstack.jpg)](https://www.browserstack.com) [![Space Sorocaba](img/logo-space.jpg)](http://spacesorocaba.com.br/) [![GoHub Sorocaba](img/logo-gohub.jpg)](http://gohub.com.br/) [![Developer School](img/logo-developer-school.jpg)](http://developerschool.com.br/)
+
+##Agradecimentos
+
+A todos os interessados na proposta e envolvidos, desde aqueles que já brincaram colocando algumas linhas no código até aqueles que participaram dos bate papos iniciais.
