@@ -16,7 +16,7 @@ Usaremos nesse projeto:
 
 ###Conceitos gerais
 
-O projeto tem como objetivo ser crossbrowser e prover um pacote base para utilização também em responsivo, além de servir de laboratório para automatização de testes automatizados para ambas as áreas. Escolhemos utilizar alguns serviços online para isso e o [BrowserStack.com](https://www.browserstack.com) foi o que demonstrou possuir ótima ferramentas, possibilidade de escalonamento e preços justos.
+O projeto tem como objetivo ser crossbrowser e prover um pacote base para utilização também em responsivo, além de servir de laboratório para automatização de testes automatizados para ambas as áreas. Escolhemos utilizar alguns serviços online para isso e o [BrowserStack.com](https://www.browserstack.com) foi o que demonstrou possuir ótimas ferramentas, possibilidade de escalonamento e preços justos.
 
 ##Escopo Geral para a versão 1.0
 
