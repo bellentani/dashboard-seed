@@ -1,0 +1,110 @@
+<h2 id="dashboardseedv019409372">Dashboard Seed v0.1.94093.72</h2>
+
+<p>Esse aplicativo tem como objetivo criar um boot para projetos que precisem de gerenciamento de usuários e área exclusiva. É quase que um "big snippet" de código para quem quiser começar um site ou serviço. É como um "trabalho de conclusão de curso" para mim, pois estou aplicando neles meus estudos em Node. Ele está sendo utilizado em outro projeto privado que estou fazendo, mas as coisas globais estou atualizando aqui e dividindo com quem tiver interesse.</p>
+
+<p>Usaremos nesse projeto:</p>
+
+<ul>
+<li>Node.js</li>
+
+<li>mongoDB (servidor local)</li>
+
+<li>Express.js</li>
+
+<li>Diversos módulos
+
+
+<ul>
+<li>express-handlebars</li>
+
+<li>passport</li>
+
+<li>assert</li>
+
+<li>mongoose</li>
+
+<li>etc.</li></ul>
+</li>
+</ul>
+
+<h3 id="conceitosgerais">Conceitos gerais</h3>
+
+<p>O projeto tem como objetivo ser crossbrowser e prover um pacote base para utilização também em responsivo, além de servir de laboratório para automatização de testes automatizados para ambas as áreas. Escolhemos utilizar alguns serviços online para isso e o <a href="https://www.browserstack.com">BrowserStack.com</a> foi o que demonstrou possuir ótima ferramentas, possibilidade de escalonamento e preços justos.</p>
+
+<h2 id="escopogeralparaaverso10">Escopo Geral para a versão 1.0</h2>
+
+<p>O escopo de ferramentas que farão parte desse app são:</p>
+
+<ul>
+<li>Configuração inicial de servidor</li>
+
+<li>Cadastro de usuário
+
+
+<ul>
+<li>E-mail</li>
+
+<li>Senha</li>
+
+<li>Avatar (com Gravatar)</li></ul>
+</li>
+
+<li>Acesso do usuário
+
+
+<ul>
+<li>Login e Sign out</li></ul>
+</li>
+
+<li>Recuperação de senha (<code>/forgot</code>)
+
+
+<ul>
+<li>Reset password com token</li></ul>
+</li>
+
+<li>Área personalizada (<code>/profile</code>)
+
+
+<ul>
+<li>Avatar</li>
+
+<li>Informações básicas</li>
+
+<li>Edição de informações (<code>/profile/edit</code>)</li>
+
+<li>Criar profile por user ID ou User name (<code>/profile/12313123</code> || <code>/profile/bellentani</code>)</li>
+
+<li>Criar profile com apelido (quando o campo <code>alias</code> estiver preenchido no banco, senão usará o ID)</li>
+
+<li>Quando criar o campo <code>alias</code> precisaremos checar se ele está sendo usado, porque ele também será um registro único (registros únicos são <code>id</code>,<code>email</code> e <code>alias</code>).</li></ul>
+</li>
+
+<li>Tela de usuário
+
+
+<ul>
+<li>Pública</li>
+
+<li>Escolha de itens que podem ser exibidos (privacidade)</li></ul>
+</li>
+
+<li>Área administrativa (<code>/profile/::user::admin</code>)
+
+
+<ul>
+<li>Níveis de usuário (user, admin, owner)</li>
+
+<li>Relatório de atividade gerais dos usuários (logs)</li></ul>
+</li>
+</ul>
+
+<h2 id="apoio">Apoio</h2>
+
+<p>Alguns serviços que usamos de forma gratuíta e parceiros que fornecem espaço físico para nossas reuniões.</p>
+
+<a href="https://www.browserstack.com"><img src="img/logo-browserstack.jpg" alt="Browser Stack" /></a>
+
+<h2 id="agradecimentos">Agradecimentos</h2>
+
+<p>A todos os interessados na proposta e envolvidos, desde aqueles que já brincaram colocando algumas linhas no código até aqueles que participaram dos bate papos iniciais.</p>
