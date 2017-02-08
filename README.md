@@ -18,7 +18,17 @@ Usaremos nesse projeto:
 
 O projeto tem como objetivo ser crossbrowser e prover um pacote base para utilização também em responsivo, além de servir de laboratório para automatização de testes automatizados para ambas as áreas. Escolhemos utilizar alguns serviços online para isso e o [BrowserStack.com](https://www.browserstack.com) foi o que demonstrou possuir ótimas ferramentas, possibilidade de escalonamento e preços justos.
 
+Você pode ver documentos detalhados em:
+* [Escopo](https://github.com/bellentani/dashboard-seed/blob/master/SCOPE.md);
+* [Perguntas Frequentes](https://github.com/bellentani/dashboard-seed/blob/master/FAQ.md);
+* [Configuração básica do ambiente](https://github.com/bellentani/dashboard-seed/blob/master/CONFIG.md)
+* [Referências: tutoriais, matérias e itens utilizados para criar cada funcionalidade](https://github.com/bellentani/dashboard-seed/blob/master/REF.md)
+* [Projeto MVP em andamento](https://github.com/bellentani/dashboard-seed/projects/1)
+
+Se quiser colaborar, tirar dúvidas ou afins, pode [abrir uma issue](https://github.com/bellentani/dashboard-seed/issues) que ela será respondida. Caso queira colaborar inserindo código, só mandar um pull request. ;)
+
 ##Escopo Geral para a versão 1.0
+Você pode ver o escopo [detalhado aqui (com andamento de cada funcionalidade)](https://github.com/bellentani/dashboard-seed/blob/master/SCOPE.md).
 
 O escopo de ferramentas que farão parte desse app são:
 * Configuração inicial de servidor
