@@ -21,9 +21,9 @@ O projeto tem como objetivo ser crossbrowser e prover um pacote base para utiliz
 Você pode ver documentos detalhados em:
 * [Escopo](https://github.com/bellentani/dashboard-seed/blob/master/SCOPE.md);
 * [Perguntas Frequentes](https://github.com/bellentani/dashboard-seed/blob/master/FAQ.md);
-* [Configuração básica do ambiente](https://github.com/bellentani/dashboard-seed/blob/master/CONFIG.md)
-* [Referências: tutoriais, matérias e itens utilizados para criar cada funcionalidade](https://github.com/bellentani/dashboard-seed/blob/master/REF.md)
-* [Projeto MVP em andamento](https://github.com/bellentani/dashboard-seed/projects/1)
+* [Configuração básica do ambiente](https://github.com/bellentani/dashboard-seed/blob/master/CONFIG.md);
+* [Referências: tutoriais, matérias e itens utilizados para criar cada funcionalidade](https://github.com/bellentani/dashboard-seed/blob/master/REF.md);
+* [Projeto MVP em andamento](https://github.com/bellentani/dashboard-seed/projects/1).
 
 Se quiser colaborar, tirar dúvidas ou afins, pode [abrir uma issue](https://github.com/bellentani/dashboard-seed/issues) que ela será respondida. Caso queira colaborar inserindo código, só mandar um pull request. ;)
 
